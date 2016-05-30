@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		<title>RIT Debit Splitter</title>
+
+		<!-- favicon -->
+		<link rel="shortcut icon" href="media/favicon.ico" />
+
+		<!-- style sheets -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-indigo.min.css" />
+		<link rel="stylesheet" href="css/style.css" media="screen">
+		<link rel="stylesheet" href="css/print.css" media="print">
+
+    <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+    <script defer src="js/jquery-1.12.3.min.js"></script>
+    <script defer src="js/main.js"></script>
+	</head>
+
+	<body>
+		<header>
+			<h1 id="header">RIT Debit Splitter</h1>
+		</header>
+
+		<section class="container" id="content">
+			<div class="mdl-grid">
+				<div class="mdl-cell mdl-cell--6-col full-width-when-small">
+					<!-- meal plan selector -->
+          <div class="card-wide mdl-card mdl-shadow--2dp">
+            <div class="card-contents">
+              <h4>Meal Plan</h4>
+    					<select id="plan">
+    					  <option value="all">All Debit</option>
+    					  <option value="5+">5+</option>
+    					  <option value="10+">10+</option>
+    					  <option value="14+">14+</option>
+    						<option value="20+">20+</option>
+    						<option value="plan1">Debit Plan 1</option>
+    						<option value="plan2">Debit Plan 2</option>
+    						<option value="plan3">Debit Plan 3</option>
+                <option value="reduced">Inn Reduced Debit</option>
+    					</select>
+
+              <!-- rollover input-->
+              <form action="#">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="rollover">
+                  <label class="mdl-textfield__label" for="sample4">Rollover</label>
+                  <span class="mdl-textfield__error">Input is not a number!</span>
+                </div>
+              </form>
+
+              <!-- current debit input -->
+              <form action="#" id="last-item">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="remaining">
+                  <label class="mdl-textfield__label" for="sample4">Remaining</label>
+                  <span class="mdl-textfield__error">Input is not a number!</span>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="card-wide mdl-card mdl-shadow--2dp">
+            <div class="card-contents">
+              <h4>Date Range</h4>
+              <form action="#">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text"
+                  pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d" id="startdate">
+                  <label class="mdl-textfield__label" for="sample3">Start date</label>
+                  <span class="mdl-textfield__error">Format should be MM(-./ )DD(-./ )YYYY</span>
+                </div>
+              </form>
+              <form action="#">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text"
+                  pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d" id="enddate">
+                  <label class="mdl-textfield__label" for="sample3">End date</label>
+                  <span class="mdl-textfield__error">Format should be MM(-./ )DD(-./ )YYYY</span>
+                </div>
+              </form>
+            </div>
+          </div>
+				</div>
+				<div class="mdl-cell mdl-cell--6-col full-width-when-small">
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onclick="calculate()">
+            Calculate
+          </button>
+          <div class="card-wide mdl-card mdl-shadow--2dp">
+            <div class="card-contents" id="summary-card">
+              <h4>You can spend</h4>
+              <h3 id="summary"></h3>
+              <h4>today and still be on schedule.</h4>
+            </div>
+          </div>
+          <div class="card-wide mdl-card mdl-shadow--2dp">
+            <div class="card-contents">
+							<table>
+								<tr>
+									<td></td>
+									<td></td>
+									<td>Daily</td>
+									<td>Weekly</td>
+								</tr>
+								<tr>
+									<td title="The average amount you can spend with your debit" class="head-item">Average</td>
+									<td></td>
+									<td id="avg-daily"></td>
+									<td id="avg-weekly"></td>
+								</tr>
+								<tr>
+									<td title="How much you can spend with your current debit" class="head-item">Currently</td>
+                  <td></td>
+                  <td id="cur-daily"></td>
+									<td id="cur-weekly"></td>
+								</tr>
+								<tr>
+									<td title="The difference between the current and average amounts" class="head-item">Difference</td>
+                  <td></td>
+                  <td id="diff-daily"></td>
+									<td id="diff-weekly"></td>
+								</tr>
+							</table>
+					</div>
+				</div>
+			</div>
+      <p id="initial-text">initial-text: <p>
+      <p id="rollover-text">rollover-text: <p>
+      <p id="current-text">current-text: <p>
+      <p id="start-text">start-text: <p>
+      <p id="end-text">end-text: <p>
+      <p id="dayDiff-text">dayDiff-text: <p>
+      <p id="currentDayDiff-text">currentDayDiff-text: <p>
+    </section>
+	</body>
+</html>
