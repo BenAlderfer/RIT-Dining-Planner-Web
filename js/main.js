@@ -1,11 +1,10 @@
 function calculate() {
   //setup - get input
   var rollover = document.getElementById("rollover").value;
-  //strip $
-  rollover = rollover.replace('$', '');
+  rollover = rollover.replace('$', ''); //strip $
+
   var remaining = document.getElementById("remaining").value;
-  //strip $
-  remaining = remaining.replace('$', '');
+  remaining = remaining.replace('$', '');   //strip $
 
   var startDate = document.getElementById("startdate").value;
   var endDate = document.getElementById("enddate").value;
