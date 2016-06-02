@@ -66,6 +66,10 @@ option:checked {
     margin-bottom: -30px;
 }
 
+#custom-debit-form {
+    margin-left: -15px;
+}
+
 .mdl-textfield__input {
     font-size: 1.5em;
 }

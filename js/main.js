@@ -2,7 +2,7 @@
 function planSelected() {
     if (document.getElementById("plan").value == "custom") {
         document.getElementById("custom-debit-form").style.display = 'block';
-        document.getElementById("custom-debit-form").style.marginBottom = "-40px";
+        document.getElementById("custom-debit-form").style.marginBottom = "-20px";
     } else {
         document.getElementById("custom-debit-form").style.display = 'none';
     }
