@@ -9,11 +9,11 @@ function calculate() {
   var startDate = document.getElementById("startdate").value;
   var endDate = document.getElementById("enddate").value;
 
-  var start = new Date(startDate.substring(6,10), startDate.substring(0, 2) - 1, startDate.substring(3, 5));
-  var end = new Date(endDate.substring(6,10), endDate.substring(0, 2) - 1, endDate.substring(3, 5));
+  var start = new Date(startDate.substring(6, 10), startDate.substring(0, 2) - 1, startDate.substring(3, 5));
+  var end = new Date(endDate.substring(6, 10), endDate.substring(0, 2) - 1, endDate.substring(3, 5));
 
   //average calculations
-  var dayDiff = Math.floor((end - start) / (1000*60*60*24)) + 1;
+  var dayDiff = Math.floor((end - start) / (1000 * 60 * 60 * 24)) + 1;
 
   var initial = 0.0;
   switch(document.getElementById("plan").value) {
@@ -52,7 +52,7 @@ function calculate() {
 
   //current calculations
   var today = new Date();
-  var currentDayDiff = Math.floor((end - today) / (1000*60*60*24)) + 1;
+  var currentDayDiff = Math.floor((end - today) / (1000 * 60 * 60 * 24)) + 1;
 
   var curDaily = remaining / currentDayDiff;
   var curWeekly = curDaily * 7;

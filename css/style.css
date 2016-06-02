@@ -28,82 +28,82 @@ p {
 	background-color:#FF5722;
 	padding:10px;
 	margin-top:0px;
-  font-size: 3em;
+  	font-size: 3em;
 }
 
 #content {
-  width: 80%;
-  margin-left: 10%;
+    width: 80%;
+    margin-left: 10%;
 }
 
 .card-wide.mdl-card {
-  width: 100%;
-  margin-bottom: 20px;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 .card-contents {
-  margin-left: 20px;
+    margin-left: 20px;
 }
 
 .mdl-textfield__input {
-  font-size: 1.5em;
+    font-size: 1.5em;
 	width: 90%;
 }
 
-#last-item {
-  margin-bottom: 10px;
+.last-item {
+    margin-bottom: 10px;
 }
 
 select {
-  background: transparent;
-  border: none;
-  font-size: 1.5em;
-  margin-bottom: 20px;
+    background: transparent;
+    border: none;
+    font-size: 1.5em;
+    margin-bottom: 20px;
 }
 
 table {
 	margin-left:auto;
 	margin-right:auto;
-  font-size: 1.5em;
-  margin-top: 20px;
+    font-size: 1.5em;
+    margin-top: 20px;
 }
 
 td:not(.head-item) {
 	padding: 10px;
-  text-align: center;
+    text-align: center;
 }
 
 .mdl-button--raised.mdl-button--colored {
     margin-bottom: 20px;
     width: 100%;
-    background-color:#FF5722;
-		color: white;
-		font-size: 1.5em;
+    background-color: #FF5722;
+	color: white;
+	font-size: 1.5em;
 }
 
 h2 {
-	text-align:center;
-	padding:10px;
+	text-align: center;
+	padding: 10px;
 }
 
 #summary-card > * {
-	text-align:center;
-  margin-left: -20px;
+	text-align: center;
+    margin-left: -20px;
 }
 
 #summary {
-  color: #FF5722;
+    color: #FF5722;
 }
 
 /* Small Devices */
 @media only screen and (max-width : 1125px) {
-  #content {
-    width: 90%;
-    margin-left: 5%;
-  }
+    #content {
+        width: 90%;
+        margin-left: 5%;
+    }
 
 	.full-width-when-small {
-    width: 100%;
+        width: 100%;
 	}
 
 	.half-width-when-mid {
@@ -113,7 +113,7 @@ h2 {
 	.left {
 		float: left;
 	}
-	
+
 	.right {
 		float: right;
 	}
