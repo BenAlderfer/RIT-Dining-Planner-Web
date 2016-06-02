@@ -90,3 +90,5 @@ function calculate() {
     document.getElementById("currentDayDiff-text").innerHTML = "current day diff: " + currentDayDiff;
 
 }
+
+window.onload = planSelected;
