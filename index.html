@@ -18,7 +18,7 @@
 		<!-- style sheets -->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-indigo.min.css" />
-		<link rel="stylesheet" href="css/style.css" media="screen">
+        <link rel="stylesheet" href="css/style.css" media="screen">
 		<link rel="stylesheet" href="css/print.css" media="print">
 
 		<script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
@@ -45,7 +45,7 @@
                             <div class="mdl-grid">
                                 <div class="mdl-cell mdl-cell--6-col full-width-when-small" id="plan-section">
                                     <br /> <!-- drop down a line to line up with custom debit input -->
-                                    <select id="plan" title="Your meal plan" onclick="planSelected()">
+                                    <select id="plan" onclick="planSelected()">
                                         <option value="all">All Debit</option>
                                         <option value="5+">5+</option>
                                         <option value="10+">10+</option>
@@ -57,58 +57,77 @@
                                         <option value="reduced">Inn Reduced Debit</option>
                                         <option value="custom">Custom</option>
                                     </select>
+                                    <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="plan">
+                                        Your meal plan
+                                    </div>
                                 </div>
                                 <div class="mdl-cell mdl-cell--6-col full-width-when-small">
                                     <!-- custom debit input-->
-                                    <form action="#" title="Your custom amount of debit" id="custom-debit-form">
-                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <form action="#">
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="custom-debit-form">
                                             <input class="mdl-textfield__input" type="text" pattern="[$]?[0-9]*[.,]?[0-9]+" id="custom-debit">
                                             <label class="mdl-textfield__label" for="custom-debit">Custom Debit</label>
                                             <span class="mdl-textfield__error">Input must be a number with optional $</span>
                                         </div>
                                     </form>
+                                    <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" for="custom-debit-form">
+                                        Your custom amount of debit
+                                    </div>
                                 </div>
                             </div>
 
                             <!-- rollover input-->
-                            <form action="#" title="How much you are rolling over from last semester">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <form action="#" >
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="rollover-form">
                                     <input class="mdl-textfield__input" type="text" pattern="[$]?[0-9]*[.,]?[0-9]+" id="rollover">
                                     <label class="mdl-textfield__label" for="rollover">Rollover</label>
                                     <span class="mdl-textfield__error">Input must be a number with optional $</span>
                                 </div>
                             </form>
+                            <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="rollover-form">
+                                How much you are rolling over from last semester
+                            </div>
 
                             <!-- current debit input -->
-                            <form action="#" class="last-item" title="How much debit you have remaining">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <form action="#" class="last-item">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="remaining-form">
                                     <input class="mdl-textfield__input" type="text" pattern="[$]?[0-9]*[.,]?[0-9]+" id="remaining">
                                     <label class="mdl-textfield__label" for="remaining">Remaining</label>
                                     <span class="mdl-textfield__error">Input must be a number with optional $</span>
                                 </div>
                             </form>
+                            <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="remaining-form">
+                                How much debit you have remaining
+                            </div>
                         </div>
                     </div>
 
                     <div class="card-wide mdl-card mdl-shadow--2dp .half-width-when-mid .right">
                         <div class="card-contents">
                             <h4>Date Range</h4>
-                            <form action="#" title="The start date for the semester">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <form action="#">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="start-form">
                                     <input class="mdl-textfield__input" type="text"
                                     pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d" id="startdate">
                                     <label class="mdl-textfield__label" for="startdate">Start date</label>
                                     <span class="mdl-textfield__error">Format should be MM/DD/YYYY</span>
                                 </div>
                             </form>
-                            <form action="#" class="last-item" title="The end date for the semester">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="start-form">
+                                The start date for the semester
+                            </div>
+
+                            <form action="#" class="last-item">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="end-form">
                                     <input class="mdl-textfield__input" type="text"
                                     pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d" id="enddate">
                                     <label class="mdl-textfield__label" for="enddate">End date</label>
                                     <span class="mdl-textfield__error">Format should be MM/DD/YYYY</span>
                                 </div>
                             </form>
+                            <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="end-form">
+                                The end date for the semester
+                            </div>
                         </div>
                       </div>
 
@@ -124,6 +143,9 @@
                         <div class="card-contents" id="summary-contents">
                             <h4>You can spend</h4>
                             <h3 id="summary"></h3>
+                            <div class="mdl-tooltip mdl-tooltip--large" for="summary">
+                                remaining - (initial - (avgDaily * (dayDiff - currentDayDiff)
+                            </div>
                             <h4>today and still be on schedule.</h4>
                         </div>
                     </div>
@@ -138,19 +160,28 @@
 									<td>Weekly</td>
 								</tr>
 								<tr>
-									<td title="The average amount you can spend with your debit" class="head-item">Average</td>
+									<td class="head-item" id="average-label">Average</td>
+                                    <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="average-label">
+                                        The average amount you can spend with your debit
+                                    </div>
 									<td></td>
 									<td id="avg-daily"></td>
 									<td id="avg-weekly"></td>
 								</tr>
 								<tr>
-									<td title="How much you can spend with your current debit" class="head-item">Currently</td>
+									<td class="head-item" id="current-label">Currently</td>
+                                    <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="current-label">
+                                        How much you can spend with your current debit
+                                    </div>
                                     <td></td>
                                     <td id="cur-daily"></td>
 									<td id="cur-weekly"></td>
 								</tr>
 								<tr>
-									<td title="The difference between the current and average amounts" class="head-item">Difference</td>
+									<td class="head-item" id="diff-label">Difference</td>
+                                    <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="diff-label">
+                                        The difference between the current and average amounts
+                                    </div>
                                     <td></td>
                                     <td id="diff-daily"></td>
 									<td id="diff-weekly"></td>

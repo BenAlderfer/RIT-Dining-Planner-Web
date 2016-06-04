@@ -165,6 +165,7 @@ function calculate() {
     var curDaily = remaining / currentDayDiff;
     var curWeekly = curDaily * 7;
 
+    //set table fields
     document.getElementById("avg-daily").innerHTML = "$" + avgDaily.toFixed(2);
     document.getElementById("avg-weekly").innerHTML = "$" + avgWeekly.toFixed(2);
     document.getElementById("cur-daily").innerHTML = "$" + curDaily.toFixed(2);
@@ -172,6 +173,7 @@ function calculate() {
     document.getElementById("diff-daily").innerHTML = "$" + (curDaily - avgDaily).toFixed(2);
     document.getElementById("diff-weekly").innerHTML = "$" + (curWeekly - avgWeekly).toFixed(2);
 
+    //set summary
     //excess from what you should have spent and the remaining
     document.getElementById("summary").innerHTML = "$" + (remaining - (initial - (avgDaily * (dayDiff - currentDayDiff)))).toFixed(2);
 
