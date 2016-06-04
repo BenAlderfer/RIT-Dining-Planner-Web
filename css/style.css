@@ -56,10 +56,6 @@ select {
     margin-bottom: 20px;
 }
 
-option:checked {
-    display: none;
-}
-
 #plan-section {
     margin-left: -10px;
     margin-top: 0px;
