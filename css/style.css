@@ -86,7 +86,7 @@ option:checked {
     font-size: 1.5em;
 }
 
-#summary-card > * {
+#summary-contents > * {
     text-align: center;
     margin-left: -20px;
 }
@@ -105,6 +105,17 @@ table {
 td:not(.head-item) {
 	padding: 10px;
     text-align: center;
+}
+
+footer {
+    background-color: #FF5722;
+    color: white;
+    text-align: center;
+    width: 100%;
+    margin-bottom: -10px;
+}
+
+footer p {
 }
 
 /* Small Devices */
