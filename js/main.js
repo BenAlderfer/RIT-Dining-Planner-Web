@@ -1,8 +1,40 @@
+//global variables
+var initial = 0.0;
+var rollover = 0.0;
+var remaining = 0.0;
+var startDate;
+var endDate;
+var start;
+var end;
+var dayDiff;
+var today;
+
+//snackbar variables
+var notification = document.querySelector('.mdl-js-snackbar');
+var data;
+
+//saves input
+function saveFields() {
+    localStorage.setItem("initial", initial);
+    localStorage.setItem("rollover", rollover);
+    localStorage.setItem("remaining", remaining);
+    localStorage.setItem("start", start);
+    localStorage.setItem("end", end);
+}
+
+//restores saved input
+function restoreFields() {
+    //document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+    //alert(localStorage.getItem("initial"));
+}
+
+//hides the results cards
 function hideResults() {
     document.getElementById("summary-card").style.display = 'none';
     document.getElementById("table-card").style.display = 'none';
 }
 
+//shows the results cards
 function showResults() {
     document.getElementById("summary-card").style.display = 'block';
     document.getElementById("table-card").style.display = 'block';
@@ -20,150 +52,218 @@ function planSelected() {
 
     //hide results
     hideResults();
+
+    //restore saved fields
+    restoreFields();
 }
 
-function calculate() {
-    //setup - get input
-    var initial = 0.0;
+//get the initial debit from dropdown menu
+function getInitial() {
     switch(document.getElementById("plan").value) {
         case "all":
-            initial = 2482.0;
-            break;
+            return 2482.0;
         case "5+":
-            initial = 1300.0;
-            break;
+            return 1300.0;
         case "10+":
-            initial = 650.0;
-            break;
+            return 650.0;
         case "14+":
-            initial = 350.0;
-            break;
+            return 350.0;
         case "20+":
-            initial = 250.0;
-            break;
+            return 250.0;
         case "plan1":
-            initial = 500.0;
-            break;
+            return 500.0;
         case "plan2":
-            initial = 900.0;
-            break;
+            return 900.0;
         case "plan3":
-            initial = 1300.0;
-            break;
+            return 1300.0;
         case "reduced":
-            initial = 1858.0;
-            break;
+            return 1858.0;
         default: //custom
-            initial = Number(document.getElementById("custom-debit").value);
+            return Number(document.getElementById("custom-debit").value);
     }
+}
 
-    //validate initial
+//checks if the initial value is valid
+function initialIsValid() {
     if (! /[0-9]*[.,]?[0-9]+/.test(String(initial))) {
-        var notification = document.querySelector('.mdl-js-snackbar');
-        var data = {
-            message: 'The debit must be a number with optional $.',
+        data = {
+            message: 'The initial debit must be a number with optional $.',
             timeout: 5000
         };
         notification.MaterialSnackbar.showSnackbar(data);
         hideResults();
-        return;
+        return false;
     }
 
-    var rollover = document.getElementById("rollover").value;
-    rollover = rollover.replace('$', ''); //strip $
+    return true;
+}
 
-    //validate rollover
+//checks if the rollover value is valid
+function rolloverIsValid() {
     if (rollover != '' && ! /[0-9]*[.,]?[0-9]+/.test(String(rollover))) {
-        var notification = document.querySelector('.mdl-js-snackbar');
-        var data = {
+        data = {
             message: 'The rollover must be a number with optional $.',
             timeout: 5000
         };
         notification.MaterialSnackbar.showSnackbar(data);
         hideResults();
-        return;
+        return false;
     }
 
-    var remaining = document.getElementById("remaining").value;
-    remaining = remaining.replace('$', '');   //strip $
+    return true;
+}
 
-    //validate remaining
+//checks if the remaining value is valid
+function remainingIsValid() {
     if (! /[0-9]*[.,]?[0-9]+/.test(String(remaining))) {
-        var notification = document.querySelector('.mdl-js-snackbar');
-        var data = {
+        data = {
             message: 'The remaining must be a number with optional $.',
             timeout: 5000
         };
         notification.MaterialSnackbar.showSnackbar(data);
         hideResults();
-        return;
+        return false;
     }
 
-    var startDate = document.getElementById("startdate").value;
-    //validate startDate
+    return true;
+}
+
+//checks if the start date is valid
+function startDateIsValid() {
     if (! /(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d/.test(String(startDate))) {
-        var notification = document.querySelector('.mdl-js-snackbar');
-        var data = {
+        data = {
             message: 'The start date should be in form MM/DD/YYYY.',
             timeout: 5000
         };
         notification.MaterialSnackbar.showSnackbar(data);
         hideResults();
-        return;
     }
 
-    var endDate = document.getElementById("enddate").value;
-    //validate endDate
+    return true;
+}
+
+//checks if the end date is valid
+function endDateIsValid() {
     if (! /(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d/.test(String(endDate))) {
-        var notification = document.querySelector('.mdl-js-snackbar');
-        var data = {
+        data = {
             message: 'The end date should be in form MM/DD/YYYY.',
             timeout: 5000
         };
         notification.MaterialSnackbar.showSnackbar(data);
         hideResults();
-        return;
     }
 
-    var start = new Date(startDate.substring(6, 10), startDate.substring(0, 2) - 1, startDate.substring(3, 5));
-    var end = new Date(endDate.substring(6, 10), endDate.substring(0, 2) - 1, endDate.substring(3, 5));
+    return true;
+}
 
-    //average calculations
-    var dayDiff = Math.floor((end - start) / (1000 * 60 * 60 * 24)) + 1;
-
-    //make sure end date after start date
+//checks if the end date is after the start date
+function endDateIsAfterStartDate() {
     if (dayDiff < 1) {
-        var notification = document.querySelector('.mdl-js-snackbar');
-        var data = {
+        data = {
             message: 'The end date should be at least 1 day after the start date.',
             timeout: 5000
         };
         notification.MaterialSnackbar.showSnackbar(data);
         hideResults();
-        return;
+        return false;
     }
 
-    initial += Number(rollover);
+    return true;
+}
 
-    var avgDaily = initial / dayDiff;
-    var avgWeekly = avgDaily * 7;
+//gets the day difference between two dates
+function getDateDiff(startingDate, endingDate){
+    return Math.floor((endingDate - startingDate) / (1000 * 60 * 60 * 24)) + 1;
+}
 
-    //current calculations
-    var today = new Date();
-    var currentDayDiff = Math.floor((end - today) / (1000 * 60 * 60 * 24)) + 1;
+//calculates the daily amount
+function getDaily(amount, diffInDays) {
+    return amount / diffInDays;
+}
 
-    //warn if today not in date range
-    if ( (Math.floor((today - start) / (1000 * 60 * 60 * 24)) + 1) < 1) {
-        var notification = document.querySelector('.mdl-js-snackbar');
-        var data = {
+//calculates the weekly amount
+function getWeekly(amount, diffInDays) {
+    return getDaily(amount, diffInDays) * 7;
+}
+
+//checks if today is in the date range
+function checkIfTodayInRange() {
+    if ( getDateDiff(start, today) < 1) {
+        data = {
             message: 'Today is not in the date range and some calculations may be off.',
             timeout: 5000
         };
         notification.MaterialSnackbar.showSnackbar(data);
     }
+}
 
-    var curDaily = remaining / currentDayDiff;
-    var curWeekly = curDaily * 7;
+//calculates the summary and table fields
+function calculate() {
+    //setup - get & check input
+    initial = getInitial();
+
+    //validate initial, end if not
+    if (!initialIsValid()) {
+        return;
+    }
+
+    rollover = document.getElementById("rollover").value;
+    rollover = rollover.replace('$', ''); //strip $
+
+    //validate rollover, end if not
+    if (!rolloverIsValid()) {
+        return;
+    }
+
+    //add rollover to initial
+    initial += Number(rollover);
+
+    remaining = document.getElementById("remaining").value;
+    remaining = remaining.replace('$', '');   //strip $
+
+    //validate remaining, end if not
+    if (!remainingIsValid()) {
+        return;
+    }
+
+    startDate = document.getElementById("startdate").value;
+    //validate startDate, end if not
+    if (!startDateIsValid()) {
+        return;
+    }
+
+    endDate = document.getElementById("enddate").value;
+    //validate endDate, end if not
+    if (!endDateIsValid()) {
+        return;
+    }
+
+    //convert date Strings to Dates
+    start = new Date(startDate.substring(6, 10), startDate.substring(0, 2) - 1, startDate.substring(3, 5));
+    end = new Date(endDate.substring(6, 10), endDate.substring(0, 2) - 1, endDate.substring(3, 5));
+
+    //done reading input - begin calculations
+
+    //average calculations
+    dayDiff = getDateDiff(start, end);
+
+    //make sure end date after start date, end if not
+    if (!endDateIsAfterStartDate()) {
+        return;
+    }
+
+    var avgDaily = getDaily(initial, dayDiff);
+    var avgWeekly = getWeekly(initial, dayDiff);
+
+    //current calculations
+    today = new Date();
+    var currentDayDiff = getDateDiff(today, end);
+
+    //warn if today not in date range
+    checkIfTodayInRange();
+
+    var curDaily = getDaily(remaining, currentDayDiff);
+    var curWeekly = getWeekly(remaining, currentDayDiff);
 
     //set table fields
     document.getElementById("avg-daily").innerHTML = "$" + avgDaily.toFixed(2);
@@ -188,6 +288,9 @@ function calculate() {
 
     //show results
     showResults();
+
+    //save input
+    saveFields();
 }
 
 window.onload = planSelected;
