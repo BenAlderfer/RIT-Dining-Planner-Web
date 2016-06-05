@@ -19,13 +19,32 @@ function saveFields() {
     localStorage.setItem("rollover", rollover);
     localStorage.setItem("remaining", remaining);
     localStorage.setItem("start", start);
+    localStorage.setItem("startDate", startDate);
     localStorage.setItem("end", end);
+    localStorage.setItem("endDate", endDate);
+    localStorage.setItem("dayDiff", dayDiff);
 }
 
 //restores saved input
 function restoreFields() {
-    //document.getElementById("result").innerHTML = localStorage.getItem("lastname");
-    //alert(localStorage.getItem("initial"));
+    //read saved values
+    initial = localStorage.getItem("initial");
+    rollover = localStorage.getItem("rollover");
+    remaining = localStorage.getItem("remaining");
+    start = localStorage.getItem("start");
+    startDate = localStorage.getItem("startDate");
+    end = localStorage.getItem("end");
+    endDate = localStorage.getItem("endDate");
+    dayDiff = localStorage.getItem("dayDiff");
+
+    //set text fields
+    //set initial debit plan
+    document.getElementById("rollover").value = String(rollover);
+    document.getElementById("remaining").value = String(remaining);
+    document.getElementById("startdate").value = String(startDate);
+    document.getElementById("enddate").value = String(endDate);
+
+    calculateAndSet();
 }
 
 //hides the results cards
@@ -242,11 +261,19 @@ function calculate() {
     start = new Date(startDate.substring(6, 10), startDate.substring(0, 2) - 1, startDate.substring(3, 5));
     end = new Date(endDate.substring(6, 10), endDate.substring(0, 2) - 1, endDate.substring(3, 5));
 
-    //done reading input - begin calculations
+    //calculate and set values
+    calculateAndSet();
 
-    //average calculations
+    //show results
+    showResults();
+
+    //save input
+    saveFields();
+}
+
+//calculates the values and sets them in their places
+function calculateAndSet() {
     dayDiff = getDateDiff(start, end);
-
     //make sure end date after start date, end if not
     if (!endDateIsAfterStartDate()) {
         return;
@@ -255,10 +282,8 @@ function calculate() {
     var avgDaily = getDaily(initial, dayDiff);
     var avgWeekly = getWeekly(initial, dayDiff);
 
-    //current calculations
     today = new Date();
     var currentDayDiff = getDateDiff(today, end);
-
     //warn if today not in date range
     checkIfTodayInRange();
 
@@ -285,12 +310,6 @@ function calculate() {
     document.getElementById("end-text").innerHTML = "end: " + end;
     document.getElementById("dayDiff-text").innerHTML = "day diff: " + dayDiff;
     document.getElementById("currentDayDiff-text").innerHTML = "current day diff: " + currentDayDiff;
-
-    //show results
-    showResults();
-
-    //save input
-    saveFields();
 }
 
-window.onload = planSelected;
+window.onload = planSelected();
