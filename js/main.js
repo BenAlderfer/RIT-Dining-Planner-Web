@@ -1,9 +1,12 @@
+"use strict";
+
 //global variables
+var planName = "all";
 var initial = 0.0;
 var rollover = 0.0;
 var remaining = 0.0;
-var startDate;
-var endDate;
+var startDate = "01/24/2016";
+var endDate = "05/20/2016";
 var start;
 var end;
 var dayDiff;
@@ -13,19 +16,87 @@ var today;
 var notification = document.querySelector('.mdl-js-snackbar');
 var data;
 
+//checks if the page is loaded/ready
+function r(f){/in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+
+//runs startup commands
+function startUp() {
+    //hide results
+    hideResults();
+
+    //restore saved fields
+    r(restoreFields());
+
+    //show or hide custom debit field as needed
+    planSelected();
+}
+
 //saves input
 function saveFields() {
+    localStorage.setItem("planName", planName);
     localStorage.setItem("initial", initial);
     localStorage.setItem("rollover", rollover);
     localStorage.setItem("remaining", remaining);
-    localStorage.setItem("start", start);
-    localStorage.setItem("end", end);
+    localStorage.setItem("startDate", startDate);
+    localStorage.setItem("endDate", endDate);
+    localStorage.setItem("dayDiff", dayDiff);
 }
 
 //restores saved input
 function restoreFields() {
-    //document.getElementById("result").innerHTML = localStorage.getItem("lastname");
-    //alert(localStorage.getItem("initial"));
+    //read saved values if not null
+    if (localStorage.getItem("planName") != null) {
+        planName = localStorage.getItem("planName");
+    }
+
+    if (localStorage.getItem("initial") != null) {
+        initial = localStorage.getItem("initial");
+    }
+
+    if (localStorage.getItem("rollover") != null) {
+        rollover = localStorage.getItem("rollover");
+    }
+
+    if (localStorage.getItem("remaining") != null) {
+        remaining = localStorage.getItem("remaining");
+    }
+
+    if (localStorage.getItem("startDate") != null) {
+        startDate = localStorage.getItem("startDate");
+    }
+
+    if (localStorage.getItem("endDate") != null) {
+        endDate = localStorage.getItem("endDate");
+    }
+
+    if (localStorage.getItem("dayDiff") != null) {
+        dayDiff = localStorage.getItem("dayDiff");
+    }
+
+    //set fields
+    //if custom, show custom field and fill it in
+    if (planName == "custom") {
+        document.getElementById("plan").value = planName;
+        planSelected();
+        document.getElementById("custom-debit").value = String(initial - rollover);
+    } else { //otherwise, set plan normally
+        document.getElementById("plan").value = planName;
+        planSelected();
+    }
+
+    //only fill in rollover and remaining if something was saved
+    if (rollover != 0) {
+        document.getElementById("rollover").value = String(rollover);
+    }
+
+    if (remaining != 0) {
+        document.getElementById("remaining").value = String(remaining);
+    }
+
+    document.getElementById("startdate").value = String(startDate);
+    document.getElementById("enddate").value = String(endDate);
+
+    calculateAndSet();
 }
 
 //hides the results cards
@@ -49,17 +120,12 @@ function planSelected() {
     } else {
         document.getElementById("custom-debit-form").style.display = 'none';
     }
-
-    //hide results
-    hideResults();
-
-    //restore saved fields
-    restoreFields();
 }
 
 //get the initial debit from dropdown menu
 function getInitial() {
-    switch(document.getElementById("plan").value) {
+    planName = document.getElementById("plan").value;
+    switch(planName) {
         case "all":
             return 2482.0;
         case "5+":
@@ -188,11 +254,12 @@ function getWeekly(amount, diffInDays) {
 
 //checks if today is in the date range
 function checkIfTodayInRange() {
-    if ( getDateDiff(start, today) < 1) {
+    if ( getDateDiff(start, today) < 0 || getDateDiff(end, today) > 0 ) {
         data = {
             message: 'Today is not in the date range and some calculations may be off.',
             timeout: 5000
         };
+        var notification = document.querySelector('.mdl-js-snackbar');
         notification.MaterialSnackbar.showSnackbar(data);
     }
 }
@@ -238,15 +305,17 @@ function calculate() {
         return;
     }
 
+    //calculate and set values
+    calculateAndSet();
+}
+
+//calculates the values and sets them in their places
+function calculateAndSet() {
     //convert date Strings to Dates
     start = new Date(startDate.substring(6, 10), startDate.substring(0, 2) - 1, startDate.substring(3, 5));
     end = new Date(endDate.substring(6, 10), endDate.substring(0, 2) - 1, endDate.substring(3, 5));
 
-    //done reading input - begin calculations
-
-    //average calculations
     dayDiff = getDateDiff(start, end);
-
     //make sure end date after start date, end if not
     if (!endDateIsAfterStartDate()) {
         return;
@@ -255,10 +324,8 @@ function calculate() {
     var avgDaily = getDaily(initial, dayDiff);
     var avgWeekly = getWeekly(initial, dayDiff);
 
-    //current calculations
     today = new Date();
     var currentDayDiff = getDateDiff(today, end);
-
     //warn if today not in date range
     checkIfTodayInRange();
 
@@ -277,6 +344,12 @@ function calculate() {
     //excess from what you should have spent and the remaining
     document.getElementById("summary").innerHTML = "$" + (remaining - (initial - (avgDaily * (dayDiff - currentDayDiff)))).toFixed(2);
 
+    //show results
+    showResults();
+
+    //save input
+    saveFields();
+
     //debugging
     document.getElementById("initial-text").innerHTML = "initial: " + initial;
     document.getElementById("rollover-text").innerHTML = "rollover: " + rollover;
@@ -285,12 +358,6 @@ function calculate() {
     document.getElementById("end-text").innerHTML = "end: " + end;
     document.getElementById("dayDiff-text").innerHTML = "day diff: " + dayDiff;
     document.getElementById("currentDayDiff-text").innerHTML = "current day diff: " + currentDayDiff;
-
-    //show results
-    showResults();
-
-    //save input
-    saveFields();
 }
 
-window.onload = planSelected;
+window.onload = startUp();
