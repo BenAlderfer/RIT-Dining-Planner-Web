@@ -111,14 +111,25 @@ footer {
     margin-bottom: -10px;
 }
 
-footer p {
-}
+/* media queries */
+@media only screen and (max-width : 1279px) {
+    select {
+        font-size: 1.25em;
+    }
 
-/* Small Devices */
-@media only screen and (max-width : 1125px) {
     #content {
         width: 90%;
         margin-left: 5%;
+    }
+
+    form:not(#custom-debit-section) {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width : 1124px) {
+    select {
+        font-size: 1.5em;
     }
 
 	.full-width-when-small {
@@ -136,4 +147,18 @@ footer p {
 	.right {
 		float: right;
 	}
+
+    .mdl-tooltip--left {
+        display: none;
+    }
+
+    form:not(#custom-debit-section) {
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width : 609px) {
+    .mdl-tooltip:not(.table-tip) {
+        display: none;
+    }
 }
