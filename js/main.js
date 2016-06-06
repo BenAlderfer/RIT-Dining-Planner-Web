@@ -16,16 +16,13 @@ var today;
 var notification = document.querySelector('.mdl-js-snackbar');
 var data;
 
-//checks if the page is loaded/ready
-function r(f){/in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
-
 //runs startup commands
 function startUp() {
     //hide results
     hideResults();
 
     //restore saved fields
-    r(restoreFields());
+    restoreFields();
 
     //show or hide custom debit field as needed
     planSelected();

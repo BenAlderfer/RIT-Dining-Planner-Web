@@ -40,7 +40,7 @@
                     <div class="card-wide mdl-card mdl-shadow--2dp .half-width-when-mid .left">
                         <div class="card-contents">
                             <!-- meal plan selector -->
-                            <h4>Meal Plan</h4>
+                            <h4>Debit Plan</h4>
 
                             <div class="mdl-grid">
                                 <div class="mdl-cell mdl-cell--6-col full-width-when-small" id="plan-section">
@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="mdl-cell mdl-cell--6-col full-width-when-small">
                                     <!-- custom debit input-->
-                                    <form action="#">
+                                    <form action="#" id="custom-debit-section">
                                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="custom-debit-form">
                                             <input class="mdl-textfield__input" type="text" pattern="[$]?[0-9]*[.,]?[0-9]+" id="custom-debit">
                                             <label class="mdl-textfield__label" for="custom-debit">Custom Debit</label>
@@ -158,7 +158,7 @@
 								</tr>
 								<tr>
 									<td class="head-item" id="average-label">Average</td>
-                                    <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="average-label">
+                                    <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right table-tip" for="average-label">
                                         Average amount you can spend with your debit
                                     </div>
 									<td></td>
@@ -167,7 +167,7 @@
 								</tr>
 								<tr>
 									<td class="head-item" id="current-label">Currently</td>
-                                    <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="current-label">
+                                    <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right table-tip" for="current-label">
                                         How much you can spend with your current debit
                                     </div>
                                     <td></td>
@@ -176,7 +176,7 @@
 								</tr>
 								<tr>
 									<td class="head-item" id="diff-label">Difference</td>
-                                    <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="diff-label">
+                                    <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right table-tip" for="diff-label">
                                         Difference in the current and average amounts
                                     </div>
                                     <td></td>
