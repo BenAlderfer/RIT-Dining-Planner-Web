@@ -28,7 +28,7 @@ function startUp() {
     planSelected();
 
     //only calculate when things are ready or it will throw an error on boot
-    $( document ).ready(function() {
+    $( document ).ready( function() {
         calculateAndSet();
     });
 }
