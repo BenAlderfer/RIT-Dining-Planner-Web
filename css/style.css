@@ -37,6 +37,10 @@ p {
     margin-left: 10%;
 }
 
+.inside-grid {
+    margin-bottom: -30px;
+}
+
 .card-wide.mdl-card {
     width: 100%;
     margin-bottom: 20px;
@@ -57,10 +61,13 @@ select {
     margin-bottom: 20px;
 }
 
-#plan-section {
+.select-section {
     margin-left: -10px;
     margin-top: 0px;
-    margin-bottom: -30px;
+}
+
+.two-part-section-start {
+    margin-left: -10px;
 }
 
 #custom-debit-form {
