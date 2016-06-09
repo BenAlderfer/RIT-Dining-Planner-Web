@@ -65,9 +65,9 @@
                                     <!-- custom debit input-->
                                     <form action="#" id="custom-debit-section">
                                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end" id="custom-debit-form">
-                                            <input class="mdl-textfield__input" type="text" pattern="[$]?[0-9]*[.,]?[0-9]+" id="custom-debit">
+                                            <input class="mdl-textfield__input" type="number" pattern="[0-9]*" id="custom-debit">
                                             <label class="mdl-textfield__label" for="custom-debit">Custom Debit</label>
-                                            <span class="mdl-textfield__error">Input must be a number with optional $</span>
+                                            <span class="mdl-textfield__error">Input must be a positive number</span>
                                         </div>
                                     </form>
                                     <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" for="custom-debit-form">
@@ -79,9 +79,9 @@
                             <!-- rollover input-->
                             <form action="#" >
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="rollover-form">
-                                    <input class="mdl-textfield__input" type="text" pattern="[$]?[0-9]*[.,]?[0-9]+" id="rollover">
+                                    <input class="mdl-textfield__input" type="number" pattern="[0-9]*" id="rollover">
                                     <label class="mdl-textfield__label" for="rollover">Rollover</label>
-                                    <span class="mdl-textfield__error">Input must be a number with optional $</span>
+                                    <span class="mdl-textfield__error">Input must be a positive number</span>
                                 </div>
                             </form>
                             <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="rollover-form">
@@ -91,9 +91,9 @@
                             <!-- current debit input -->
                             <form action="#" class="last-item">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="remaining-form">
-                                    <input class="mdl-textfield__input" type="text" pattern="[$]?[0-9]*[.,]?[0-9]+" id="remaining">
+                                    <input class="mdl-textfield__input" type="number" pattern="[0-9]*" id="remaining">
                                     <label class="mdl-textfield__label" for="remaining">Remaining</label>
-                                    <span class="mdl-textfield__error">Input must be a number with optional $</span>
+                                    <span class="mdl-textfield__error">Input must be a positive number</span>
                                 </div>
                             </form>
                             <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="remaining-form">
@@ -139,9 +139,9 @@
                                 <div class="mdl-cell mdl-cell--6-col full-width-when-small two-part-section-start">
                                     <form action="#" >
                                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="total-days-off-form">
-                                            <input class="mdl-textfield__input" type="text" pattern="[0-9]*" id="total-days-off">
+                                            <input class="mdl-textfield__input" type="number" pattern="[0-9]*" id="total-days-off">
                                             <label class="mdl-textfield__label" for="total-days-off">Total days off</label>
-                                            <span class="mdl-textfield__error">Input must be a number</span>
+                                            <span class="mdl-textfield__error">Input must be a positive number</span>
                                         </div>
                                     </form>
                                     <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="total-days-off-form">
@@ -151,7 +151,7 @@
                                 <div class="mdl-cell mdl-cell--6-col full-width-when-small">
                                     <form action="#" class="last-item">
                                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end" id="past-days-off-form">
-                                            <input class="mdl-textfield__input" type="text" pattern="[0-9]*" id="past-days-off">
+                                            <input class="mdl-textfield__input" type="number" pattern="[0-9]*" id="past-days-off">
                                             <label class="mdl-textfield__label" for="past-days-off">Past days off</label>
                                             <span class="mdl-textfield__error">Input must be a number</span>
                                         </div>

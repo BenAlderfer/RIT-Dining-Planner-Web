@@ -275,8 +275,6 @@ function calculate() {
     }
 
     rollover = document.getElementById("rollover").value;
-    rollover = rollover.replace('$', ''); //strip $
-
     //validate rollover, end if not
     if (!rolloverIsValid()) {
         return;
@@ -286,8 +284,6 @@ function calculate() {
     initial += Number(rollover);
 
     remaining = document.getElementById("remaining").value;
-    remaining = remaining.replace('$', '');   //strip $
-
     //validate remaining, end if not
     if (!remainingIsValid()) {
         return;

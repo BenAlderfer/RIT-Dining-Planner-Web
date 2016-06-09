@@ -131,7 +131,7 @@ footer {
 @media only screen and (max-width : 1124px) {
     select {
         font-size: 1.5em;
-        margin-bottom: 0px;
+        margin-bottom: 10px;
     }
 
 	.full-width-when-small {
@@ -165,8 +165,6 @@ footer {
     .mdl-cell--6-col {
         margin-bottom: -10px;
     }
-
-
 }
 
 @media only screen and (max-width : 649px) {
