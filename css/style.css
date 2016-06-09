@@ -70,10 +70,6 @@ select {
     margin-left: -10px;
 }
 
-#custom-debit-form {
-    margin-left: -15px;
-}
-
 .mdl-textfield__input {
     font-size: 1.5em;
 }
@@ -129,15 +125,13 @@ footer {
         width: 90%;
         margin-left: 5%;
     }
-
-    form:not(#custom-debit-section) {
-        width: 50%;
-    }
 }
 
+/* when it becomes one column */
 @media only screen and (max-width : 1124px) {
     select {
         font-size: 1.5em;
+        margin-bottom: 0px;
     }
 
 	.full-width-when-small {
@@ -148,14 +142,6 @@ footer {
 		width: 50%;
 	}
 
-	.left {
-		float: left;
-	}
-
-	.right {
-		float: right;
-	}
-
     .mdl-tooltip--left {
         display: none;
     }
@@ -163,6 +149,24 @@ footer {
     form {
         width: 90%;
     }
+
+    .two-part-section-end {
+        margin-left: -17px;
+    }
+
+    .inside-grid {
+        margin-bottom: 20px;
+    }
+
+    .date-card .inside-grid {
+        margin-bottom: -10px;
+    }
+
+    .mdl-cell--6-col {
+        margin-bottom: -10px;
+    }
+
+
 }
 
 @media only screen and (max-width : 649px) {
