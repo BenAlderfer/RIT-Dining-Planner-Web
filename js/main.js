@@ -26,6 +26,11 @@ function startUp() {
 
     //show or hide custom debit field as needed
     planSelected();
+
+    //only calculate when things are ready or it will throw an error on boot
+    $( document ).ready( function() {
+        calculateAndSet();
+    });
 }
 
 //saves input
@@ -92,8 +97,6 @@ function restoreFields() {
 
     document.getElementById("startdate").value = String(startDate);
     document.getElementById("enddate").value = String(endDate);
-
-    calculateAndSet();
 }
 
 //hides the results cards
@@ -357,4 +360,5 @@ function calculateAndSet() {
     document.getElementById("currentDayDiff-text").innerHTML = "current day diff: " + currentDayDiff;
 }
 
+//when page loaded, run start up items
 window.onload = startUp();
