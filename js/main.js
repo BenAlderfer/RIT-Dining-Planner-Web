@@ -429,6 +429,13 @@ function calculateAndSet() {
     document.getElementById("past-days-off-text").innerHTML = "past days off: " + pastDaysOff;
 }
 
+//when key pressed, calculate if enter
+function calculateIfEnter() {
+    if (event.keyCode == 13) {
+        calculate();
+    }
+}
+
 //when clicking on help
 function help() {
     alert("help");
