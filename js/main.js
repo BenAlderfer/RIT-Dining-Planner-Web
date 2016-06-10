@@ -450,3 +450,14 @@ function source() {
 $( document ).ready( function() {
     startUp();
 });
+
+//assign datepickers to date fields
+$(function() {
+    $( "#start-date" ).datepicker();
+    $( "#start-date" ).datepicker("show");
+});
+
+$(function() {
+    $( "#end-date" ).datepicker();
+    $( "#end-date" ).datepicker("show");
+});
