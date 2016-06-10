@@ -438,19 +438,25 @@ function calculateIfEnter() {
 
 //when clicking on help
 function help() {
-    alert("help");
+    $("span.ui-dialog-title").text('Help');
+    document.getElementById("dialog-text").innerHTML = "help";
+    $( "#dialog" ).dialog('open');
 }
 
 //when clicking on about
 function about() {
-    alert("RIT Debit Splitter by Alderfer Studios.\n" +
-          "If you have any questions, bug reports, or suggestions, contact: alderferstudios@gmail.com.\n" +
-          "Please include your browser and version with any bug reports.");
+    $("span.ui-dialog-title").text('About');
+    document.getElementById("dialog-text").innerHTML = "RIT Debit Splitter by Alderfer Studios.<br />" +
+          "If you have any questions, bug reports, or suggestions, contact: alderferstudios@gmail.com.<br />" +
+          "Please include your browser and version with any bug reports.";
+    $( "#dialog" ).dialog('open');
 }
 
 //when clicking on source
 function source() {
-    alert("This app is open source. You can find it here: https://github.com/BenAlderfer/rit-debit-splitter-web.");
+    $("span.ui-dialog-title").text('Source');
+    document.getElementById("dialog-text").innerHTML = "This app is open source. You can find it here: https://github.com/BenAlderfer/rit-debit-splitter-web.";
+    $( "#dialog" ).dialog('open');
 }
 
 //when page loaded, run start up items
@@ -462,4 +468,7 @@ $( document ).ready( function() {
 $(function() {
     $( "#start-date" ).datepicker();
     $( "#end-date" ).datepicker();
+    $( "#dialog" ).dialog();
+    $( "#dialog" ).dialog('close');
+
 });
