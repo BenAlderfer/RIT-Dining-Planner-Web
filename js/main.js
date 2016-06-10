@@ -2,15 +2,15 @@
 
 //global variables
 var planName = "all";
-var initial = 0.0;
-var rollover = 0.0;
-var remaining = 0.0;
+var initial = 0;
+var rollover = 0;
+var remaining = 0;
+var dayDiff = 0;
+var totalDaysOff = 0;
+var pastDaysOff = 0;
 var startDate = "01/24/2016";
 var endDate = "05/20/2016";
-var start;
-var end;
-var dayDiff;
-var today;
+var start, end, today;
 
 //snackbar variables
 var notification = document.querySelector('.mdl-js-snackbar');
@@ -27,10 +27,8 @@ function startUp() {
     //show or hide custom debit field as needed
     planSelected();
 
-    //only calculate when things are ready or it will throw an error on boot
-    $( document ).ready( function() {
-        calculateAndSet();
-    });
+    //calculate numbers and set fields
+    calculateAndSet();
 }
 
 //saves input
@@ -42,6 +40,8 @@ function saveFields() {
     localStorage.setItem("startDate", startDate);
     localStorage.setItem("endDate", endDate);
     localStorage.setItem("dayDiff", dayDiff);
+    localStorage.setItem("totalDaysOff", totalDaysOff);
+    localStorage.setItem("pastDaysOff", pastDaysOff);
 }
 
 //restores saved input
@@ -75,12 +75,21 @@ function restoreFields() {
         dayDiff = localStorage.getItem("dayDiff");
     }
 
-    //set fields
+    if (localStorage.getItem("totalDaysOff") != null) {
+        totalDaysOff = localStorage.getItem("totalDaysOff");
+    }
+
+    if (localStorage.getItem("pastDaysOff") != null) {
+        pastDaysOff = localStorage.getItem("pastDaysOff");
+    }
+
+    //set fields, need to set class "is-dirty" to make labels float
     //if custom, show custom field and fill it in
     if (planName == "custom") {
         document.getElementById("plan").value = planName;
         planSelected();
         document.getElementById("custom-debit").value = String(initial - rollover);
+        $("#custom-debit").parent().addClass("is-dirty");
     } else { //otherwise, set plan normally
         document.getElementById("plan").value = planName;
         planSelected();
@@ -89,14 +98,29 @@ function restoreFields() {
     //only fill in rollover and remaining if something was saved
     if (rollover != 0) {
         document.getElementById("rollover").value = String(rollover);
+        $("#rollover").parent().addClass("is-dirty");
     }
 
     if (remaining != 0) {
         document.getElementById("remaining").value = String(remaining);
+        $("#remaining").parent().addClass("is-dirty");
     }
 
-    document.getElementById("startdate").value = String(startDate);
-    document.getElementById("enddate").value = String(endDate);
+    document.getElementById("start-date").value = String(startDate);
+    $("#start-date").parent().addClass("is-dirty");
+
+    document.getElementById("end-date").value = String(endDate);
+    $("#end-date").parent().addClass("is-dirty");
+
+    if (totalDaysOff != 0) {
+        document.getElementById("total-days-off").value = String(totalDaysOff);
+        $("#total-days-off").parent().addClass("is-dirty");
+    }
+
+    if (pastDaysOff != 0) {
+        document.getElementById("past-days-off").value = String(pastDaysOff);
+        $("#past-days-off").parent().addClass("is-dirty");
+    }
 }
 
 //hides the results cards
@@ -153,7 +177,7 @@ function getInitial() {
 function initialIsValid() {
     if (! /[0-9]*[.,]?[0-9]+/.test(String(initial))) {
         data = {
-            message: 'The initial debit must be a number with optional $.',
+            message: 'The initial debit must be a positive number.',
             timeout: 10000
         };
         notification.MaterialSnackbar.showSnackbar(data);
@@ -168,7 +192,7 @@ function initialIsValid() {
 function rolloverIsValid() {
     if (rollover != '' && ! /[0-9]*[.,]?[0-9]+/.test(String(rollover))) {
         data = {
-            message: 'The rollover must be a number with optional $.',
+            message: 'The rollover must be a positive number.',
             timeout: 10000
         };
         notification.MaterialSnackbar.showSnackbar(data);
@@ -183,7 +207,7 @@ function rolloverIsValid() {
 function remainingIsValid() {
     if (! /[0-9]*[.,]?[0-9]+/.test(String(remaining))) {
         data = {
-            message: 'The remaining must be a number with optional $.',
+            message: 'The remaining must be a positive number.',
             timeout: 10000
         };
         notification.MaterialSnackbar.showSnackbar(data);
@@ -259,9 +283,38 @@ function checkIfTodayInRange() {
             message: 'Today is not in the date range and some calculations may be off.',
             timeout: 10000
         };
-        var notification = document.querySelector('.mdl-js-snackbar');
         notification.MaterialSnackbar.showSnackbar(data);
     }
+}
+
+//checks if the total days off value is valid
+function totalDaysOffIsValid() {
+    if (! /[0-9]*/.test(String(totalDaysOff))) {
+        data = {
+            message: 'The total days off must be a positive whole number.',
+            timeout: 10000
+        };
+        notification.MaterialSnackbar.showSnackbar(data);
+        hideResults();
+        return false;
+    }
+
+    return true;
+}
+
+//checks if the past days off value is valid
+function pastDaysOffIsValid() {
+    if (! /[0-9]*/.test(String(pastDaysOff))) {
+        data = {
+            message: 'The past days off must be a positive whole number.',
+            timeout: 10000
+        };
+        notification.MaterialSnackbar.showSnackbar(data);
+        hideResults();
+        return false;
+    }
+
+    return true;
 }
 
 //calculates the summary and table fields
@@ -289,15 +342,27 @@ function calculate() {
         return;
     }
 
-    startDate = document.getElementById("startdate").value;
+    startDate = document.getElementById("start-date").value;
     //validate startDate, end if not
     if (!startDateIsValid()) {
         return;
     }
 
-    endDate = document.getElementById("enddate").value;
+    endDate = document.getElementById("end-date").value;
     //validate endDate, end if not
     if (!endDateIsValid()) {
+        return;
+    }
+
+    totalDaysOff = document.getElementById("total-days-off").value;
+    //validate totalDaysOff, end if not
+    if (!totalDaysOffIsValid()) {
+        return;
+    }
+
+    pastDaysOff = document.getElementById("past-days-off").value;
+    //validate pastDaysOff, end if not
+    if (!pastDaysOffIsValid()) {
         return;
     }
 
@@ -317,6 +382,9 @@ function calculateAndSet() {
         return;
     }
 
+    //remove total days off from dayDiff
+    dayDiff -= totalDaysOff;
+
     var avgDaily = getDaily(initial, dayDiff);
     var avgWeekly = getWeekly(initial, dayDiff);
 
@@ -324,6 +392,9 @@ function calculateAndSet() {
     var currentDayDiff = getDateDiff(today, end);
     //warn if today not in date range
     checkIfTodayInRange();
+
+    //remove past days off from currentDayDiff
+    currentDayDiff -= pastDaysOff;
 
     var curDaily = getDaily(remaining, currentDayDiff);
     var curWeekly = getWeekly(remaining, currentDayDiff);
@@ -349,12 +420,16 @@ function calculateAndSet() {
     //debugging
     document.getElementById("initial-text").innerHTML = "initial: " + initial;
     document.getElementById("rollover-text").innerHTML = "rollover: " + rollover;
-    document.getElementById("current-text").innerHTML = "current: " + remaining;
+    document.getElementById("current-text").innerHTML = "remaining: " + remaining;
     document.getElementById("start-text").innerHTML = "start: " + start;
     document.getElementById("end-text").innerHTML = "end: " + end;
     document.getElementById("dayDiff-text").innerHTML = "day diff: " + dayDiff;
     document.getElementById("currentDayDiff-text").innerHTML = "current day diff: " + currentDayDiff;
+    document.getElementById("total-days-off-text").innerHTML = "total days off: " + totalDaysOff;
+    document.getElementById("past-days-off-text").innerHTML = "past days off: " + pastDaysOff;
 }
 
 //when page loaded, run start up items
-window.onload = startUp();
+$( document ).ready( function() {
+    startUp();
+});
