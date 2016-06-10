@@ -40,6 +40,10 @@ p {
     font-size: 1.5em;
 }
 
+#tigerbucks-overflow, #eservices-overflow {
+    display: none;
+}
+
 .material-icons {
     color: white;
 }
@@ -189,6 +193,15 @@ footer {
 @media only screen and (max-width : 549px) {
     .mdl-tooltip:not(.table-tip) {
         display: none;
+    }
+
+    #tigerbucks, #eservices {
+        display: none;
+    }
+
+    #tigerbucks-overflow, #eservices-overflow {
+        display: block;
+        text-decoration: none;
     }
 }
 
