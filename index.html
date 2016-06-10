@@ -27,11 +27,33 @@
 	</head>
 
     <body>
-		<header>
-			<h1 id="header">RIT Debit Splitter</h1>
-		</header>
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title">RIT Debit Splitter</span>
+                <!-- spacer to align rest to the right -->
+                <div class="mdl-layout-spacer"></div>
+
+                <!-- Navigation. We hide it in small screens. -->
+                <nav class="mdl-navigation mdl-layout--large-screen-only">
+                    <a class="mdl-navigation__link" id="tigerbucks" href="https://tigerbucks.rit.edu/tigerBucks/app/index.html">Tigerbucks</a>
+                    <a class="mdl-navigation__link" id="eservices" href="https://eservices.rit.edu/eServices">eServices</a>
+                </nav>
+
+                <button id="menu" class="mdl-button mdl-js-button mdl-button--icon">
+                    <i class="material-icons">more_vert</i>
+                </button>
+
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu">
+                    <li class="mdl-menu__item">Help</li>
+                    <li class="mdl-menu__item">About</li>
+                    <li class="mdl-menu__item">Source</li>
+                </ul>
+            </div>
+        </header>
 
 		<section class="container" id="content">
+
+            <p class="center">Alpha development edition</p>
 
 			<div class="mdl-grid">
 
@@ -65,7 +87,7 @@
                                     <!-- custom debit input-->
                                     <form action="#" id="custom-debit-section">
                                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end" id="custom-debit-form">
-                                            <input class="mdl-textfield__input" type="number" pattern="[0-9]*" id="custom-debit">
+                                            <input class="mdl-textfield__input" type="number" pattern="[0-9]*[.,]?[0-9]+" id="custom-debit">
                                             <label class="mdl-textfield__label" for="custom-debit">Custom Debit</label>
                                             <span class="mdl-textfield__error">Input must be a positive number</span>
                                         </div>
@@ -79,7 +101,7 @@
                             <!-- rollover input-->
                             <form action="#" >
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="rollover-form">
-                                    <input class="mdl-textfield__input" type="number" pattern="[0-9]*" id="rollover">
+                                    <input class="mdl-textfield__input" type="number" pattern="[0-9]*[.,]?[0-9]+" id="rollover">
                                     <label class="mdl-textfield__label" for="rollover">Rollover</label>
                                     <span class="mdl-textfield__error">Input must be a positive number</span>
                                 </div>
@@ -91,7 +113,7 @@
                             <!-- current debit input -->
                             <form action="#" class="last-item">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="remaining-form">
-                                    <input class="mdl-textfield__input" type="number" pattern="[0-9]*" id="remaining">
+                                    <input class="mdl-textfield__input" type="number" pattern="[0-9]*[.,]?[0-9]+" id="remaining">
                                     <label class="mdl-textfield__label" for="remaining">Remaining</label>
                                     <span class="mdl-textfield__error">Input must be a positive number</span>
                                 </div>
@@ -111,8 +133,8 @@
                                     <form action="#">
                                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="start-form">
                                             <input class="mdl-textfield__input" type="text"
-                                                   pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d" id="startdate">
-                                            <label class="mdl-textfield__label" for="startdate">Start date</label>
+                                                   pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d" id="start-date">
+                                            <label class="mdl-textfield__label" for="start-date">Start date</label>
                                             <span class="mdl-textfield__error">Format should be MM/DD/YYYY</span>
                                         </div>
                                     </form>
@@ -124,8 +146,8 @@
                                     <form action="#">
                                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end" id="end-form">
                                             <input class="mdl-textfield__input" type="text"
-                                                   pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d" id="enddate">
-                                            <label class="mdl-textfield__label" for="enddate">End date</label>
+                                                   pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d" id="end-date">
+                                            <label class="mdl-textfield__label" for="end-date">End date</label>
                                             <span class="mdl-textfield__error">Format should be MM/DD/YYYY</span>
                                         </div>
                                     </form>
@@ -237,6 +259,8 @@
             <p id="end-text">end-text: <p>
             <p id="dayDiff-text">dayDiff-text: <p>
             <p id="currentDayDiff-text">currentDayDiff-text: <p>
+            <p id="total-days-off-text">total-days-off-text: <p>
+            <p id="past-days-off-text">past-days-off-text: <p>
         </section>
 
         <!--<footer>
