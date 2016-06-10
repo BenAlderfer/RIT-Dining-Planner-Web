@@ -429,6 +429,23 @@ function calculateAndSet() {
     document.getElementById("past-days-off-text").innerHTML = "past days off: " + pastDaysOff;
 }
 
+//when clicking on help
+function help() {
+    alert("help");
+}
+
+//when clicking on about
+function about() {
+    alert("RIT Debit Splitter by Alderfer Studios.\n" +
+          "If you have any questions, bug reports, or suggestions, contact: alderferstudios@gmail.com.\n" +
+          "Please include your browser and version with any bug reports.");
+}
+
+//when clicking on source
+function source() {
+    alert("This app is open source. You can find it here: https://github.com/BenAlderfer/rit-debit-splitter-web.");
+}
+
 //when page loaded, run start up items
 $( document ).ready( function() {
     startUp();
