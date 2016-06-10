@@ -95,6 +95,22 @@ select {
     margin-bottom: 10px;
 }
 
+/* datepicker */
+.ui-datepicker {
+    width: auto;
+    height: auto;
+    font-family: Roboto, Arial, sans-serif;
+}
+
+.ui-datepicker table {
+    width: 100%;
+}
+
+.ui-datepicker table td {
+    padding: 10px;
+    font-size: 1.5em;
+}
+
 .mdl-button--raised.mdl-button--colored {
     margin-bottom: 20px;
     width: 100%;
