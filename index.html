@@ -91,8 +91,8 @@
                                     <div class="mdl-cell mdl-cell--6-col full-width-when-small">
                                         <!-- custom debit input-->
                                         <form action="#" id="custom-debit-section">
-                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end" id="custom-debit-form" onkeypress="calculateIfEnter()">
-                                                <input class="mdl-textfield__input" type="number" pattern="[0-9]*[.,]?[0-9]+" id="custom-debit">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end" id="custom-debit-form" tabindex="99">
+                                                <input class="mdl-textfield__input" type="number" pattern="[0-9]*[.,]?[0-9]+" id="custom-debit" onkeypress="calculateIfEnter()">
                                                 <label class="mdl-textfield__label" for="custom-debit">Custom Debit</label>
                                                 <span class="mdl-textfield__error">Input must be a positive number</span>
                                             </div>
@@ -105,7 +105,7 @@
 
                                 <!-- rollover input-->
                                 <form action="#" >
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="rollover-form">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="rollover-form" tabindex="99">
                                         <input class="mdl-textfield__input" type="number" pattern="[0-9]*[.,]?[0-9]+" id="rollover" onkeypress="calculateIfEnter()">
                                         <label class="mdl-textfield__label" for="rollover">Rollover</label>
                                         <span class="mdl-textfield__error">Input must be a positive number</span>
@@ -117,7 +117,7 @@
 
                                 <!-- current debit input -->
                                 <form action="#" class="last-item">
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="remaining-form">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="remaining-form" tabindex="99">
                                         <input class="mdl-textfield__input" type="number" pattern="[0-9]*[.,]?[0-9]+" id="remaining" onkeypress="calculateIfEnter()">
                                         <label class="mdl-textfield__label" for="remaining">Remaining</label>
                                         <span class="mdl-textfield__error">Input must be a positive number</span>
@@ -136,7 +136,7 @@
                                 <div class="mdl-grid inside-grid">
                                     <div class="mdl-cell mdl-cell--6-col full-width-when-small two-part-section-start">
                                         <form action="#">
-                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="start-form">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="start-form" tabindex="99">
                                                 <input class="mdl-textfield__input" type="text"
                                                        pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d" id="start-date" onkeypress="calculateIfEnter()">
                                                 <label class="mdl-textfield__label" for="start-date">Start date</label>
@@ -149,9 +149,9 @@
                                     </div>
                                     <div class="mdl-cell mdl-cell--6-col full-width-when-small">
                                         <form action="#">
-                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end" id="end-form" onkeypress="calculateIfEnter()">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end" id="end-form" tabindex="99">
                                                 <input class="mdl-textfield__input" type="text"
-                                                       pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d" id="end-date">
+                                                       pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d" id="end-date" onkeypress="calculateIfEnter()">
                                                 <label class="mdl-textfield__label" for="end-date">End date</label>
                                                 <span class="mdl-textfield__error">Format should be MM/DD/YYYY</span>
                                             </div>
@@ -165,7 +165,7 @@
                                 <div class="mdl-grid">
                                     <div class="mdl-cell mdl-cell--6-col full-width-when-small two-part-section-start">
                                         <form action="#" >
-                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="total-days-off-form">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="total-days-off-form" tabindex="99">
                                                 <input class="mdl-textfield__input" type="number" pattern="[0-9]*" id="total-days-off" onkeypress="calculateIfEnter()">
                                                 <label class="mdl-textfield__label" for="total-days-off">Total days off</label>
                                                 <span class="mdl-textfield__error">Input must be a positive number</span>
@@ -177,7 +177,7 @@
                                     </div>
                                     <div class="mdl-cell mdl-cell--6-col full-width-when-small">
                                         <form action="#" class="last-item">
-                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end" id="past-days-off-form">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end" id="past-days-off-form" tabindex="99">
                                                 <input class="mdl-textfield__input" type="number" pattern="[0-9]*" id="past-days-off" onkeypress="calculateIfEnter()">
                                                 <label class="mdl-textfield__label" for="past-days-off">Past days off</label>
                                                 <span class="mdl-textfield__error">Input must be a number</span>
