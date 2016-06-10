@@ -382,6 +382,9 @@ function calculateAndSet() {
         return;
     }
 
+    //remove total days off from dayDiff
+    dayDiff -= totalDaysOff;
+
     var avgDaily = getDaily(initial, dayDiff);
     var avgWeekly = getWeekly(initial, dayDiff);
 
@@ -389,6 +392,9 @@ function calculateAndSet() {
     var currentDayDiff = getDateDiff(today, end);
     //warn if today not in date range
     checkIfTodayInRange();
+
+    //remove past days off from currentDayDiff
+    currentDayDiff -= pastDaysOff;
 
     var curDaily = getDaily(remaining, currentDayDiff);
     var curWeekly = getWeekly(remaining, currentDayDiff);
