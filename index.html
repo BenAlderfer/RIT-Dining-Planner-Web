@@ -27,244 +27,255 @@
 	</head>
 
     <body>
-        <header class="mdl-layout__header">
-            <div class="mdl-layout__header-row">
-                <span class="mdl-layout-title">RIT Debit Splitter</span>
-                <!-- spacer to align rest to the right -->
-                <div class="mdl-layout-spacer"></div>
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+            <header class="mdl-layout__header">
+                <div class="mdl-layout__header-row">
+                    <span class="mdl-layout-title">RIT Debit Splitter</span>
+                    <!-- spacer to align rest to the right -->
+                    <div class="mdl-layout-spacer"></div>
 
-                <!-- Navigation. We hide it in small screens. -->
-                <nav class="mdl-navigation mdl-layout--large-screen-only">
-                    <a class="mdl-navigation__link" id="tigerbucks" href="https://tigerbucks.rit.edu/tigerBucks/app/index.html">Tigerbucks</a>
-                    <a class="mdl-navigation__link" id="eservices" href="https://eservices.rit.edu/eServices">eServices</a>
-                </nav>
+                    <!-- Navigation. We hide it in small screens. -->
+                    <nav class="mdl-navigation mdl-layout--large-screen-only">
+                        <a class="mdl-navigation__link" id="tigerbucks" href="https://tigerbucks.rit.edu/tigerBucks/app/index.html">Tigerbucks</a>
+                        <a class="mdl-navigation__link" id="eservices" href="https://eservices.rit.edu/eServices">eServices</a>
+                    </nav>
 
-                <button id="menu" class="mdl-button mdl-js-button mdl-button--icon">
-                    <i class="material-icons">more_vert</i>
-                </button>
-
-                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu">
-                    <li class="mdl-menu__item">Help</li>
-                    <li class="mdl-menu__item">About</li>
-                    <li class="mdl-menu__item">Source</li>
-                </ul>
-            </div>
-        </header>
-
-		<section class="container" id="content">
-
-            <p class="center">Alpha development edition</p>
-
-			<div class="mdl-grid">
-
-			    <div class="mdl-cell mdl-cell--6-col full-width-when-small">
-
-                    <div class="card-wide mdl-card mdl-shadow--2dp .half-width-when-mid">
-                        <div class="card-contents">
-                            <!-- meal plan selector -->
-                            <h4>Debit Plan</h4>
-
-                            <div class="mdl-grid inside-grid">
-                                <div class="mdl-cell mdl-cell--6-col full-width-when-small select-section">
-                                    <br /> <!-- drop down a line to line up with custom debit input -->
-                                    <select id="plan" onclick="planSelected()">
-                                        <option value="all">All Debit</option>
-                                        <option value="5+">5+</option>
-                                        <option value="10+">10+</option>
-                                        <option value="14+">14+</option>
-                                        <option value="20+">20+</option>
-                                        <option value="plan1">Debit Plan 1</option>
-                                        <option value="plan2">Debit Plan 2</option>
-                                        <option value="plan3">Debit Plan 3</option>
-                                        <option value="reduced">Inn Reduced Debit</option>
-                                        <option value="custom">Custom</option>
-                                    </select>
-                                    <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="plan">
-                                        Your meal plan
-                                    </div>
-                                </div>
-                                <div class="mdl-cell mdl-cell--6-col full-width-when-small">
-                                    <!-- custom debit input-->
-                                    <form action="#" id="custom-debit-section">
-                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end" id="custom-debit-form">
-                                            <input class="mdl-textfield__input" type="number" pattern="[0-9]*[.,]?[0-9]+" id="custom-debit">
-                                            <label class="mdl-textfield__label" for="custom-debit">Custom Debit</label>
-                                            <span class="mdl-textfield__error">Input must be a positive number</span>
-                                        </div>
-                                    </form>
-                                    <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" for="custom-debit-form">
-                                        Your custom amount of debit
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- rollover input-->
-                            <form action="#" >
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="rollover-form">
-                                    <input class="mdl-textfield__input" type="number" pattern="[0-9]*[.,]?[0-9]+" id="rollover">
-                                    <label class="mdl-textfield__label" for="rollover">Rollover</label>
-                                    <span class="mdl-textfield__error">Input must be a positive number</span>
-                                </div>
-                            </form>
-                            <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="rollover-form">
-                                How much you are rolling over from last semester
-                            </div>
-
-                            <!-- current debit input -->
-                            <form action="#" class="last-item">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="remaining-form">
-                                    <input class="mdl-textfield__input" type="number" pattern="[0-9]*[.,]?[0-9]+" id="remaining">
-                                    <label class="mdl-textfield__label" for="remaining">Remaining</label>
-                                    <span class="mdl-textfield__error">Input must be a positive number</span>
-                                </div>
-                            </form>
-                            <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="remaining-form">
-                                How much debit you have remaining
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card-wide mdl-card mdl-shadow--2dp .half-width-when-mid date-card">
-                        <div class="card-contents">
-                            <h4>Date Range</h4>
-
-                            <div class="mdl-grid inside-grid">
-                                <div class="mdl-cell mdl-cell--6-col full-width-when-small two-part-section-start">
-                                    <form action="#">
-                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="start-form">
-                                            <input class="mdl-textfield__input" type="text"
-                                                   pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d" id="start-date">
-                                            <label class="mdl-textfield__label" for="start-date">Start date</label>
-                                            <span class="mdl-textfield__error">Format should be MM/DD/YYYY</span>
-                                        </div>
-                                    </form>
-                                    <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="start-form">
-                                        The start date for the semester
-                                    </div>
-                                </div>
-                                <div class="mdl-cell mdl-cell--6-col full-width-when-small">
-                                    <form action="#">
-                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end" id="end-form">
-                                            <input class="mdl-textfield__input" type="text"
-                                                   pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d" id="end-date">
-                                            <label class="mdl-textfield__label" for="end-date">End date</label>
-                                            <span class="mdl-textfield__error">Format should be MM/DD/YYYY</span>
-                                        </div>
-                                    </form>
-                                    <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" for="end-form">
-                                        The end date for the semester
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="mdl-grid">
-                                <div class="mdl-cell mdl-cell--6-col full-width-when-small two-part-section-start">
-                                    <form action="#" >
-                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="total-days-off-form">
-                                            <input class="mdl-textfield__input" type="number" pattern="[0-9]*" id="total-days-off">
-                                            <label class="mdl-textfield__label" for="total-days-off">Total days off</label>
-                                            <span class="mdl-textfield__error">Input must be a positive number</span>
-                                        </div>
-                                    </form>
-                                    <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="total-days-off-form">
-                                        How many days off in total
-                                    </div>
-                                </div>
-                                <div class="mdl-cell mdl-cell--6-col full-width-when-small">
-                                    <form action="#" class="last-item">
-                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end" id="past-days-off-form">
-                                            <input class="mdl-textfield__input" type="number" pattern="[0-9]*" id="past-days-off">
-                                            <label class="mdl-textfield__label" for="past-days-off">Past days off</label>
-                                            <span class="mdl-textfield__error">Input must be a number</span>
-                                        </div>
-                                    </form>
-                                    <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" for="past-days-off-form">
-                                        How many days off have passed
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                      </div>
-
-				</div>
-
-				<div class="mdl-cell mdl-cell--6-col full-width-when-small">
-
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onclick="calculate()">
-                        Calculate
+                    <button id="menu" class="mdl-button mdl-js-button mdl-button--icon">
+                        <i class="material-icons">more_vert</i>
                     </button>
 
-                    <div class="card-wide mdl-card mdl-shadow--2dp" id="summary-card">
-                        <div class="card-contents" id="summary-contents">
-                            <h4>You can spend</h4>
-                            <h3 id="summary"></h3>
-                            <h4>today and still be on schedule.</h4>
+                    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu">
+                        <li class="mdl-menu__item">Help</li>
+                        <li class="mdl-menu__item">About</li>
+                        <li class="mdl-menu__item">Source</li>
+                    </ul>
+                </div>
+            </header>
+            <div class="mdl-layout__drawer">
+                <span class="mdl-layout-title">Title</span>
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link" href="">Link</a>
+                    <a class="mdl-navigation__link" href="">Link</a>
+                    <a class="mdl-navigation__link" href="">Link</a>
+                    <a class="mdl-navigation__link" href="">Link</a>
+                </nav>
+            </div>
+
+            <section class="container" id="content">
+
+                <p class="center">Alpha development edition</p>
+
+                <div class="mdl-grid">
+
+                    <div class="mdl-cell mdl-cell--6-col full-width-when-small">
+
+                        <div class="card-wide mdl-card mdl-shadow--2dp .half-width-when-mid">
+                            <div class="card-contents">
+                                <!-- meal plan selector -->
+                                <h4>Debit Plan</h4>
+
+                                <div class="mdl-grid inside-grid">
+                                    <div class="mdl-cell mdl-cell--6-col full-width-when-small select-section">
+                                        <br /> <!-- drop down a line to line up with custom debit input -->
+                                        <select id="plan" onclick="planSelected()">
+                                            <option value="all">All Debit</option>
+                                            <option value="5+">5+</option>
+                                            <option value="10+">10+</option>
+                                            <option value="14+">14+</option>
+                                            <option value="20+">20+</option>
+                                            <option value="plan1">Debit Plan 1</option>
+                                            <option value="plan2">Debit Plan 2</option>
+                                            <option value="plan3">Debit Plan 3</option>
+                                            <option value="reduced">Inn Reduced Debit</option>
+                                            <option value="custom">Custom</option>
+                                        </select>
+                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="plan">
+                                            Your meal plan
+                                        </div>
+                                    </div>
+                                    <div class="mdl-cell mdl-cell--6-col full-width-when-small">
+                                        <!-- custom debit input-->
+                                        <form action="#" id="custom-debit-section">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end" id="custom-debit-form">
+                                                <input class="mdl-textfield__input" type="number" pattern="[0-9]*[.,]?[0-9]+" id="custom-debit">
+                                                <label class="mdl-textfield__label" for="custom-debit">Custom Debit</label>
+                                                <span class="mdl-textfield__error">Input must be a positive number</span>
+                                            </div>
+                                        </form>
+                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" for="custom-debit-form">
+                                            Your custom amount of debit
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- rollover input-->
+                                <form action="#" >
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="rollover-form">
+                                        <input class="mdl-textfield__input" type="number" pattern="[0-9]*[.,]?[0-9]+" id="rollover">
+                                        <label class="mdl-textfield__label" for="rollover">Rollover</label>
+                                        <span class="mdl-textfield__error">Input must be a positive number</span>
+                                    </div>
+                                </form>
+                                <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="rollover-form">
+                                    How much you are rolling over from last semester
+                                </div>
+
+                                <!-- current debit input -->
+                                <form action="#" class="last-item">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="remaining-form">
+                                        <input class="mdl-textfield__input" type="number" pattern="[0-9]*[.,]?[0-9]+" id="remaining">
+                                        <label class="mdl-textfield__label" for="remaining">Remaining</label>
+                                        <span class="mdl-textfield__error">Input must be a positive number</span>
+                                    </div>
+                                </form>
+                                <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="remaining-form">
+                                    How much debit you have remaining
+                                </div>
+                            </div>
                         </div>
+
+                        <div class="card-wide mdl-card mdl-shadow--2dp .half-width-when-mid date-card">
+                            <div class="card-contents">
+                                <h4>Date Range</h4>
+
+                                <div class="mdl-grid inside-grid">
+                                    <div class="mdl-cell mdl-cell--6-col full-width-when-small two-part-section-start">
+                                        <form action="#">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="start-form">
+                                                <input class="mdl-textfield__input" type="text"
+                                                       pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d" id="start-date">
+                                                <label class="mdl-textfield__label" for="start-date">Start date</label>
+                                                <span class="mdl-textfield__error">Format should be MM/DD/YYYY</span>
+                                            </div>
+                                        </form>
+                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="start-form">
+                                            The start date for the semester
+                                        </div>
+                                    </div>
+                                    <div class="mdl-cell mdl-cell--6-col full-width-when-small">
+                                        <form action="#">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end" id="end-form">
+                                                <input class="mdl-textfield__input" type="text"
+                                                       pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d" id="end-date">
+                                                <label class="mdl-textfield__label" for="end-date">End date</label>
+                                                <span class="mdl-textfield__error">Format should be MM/DD/YYYY</span>
+                                            </div>
+                                        </form>
+                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" for="end-form">
+                                            The end date for the semester
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mdl-grid">
+                                    <div class="mdl-cell mdl-cell--6-col full-width-when-small two-part-section-start">
+                                        <form action="#" >
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="total-days-off-form">
+                                                <input class="mdl-textfield__input" type="number" pattern="[0-9]*" id="total-days-off">
+                                                <label class="mdl-textfield__label" for="total-days-off">Total days off</label>
+                                                <span class="mdl-textfield__error">Input must be a positive number</span>
+                                            </div>
+                                        </form>
+                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="total-days-off-form">
+                                            How many days off in total
+                                        </div>
+                                    </div>
+                                    <div class="mdl-cell mdl-cell--6-col full-width-when-small">
+                                        <form action="#" class="last-item">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end" id="past-days-off-form">
+                                                <input class="mdl-textfield__input" type="number" pattern="[0-9]*" id="past-days-off">
+                                                <label class="mdl-textfield__label" for="past-days-off">Past days off</label>
+                                                <span class="mdl-textfield__error">Input must be a number</span>
+                                            </div>
+                                        </form>
+                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" for="past-days-off-form">
+                                            How many days off have passed
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                          </div>
+
                     </div>
 
-                    <div class="card-wide mdl-card mdl-shadow--2dp" id="table-card">
-                        <div class="card-contents">
-						    <table>
-							    <tr>
-								    <td></td>
-									<td></td>
-									<td>Daily</td>
-									<td>Weekly</td>
-								</tr>
-								<tr>
-									<td class="head-item" id="average-label">Average</td>
-                                    <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right table-tip" for="average-label">
-                                        Average amount you can spend with your debit
-                                    </div>
-									<td></td>
-									<td id="avg-daily"></td>
-									<td id="avg-weekly"></td>
-								</tr>
-								<tr>
-									<td class="head-item" id="current-label">Currently</td>
-                                    <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right table-tip" for="current-label">
-                                        How much you can spend with your current debit
-                                    </div>
-                                    <td></td>
-                                    <td id="cur-daily"></td>
-									<td id="cur-weekly"></td>
-								</tr>
-								<tr>
-									<td class="head-item" id="diff-label">Difference</td>
-                                    <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right table-tip" for="diff-label">
-                                        Difference in the current and average amounts
-                                    </div>
-                                    <td></td>
-                                    <td id="diff-daily"></td>
-									<td id="diff-weekly"></td>
-								</tr>
-							</table>
-					    </div>
-				    </div>
+                    <div class="mdl-cell mdl-cell--6-col full-width-when-small">
+
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onclick="calculate()">
+                            Calculate
+                        </button>
+
+                        <div class="card-wide mdl-card mdl-shadow--2dp" id="summary-card">
+                            <div class="card-contents" id="summary-contents">
+                                <h4>You can spend</h4>
+                                <h3 id="summary"></h3>
+                                <h4>today and still be on schedule.</h4>
+                            </div>
+                        </div>
+
+                        <div class="card-wide mdl-card mdl-shadow--2dp" id="table-card">
+                            <div class="card-contents">
+                                <table>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Daily</td>
+                                        <td>Weekly</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="head-item" id="average-label">Average</td>
+                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right table-tip" for="average-label">
+                                            Average amount you can spend with your debit
+                                        </div>
+                                        <td></td>
+                                        <td id="avg-daily"></td>
+                                        <td id="avg-weekly"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="head-item" id="current-label">Currently</td>
+                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right table-tip" for="current-label">
+                                            How much you can spend with your current debit
+                                        </div>
+                                        <td></td>
+                                        <td id="cur-daily"></td>
+                                        <td id="cur-weekly"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="head-item" id="diff-label">Difference</td>
+                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right table-tip" for="diff-label">
+                                            Difference in the current and average amounts
+                                        </div>
+                                        <td></td>
+                                        <td id="diff-daily"></td>
+                                        <td id="diff-weekly"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
 
                 </div>
 
-            </div>
+                <div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar">
+                    <div class="mdl-snackbar__text"></div>
+                    <button type="button" class="mdl-snackbar__action"></button>
+                </div>
 
-            <div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar">
-                <div class="mdl-snackbar__text"></div>
-                <button type="button" class="mdl-snackbar__action"></button>
-            </div>
+                <p id="initial-text">initial-text: <p>
+                <p id="rollover-text">rollover-text: <p>
+                <p id="current-text">current-text: <p>
+                <p id="start-text">start-text: <p>
+                <p id="end-text">end-text: <p>
+                <p id="dayDiff-text">dayDiff-text: <p>
+                <p id="currentDayDiff-text">currentDayDiff-text: <p>
+                <p id="total-days-off-text">total-days-off-text: <p>
+                <p id="past-days-off-text">past-days-off-text: <p>
+            </section>
 
-            <p id="initial-text">initial-text: <p>
-            <p id="rollover-text">rollover-text: <p>
-            <p id="current-text">current-text: <p>
-            <p id="start-text">start-text: <p>
-            <p id="end-text">end-text: <p>
-            <p id="dayDiff-text">dayDiff-text: <p>
-            <p id="currentDayDiff-text">currentDayDiff-text: <p>
-            <p id="total-days-off-text">total-days-off-text: <p>
-            <p id="past-days-off-text">past-days-off-text: <p>
-        </section>
-
-        <!--<footer>
-            <p>Help | About | Other </p>
-        </footer>-->
+            <!--<footer>
+                <p>Help | About | Other </p>
+            </footer>-->
+        </div>
     </body>
 </html>
