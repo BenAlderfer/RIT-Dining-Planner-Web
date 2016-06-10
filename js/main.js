@@ -468,7 +468,7 @@ $( document ).ready( function() {
 $(function() {
     $( "#start-date" ).datepicker();
     $( "#end-date" ).datepicker();
-    $( "#dialog" ).dialog();
+    $( "#dialog" ).dialog({ modal: true});
     $( "#dialog" ).dialog('close');
 
 });
