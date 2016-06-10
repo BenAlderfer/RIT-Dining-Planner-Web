@@ -6,4 +6,4 @@ See the license file for copying permission.
 
 Debit splitting web app to manage RIT food debit.
 
-Made with help from Joel Eager, Tim Endersby, and Stephen Cioffi.
+Made with input from Joel Eager, Tim Endersby, and Stephen Cioffi.
