@@ -3,4 +3,25 @@
 	color: black;
 	font-family: times, serif;
 	text-decoration: none;
+	overflow: hidden;
+}
+
+#tigerbucks, #eservices, #calculate-button {
+    display: none;
+}
+
+#summary-card {
+    display: block;
+}
+
+#table-card {
+    display: block;
+}
+
+#balance-card {
+    margin-top: -30px;
+}
+
+#debit-header {
+    margin-bottom: -20px;
 }

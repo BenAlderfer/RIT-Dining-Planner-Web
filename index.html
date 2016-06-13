@@ -64,10 +64,10 @@
 
                     <div class="mdl-cell mdl-cell--6-col full-width-when-small">
 
-                        <div class="card-wide mdl-card mdl-shadow--2dp .half-width-when-mid">
+                        <div class="card-wide mdl-card mdl-shadow--2dp .half-width-when-mid" id="balance-card">
                             <div class="card-contents">
                                 <!-- meal plan selector -->
-                                <h4>Debit Plan</h4>
+                                <h4 id="debit-header">Debit Plan</h4>
 
                                 <div class="mdl-grid inside-grid">
                                     <div class="mdl-cell mdl-cell--6-col full-width-when-small select-section">
@@ -134,7 +134,7 @@
                             </div>
                         </div>
 
-                        <div class="card-wide mdl-card mdl-shadow--2dp .half-width-when-mid date-card">
+                        <div class="card-wide mdl-card mdl-shadow--2dp .half-width-when-mid" id="date-card">
                             <div class="card-contents">
                                 <h4>Date Range</h4>
 
@@ -201,7 +201,7 @@
 
                     <div class="mdl-cell mdl-cell--6-col full-width-when-small">
 
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onclick="calculate()">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="calculate-button" onclick="calculate()">
                             Calculate
                         </button>
 
