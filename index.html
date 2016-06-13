@@ -92,7 +92,7 @@
                                         <!-- custom debit input-->
                                         <form action="#" id="custom-debit-section">
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end" id="custom-debit-form" tabindex="99">
-                                                <input class="mdl-textfield__input" type="number" pattern="\d+(\.\d{2})?" id="custom-debit" onkeypress="calculateIfEnter()" required>
+                                                <input class="mdl-textfield__input" type="number" pattern="\d*(\.\d{2})?" id="custom-debit" onkeypress="calculateIfEnter()" required>
                                                 <label class="mdl-textfield__label" for="custom-debit">Custom Debit</label>
                                                 <span class="mdl-textfield__error">Input must be a positive number</span>
                                             </div>
@@ -108,7 +108,7 @@
                                         <!-- rollover input-->
                                         <form action="#" >
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="rollover-form" tabindex="99">
-                                                <input class="mdl-textfield__input" type="number" pattern="\d+(\.\d{2})?" id="rollover" onkeypress="calculateIfEnter()">
+                                                <input class="mdl-textfield__input" type="number" pattern="\d*(\.\d{2})?" id="rollover" onkeypress="calculateIfEnter()">
                                                 <label class="mdl-textfield__label" for="rollover">Rollover</label>
                                                 <span class="mdl-textfield__error">Input must be a positive number</span>
                                             </div>
@@ -121,7 +121,7 @@
                                         <!-- current debit input -->
                                         <form action="#">
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="remaining-form" tabindex="99">
-                                                <input class="mdl-textfield__input" type="number" pattern="\d+(\.\d{2})?" id="remaining" onkeypress="calculateIfEnter()" required>
+                                                <input class="mdl-textfield__input" type="number" pattern="\d*(\.\d{2})?" id="remaining" onkeypress="calculateIfEnter()" required>
                                                 <label class="mdl-textfield__label" for="remaining">Remaining</label>
                                                 <span class="mdl-textfield__error">Input must be a positive number</span>
                                             </div>
