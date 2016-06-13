@@ -439,7 +439,10 @@ function calculateIfEnter() {
 //when clicking on help
 function help() {
     $("span.ui-dialog-title").text('Help');
-    document.getElementById("dialog-text").innerHTML = "help";
+    document.getElementById("dialog-text").innerHTML = "Hover over elements for descriptive hints.<br />" +
+        "If you have any questions, bug reports, or suggestions, contact: alderferstudios@gmail.com.<br />" +
+        "You can also submit these as issues on the Github repo.<br />" +
+        "Please include your browser and version with any bug reports.";
     $( "#dialog" ).dialog('open');
 }
 
@@ -447,8 +450,14 @@ function help() {
 function about() {
     $("span.ui-dialog-title").text('About');
     document.getElementById("dialog-text").innerHTML = "RIT Debit Splitter by Alderfer Studios.<br />" +
-          "If you have any questions, bug reports, or suggestions, contact: alderferstudios@gmail.com.<br />" +
-          "Please include your browser and version with any bug reports.";
+        "Browser support is based on what the design library (MDL) can support. These browsers are:<br />" +
+        "-Chrome<br />" +
+        "-Edge<br />" +
+        "-Firefox<br />" +
+        "-Opera<br />" +
+        "-Internet Explorer 11+<br />" +
+        "-Safari 8+<br />" +
+        "-Mobile Safari 8+";
     $( "#dialog" ).dialog('open');
 }
 
