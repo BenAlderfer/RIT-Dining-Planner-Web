@@ -103,28 +103,33 @@
                                     </div>
                                 </div>
 
-                                <!-- rollover input-->
-                                <form action="#" >
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="rollover-form" tabindex="99">
-                                        <input class="mdl-textfield__input" type="number" pattern="[0-9]*[.,]?[0-9]+" id="rollover" onkeypress="calculateIfEnter()">
-                                        <label class="mdl-textfield__label" for="rollover">Rollover</label>
-                                        <span class="mdl-textfield__error">Input must be a positive number</span>
+                                <div class="mdl-grid" id="rollover-remaining-section">
+                                    <div class="mdl-cell mdl-cell--6-col full-width-when-small two-part-section-start">
+                                        <!-- rollover input-->
+                                        <form action="#" >
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="rollover-form" tabindex="99">
+                                                <input class="mdl-textfield__input" type="number" pattern="[0-9]*[.,]?[0-9]+" id="rollover" onkeypress="calculateIfEnter()">
+                                                <label class="mdl-textfield__label" for="rollover">Rollover</label>
+                                                <span class="mdl-textfield__error">Input must be a positive number</span>
+                                            </div>
+                                        </form>
+                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="rollover-form">
+                                            How much you are rolling over from last semester
+                                        </div>
                                     </div>
-                                </form>
-                                <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="rollover-form">
-                                    How much you are rolling over from last semester
-                                </div>
-
-                                <!-- current debit input -->
-                                <form action="#" class="last-item">
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="remaining-form" tabindex="99">
-                                        <input class="mdl-textfield__input" type="number" pattern="[0-9]*[.,]?[0-9]+" id="remaining" onkeypress="calculateIfEnter()">
-                                        <label class="mdl-textfield__label" for="remaining">Remaining</label>
-                                        <span class="mdl-textfield__error">Input must be a positive number</span>
+                                    <div class="mdl-cell mdl-cell--6-col full-width-when-small two-part-section-end">
+                                        <!-- current debit input -->
+                                        <form action="#">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="remaining-form" tabindex="99">
+                                                <input class="mdl-textfield__input" type="number" pattern="[0-9]*[.,]?[0-9]+" id="remaining" onkeypress="calculateIfEnter()">
+                                                <label class="mdl-textfield__label" for="remaining">Remaining</label>
+                                                <span class="mdl-textfield__error">Input must be a positive number</span>
+                                            </div>
+                                        </form>
+                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" for="remaining-form">
+                                            How much debit you have remaining
+                                        </div>
                                     </div>
-                                </form>
-                                <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="remaining-form">
-                                    How much debit you have remaining
                                 </div>
                             </div>
                         </div>
@@ -147,9 +152,9 @@
                                             The start date for the semester
                                         </div>
                                     </div>
-                                    <div class="mdl-cell mdl-cell--6-col full-width-when-small">
+                                    <div class="mdl-cell mdl-cell--6-col full-width-when-small two-part-section-end">
                                         <form action="#">
-                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end" id="end-form" tabindex="99">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="end-form" tabindex="99">
                                                 <input class="mdl-textfield__input" type="text"
                                                        pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d" id="end-date" onkeypress="calculateIfEnter()">
                                                 <label class="mdl-textfield__label" for="end-date">End date</label>
@@ -176,7 +181,7 @@
                                         </div>
                                     </div>
                                     <div class="mdl-cell mdl-cell--6-col full-width-when-small">
-                                        <form action="#" class="last-item">
+                                        <form action="#">
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end" id="past-days-off-form" tabindex="99">
                                                 <input class="mdl-textfield__input" type="number" pattern="[0-9]*" id="past-days-off" onkeypress="calculateIfEnter()">
                                                 <label class="mdl-textfield__label" for="past-days-off">Past days off</label>
