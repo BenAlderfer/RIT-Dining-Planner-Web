@@ -178,7 +178,7 @@ function initialIsValid() {
     if (! /[0-9]*[.,]?[0-9]+/.test(String(initial))) {
         data = {
             message: 'The initial debit must be a positive number.',
-            timeout: 10000
+            timeout: 8000
         };
         notification.MaterialSnackbar.showSnackbar(data);
         hideResults();
@@ -193,7 +193,7 @@ function rolloverIsValid() {
     if (rollover != '' && ! /[0-9]*[.,]?[0-9]+/.test(String(rollover))) {
         data = {
             message: 'The rollover must be a positive number.',
-            timeout: 10000
+            timeout: 8000
         };
         notification.MaterialSnackbar.showSnackbar(data);
         hideResults();
@@ -208,7 +208,7 @@ function remainingIsValid() {
     if (! /[0-9]*[.,]?[0-9]+/.test(String(remaining))) {
         data = {
             message: 'The remaining must be a positive number.',
-            timeout: 10000
+            timeout: 8000
         };
         notification.MaterialSnackbar.showSnackbar(data);
         hideResults();
@@ -223,7 +223,7 @@ function startDateIsValid() {
     if (! /(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d/.test(String(startDate))) {
         data = {
             message: 'The start date should be in form MM/DD/YYYY.',
-            timeout: 10000
+            timeout: 8000
         };
         notification.MaterialSnackbar.showSnackbar(data);
         hideResults();
@@ -237,7 +237,7 @@ function endDateIsValid() {
     if (! /(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d/.test(String(endDate))) {
         data = {
             message: 'The end date should be in form MM/DD/YYYY.',
-            timeout: 10000
+            timeout: 8000
         };
         notification.MaterialSnackbar.showSnackbar(data);
         hideResults();
@@ -251,7 +251,7 @@ function endDateIsAfterStartDate() {
     if (dayDiff < 1) {
         data = {
             message: 'The end date should be at least 1 day after the start date.',
-            timeout: 10000
+            timeout: 8000
         };
         notification.MaterialSnackbar.showSnackbar(data);
         hideResults();
@@ -281,7 +281,7 @@ function checkIfTodayInRange() {
     if ( getDateDiff(start, today) < 0 || getDateDiff(end, today) > 0 ) {
         data = {
             message: 'Today is not in the date range and some calculations may be off.',
-            timeout: 10000
+            timeout: 8000
         };
         notification.MaterialSnackbar.showSnackbar(data);
     }
@@ -292,7 +292,7 @@ function totalDaysOffIsValid() {
     if (! /[0-9]*/.test(String(totalDaysOff))) {
         data = {
             message: 'The total days off must be a positive whole number.',
-            timeout: 10000
+            timeout: 8000
         };
         notification.MaterialSnackbar.showSnackbar(data);
         hideResults();
@@ -307,7 +307,7 @@ function pastDaysOffIsValid() {
     if (! /[0-9]*/.test(String(pastDaysOff))) {
         data = {
             message: 'The past days off must be a positive whole number.',
-            timeout: 10000
+            timeout: 8000
         };
         notification.MaterialSnackbar.showSnackbar(data);
         hideResults();
