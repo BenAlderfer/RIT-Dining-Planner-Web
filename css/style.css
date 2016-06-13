@@ -108,10 +108,6 @@ select {
     font-size: 1.5em;
 }
 
-.last-item {
-    margin-bottom: 10px;
-}
-
 /* datepicker */
 .ui-datepicker {
     width: auto;
@@ -200,12 +196,20 @@ footer {
         width: 90%;
     }
 
+    .last-item {
+        margin-bottom: 10px;
+    }
+
     .two-part-section-end {
         margin-left: -10px;
     }
 
     #rollover-remaining-section {
         margin-top: -20px;
+    }
+
+    #date-section {
+        margin-bottom: -15px;
     }
 
     #custom-debit-form {
