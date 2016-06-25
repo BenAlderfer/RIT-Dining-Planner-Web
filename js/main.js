@@ -468,15 +468,14 @@ function source() {
     $( "#dialog" ).dialog('open');
 }
 
-//when page loaded, run start up items
+//when page loaded
 $( document ).ready( function() {
-    startUp();
-});
-
-//assign datepickers to date fields
-$(function() {
+    //assign datepickers and setup dialog
     $( "#start-date" ).datepicker();
     $( "#end-date" ).datepicker();
     $( "#dialog" ).dialog({ modal: true});
     $( "#dialog" ).dialog('close');
+
+    //run start up items
+    startUp();
 });
