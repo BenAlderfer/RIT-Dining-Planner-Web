@@ -85,7 +85,7 @@ p {
 }
 
 h4 {
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 select {
@@ -97,7 +97,7 @@ select {
 
 .select-section {
     margin-left: -10px;
-    margin-top: 0px;
+    margin-top: 0;
 }
 
 .two-part-section-start {
@@ -161,6 +161,14 @@ footer {
     margin-bottom: -10px;
 }
 
+footer a {
+    color: white;
+}
+
+.mobile-only {
+    display: none;
+}
+
 /* media queries */
 @media only screen and (max-width : 1279px) {
     select {
@@ -175,6 +183,10 @@ footer {
 
 /* when it becomes one column */
 @media only screen and (max-width : 1124px) {
+    .mobile-only {
+        display: block;
+    }
+
     select {
         font-size: 1.5em;
         margin-bottom: 10px;
@@ -212,7 +224,7 @@ footer {
         margin-bottom: -15px;
     }
 
-    #custom-debit-form {
+    #custom-dining-form {
         margin-left: -20px;
     }
 
