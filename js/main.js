@@ -1,7 +1,7 @@
 "use strict";
 
 //global variables
-var planName = "all";
+var planName = "orange";
 var initial = 0;
 var rollover = 0;
 var remaining = 0;
@@ -24,7 +24,7 @@ function startUp() {
     //restore saved fields
     restoreFields();
 
-    //show or hide custom debit field as needed
+    //show or hide custom dining field as needed
     planSelected();
 
     //calculate numbers and set fields
@@ -88,8 +88,8 @@ function restoreFields() {
     if (planName == "custom") {
         document.getElementById("plan").value = planName;
         planSelected();
-        document.getElementById("custom-debit").value = String(initial - rollover);
-        $("#custom-debit").parent().addClass("is-dirty");
+        document.getElementById("custom-dining").value = String(initial - rollover);
+        $("#custom-dining").parent().addClass("is-dirty");
     } else { //otherwise, set plan normally
         document.getElementById("plan").value = planName;
         planSelected();
@@ -137,39 +137,39 @@ function showResults() {
 
 //if custom plan selected, show custom input line
 function planSelected() {
-    //hide or show custom debit input
+    //hide or show custom dining input
     if (document.getElementById("plan").value == "custom") {
-        document.getElementById("custom-debit-form").style.display = 'block';
-        document.getElementById("custom-debit-form").style.marginBottom = "-20px";
+        document.getElementById("custom-dining-form").style.display = 'block';
+        document.getElementById("custom-dining-form").style.marginBottom = "-20px";
     } else {
-        document.getElementById("custom-debit-form").style.display = 'none';
+        document.getElementById("custom-dining-form").style.display = 'none';
     }
 }
 
-//get the initial debit from dropdown menu
+//get the initial dining from dropdown menu
 function getInitial() {
     planName = document.getElementById("plan").value;
     switch(planName) {
-        case "all":
-            return 2482.0;
-        case "5+":
+        case "orange":
+            return 2669.0;
+        case "5":
             return 1300.0;
-        case "10+":
-            return 650.0;
-        case "14+":
-            return 350.0;
-        case "20+":
-            return 250.0;
-        case "plan1":
+        case "10":
+            return 700.0;
+        case "14":
             return 500.0;
-        case "plan2":
-            return 900.0;
-        case "plan3":
-            return 1300.0;
-        case "reduced":
-            return 1858.0;
+        case "20":
+            return 300.0;
+        case "gold":
+            return 1340.0;
+        case "silver":
+            return 930.0;
+        case "bronze":
+            return 515.0;
+        case "brown":
+            return 1914.0;
         default: //custom
-            return Number(document.getElementById("custom-debit").value);
+            return Number(document.getElementById("custom-dining").value);
     }
 }
 
@@ -177,7 +177,7 @@ function getInitial() {
 function initialIsValid() {
     if (! /[0-9]*[.,]?[0-9]+/.test(String(initial))) {
         data = {
-            message: 'The initial debit must be a positive number.',
+            message: 'The initial dining must be a positive number.',
             timeout: 8000
         };
         notification.MaterialSnackbar.showSnackbar(data);
@@ -449,7 +449,7 @@ function help() {
 //when clicking on about
 function about() {
     $("span.ui-dialog-title").text('About');
-    document.getElementById("dialog-text").innerHTML = "RIT Debit Splitter by Alderfer Studios.<br />" +
+    document.getElementById("dialog-text").innerHTML = "RIT dining Splitter by Alderfer Studios.<br />" +
         "Browser support is based on what the design library (MDL) can support. These browsers are:<br />" +
         "-Chrome<br />" +
         "-Edge<br />" +
@@ -464,7 +464,7 @@ function about() {
 //when clicking on source
 function source() {
     $("span.ui-dialog-title").text('Source');
-    document.getElementById("dialog-text").innerHTML = "This site is open source. You can find it here: https://github.com/BenAlderfer/rit-debit-splitter-web.";
+    document.getElementById("dialog-text").innerHTML = "This site is open source. You can find it here: https://github.com/BenAlderfer/rit-dining-splitter-web.";
     $( "#dialog" ).dialog('open');
 }
 

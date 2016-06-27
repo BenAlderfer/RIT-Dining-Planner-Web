@@ -161,6 +161,10 @@ footer {
     margin-bottom: -10px;
 }
 
+footer a {
+    color: white;
+}
+
 .mobile-only {
     display: none;
 }
@@ -220,7 +224,7 @@ footer {
         margin-bottom: -15px;
     }
 
-    #custom-debit-form {
+    #custom-dining-form {
         margin-left: -20px;
     }
 
