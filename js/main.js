@@ -13,11 +13,13 @@ var endDate = "05/20/2016";
 var start, end, today;
 
 //snackbar variables
-var notification = document.querySelector('.mdl-js-snackbar');
+var notification;
 var data;
 
-//runs startup commands
+//runs startup commands after page loads
 function startUp() {
+    notification = document.querySelector('.mdl-js-snackbar');
+
     //hide results
     hideResults();
 
