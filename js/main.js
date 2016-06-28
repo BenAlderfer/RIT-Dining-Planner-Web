@@ -148,8 +148,6 @@ function planSelected() {
 function getInitial() {
     planName = document.getElementById("plan").value;
     switch(planName) {
-        case "orange":
-            return 2669.0;
         case "5":
             return 1300.0;
         case "10":
@@ -158,14 +156,16 @@ function getInitial() {
             return 500.0;
         case "20":
             return 300.0;
+        case "orange":
+            return 2669.0;
+        case "brown":
+            return 1914.0;
         case "gold":
             return 1340.0;
         case "silver":
             return 930.0;
         case "bronze":
             return 515.0;
-        case "brown":
-            return 1914.0;
         default: //custom
             return Number(document.getElementById("custom-dining").value);
     }
@@ -178,7 +178,7 @@ function initialIsValid() {
             message: 'The initial dining must be a positive number.',
             timeout: 8000
         };
-        notification.MaterialSnackbar.showSnackbar(data);
+        showSnackbarMessage(data);
         hideResults();
         return false;
     }
@@ -193,7 +193,7 @@ function rolloverIsValid() {
             message: 'The rollover must be a positive number.',
             timeout: 8000
         };
-        notification.MaterialSnackbar.showSnackbar(data);
+        showSnackbarMessage(data);
         hideResults();
         return false;
     }
@@ -208,7 +208,7 @@ function remainingIsValid() {
             message: 'The remaining must be a positive number.',
             timeout: 8000
         };
-        notification.MaterialSnackbar.showSnackbar(data);
+        showSnackbarMessage(data);
         hideResults();
         return false;
     }
@@ -223,7 +223,7 @@ function startDateIsValid() {
             message: 'The start date should be in form MM/DD/YYYY.',
             timeout: 8000
         };
-        notification.MaterialSnackbar.showSnackbar(data);
+        showSnackbarMessage(data);
         hideResults();
     }
 
@@ -237,7 +237,7 @@ function endDateIsValid() {
             message: 'The end date should be in form MM/DD/YYYY.',
             timeout: 8000
         };
-        notification.MaterialSnackbar.showSnackbar(data);
+        showSnackbarMessage(data);
         hideResults();
     }
 
@@ -251,7 +251,7 @@ function endDateIsAfterStartDate() {
             message: 'The end date should be at least 1 day after the start date.',
             timeout: 8000
         };
-        notification.MaterialSnackbar.showSnackbar(data);
+        showSnackbarMessage(data);
         hideResults();
         return false;
     }
@@ -281,7 +281,7 @@ function checkIfTodayInRange() {
             message: 'Today is not in the date range and some calculations may be off.',
             timeout: 8000
         };
-        notification.MaterialSnackbar.showSnackbar(data);
+        showSnackbarMessage(data);
     }
 }
 
@@ -292,7 +292,7 @@ function totalDaysOffIsValid() {
             message: 'The total days off must be a positive whole number.',
             timeout: 8000
         };
-        notification.MaterialSnackbar.showSnackbar(data);
+        showSnackbarMessage(data);
         hideResults();
         return false;
     }
@@ -307,7 +307,7 @@ function pastDaysOffIsValid() {
             message: 'The past days off must be a positive whole number.',
             timeout: 8000
         };
-        notification.MaterialSnackbar.showSnackbar(data);
+        showSnackbarMessage(data);
         hideResults();
         return false;
     }
@@ -315,8 +315,19 @@ function pastDaysOffIsValid() {
     return true;
 }
 
-//calculates the summary and table fields
-function calculate() {
+// shows the snackbar with given message
+function showSnackbarMessage(textData) {
+    notification.style.display = 'block';
+    notification.MaterialSnackbar.showSnackbar(textData);
+}
+
+// hides the snackbar
+function hideSnackbar() {
+    notification.style.display = 'none';
+}
+
+// gets the fields and calls calculateAndSet() if all are valid
+function getFieldsAndCheck() {
     //setup - get & check input
     initial = getInitial();
 
@@ -363,6 +374,9 @@ function calculate() {
     if (!pastDaysOffIsValid()) {
         return;
     }
+
+    //if no errors, hide any existing error messages
+    hideSnackbar();
 
     //calculate and set values
     calculateAndSet();
@@ -430,7 +444,7 @@ function calculateAndSet() {
 //when key pressed, calculate if enter
 function calculateIfEnter() {
     if (event.keyCode == 13) {
-        calculate();
+        getFieldsAndCheck();
     }
 }
 
