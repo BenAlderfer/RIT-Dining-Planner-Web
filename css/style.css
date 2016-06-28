@@ -193,6 +193,10 @@ footer a {
         display: block;
     }
 
+    .mdl-textfield {
+        margin-bottom: 0;
+    }
+
     select {
         font-size: 1.5em;
         margin-bottom: 10px;
@@ -218,6 +222,10 @@ footer a {
         margin-left: -10px;
     }
 
+    .last-item {
+        margin-bottom: 10px;
+    }
+
     #rollover-remaining-section {
         margin-top: -20px;
     }
@@ -228,6 +236,11 @@ footer a {
 
     #custom-dining-form {
         margin-left: -20px;
+        margin-bottom: -15px;
+    }
+
+    #remaining-form {
+        margin-left: -17px;
     }
 
     #past-days-off-form {
