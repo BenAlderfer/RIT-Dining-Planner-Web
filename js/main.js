@@ -140,7 +140,6 @@ function planSelected() {
     //hide or show custom dining input
     if (document.getElementById("plan").value == "custom") {
         document.getElementById("custom-dining-form").style.display = 'block';
-        document.getElementById("custom-dining-form").style.marginBottom = "-20px";
     } else {
         document.getElementById("custom-dining-form").style.display = 'none';
     }
@@ -449,7 +448,7 @@ function help() {
 //when clicking on about
 function about() {
     $("span.ui-dialog-title").text('About');
-    document.getElementById("dialog-text").innerHTML = "RIT dining Splitter by Alderfer Studios.<br />" +
+    document.getElementById("dialog-text").innerHTML = "RIT Dining Splitter by Alderfer Studios.<br />" +
         "Browser support is based on what the design library (MDL) can support. These browsers are:<br />" +
         "-Chrome<br />" +
         "-Edge<br />" +
@@ -464,7 +463,7 @@ function about() {
 //when clicking on source
 function source() {
     $("span.ui-dialog-title").text('Source');
-    document.getElementById("dialog-text").innerHTML = "This site is open source. You can find it here: https://github.com/BenAlderfer/rit-dining-splitter-web.";
+    document.getElementById("dialog-text").innerHTML = "This site is open source. You can find it here: https://github.com/BenAlderfer/rit-debit-splitter-web.";
     $( "#dialog" ).dialog('open');
 }
 
