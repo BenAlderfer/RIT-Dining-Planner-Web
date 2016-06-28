@@ -1,7 +1,7 @@
 "use strict";
 
 //global variables
-var planName = "orange";
+var planName = "";
 var initial = 0;
 var rollover = 0;
 var remaining = 0;
@@ -19,9 +19,6 @@ var data;
 //runs startup commands after page loads
 function startUp() {
     notification = document.querySelector('.mdl-js-snackbar');
-
-    //hide results
-    hideResults();
 
     //restore saved fields
     restoreFields();
@@ -468,6 +465,10 @@ function source() {
     document.getElementById("dialog-text").innerHTML = "This site is open source. You can find it here: https://github.com/BenAlderfer/rit-debit-splitter-web.";
     $( "#dialog" ).dialog('open');
 }
+
+//hide things that shouldn't show all the time
+planSelected(); //hide custom box if necessary
+hideResults(); //hide results
 
 //when page loaded
 $( document ).ready( function() {
