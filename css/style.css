@@ -25,6 +25,12 @@ p {
     text-align: center;
 }
 
+/* disable input borders */
+.mdl-textfield {
+    outline: none;
+    margin-bottom: -10px;
+}
+
 /* override text highlight color */
 ::selection {
     background: #FFCC80;
@@ -206,10 +212,6 @@ footer a {
 
     form {
         width: 90%;
-    }
-
-    .last-item {
-        margin-bottom: 10px;
     }
 
     .two-part-section-end {
