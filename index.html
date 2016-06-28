@@ -53,7 +53,7 @@
 
             <section class="container" id="content">
 
-                <div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar">
+                <div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar" id="snackbar">
                     <div class="mdl-snackbar__text"></div>
                     <button type="button" class="mdl-snackbar__action"></button>
                 </div>
@@ -218,7 +218,7 @@
 
                     <div class="mdl-cell mdl-cell--6-col full-width-when-small">
 
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="calculate-button" onclick="calculate()">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="calculate-button" onclick="getFieldsAndCheck()">
                             Calculate
                         </button>
 
