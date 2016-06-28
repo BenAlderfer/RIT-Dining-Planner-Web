@@ -447,7 +447,7 @@ function help() {
 //when clicking on about
 function about() {
     $("span.ui-dialog-title").text('About');
-    document.getElementById("dialog-text").innerHTML = "RIT Dining Splitter by Alderfer Studios.<br />" +
+    document.getElementById("dialog-text").innerHTML = "RIT Dining Planner by Alderfer Studios.<br />" +
         "Browser support is based on what the design library (MDL) can support. These browsers are:<br />" +
         "-Chrome<br />" +
         "-Edge<br />" +
