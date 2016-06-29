@@ -430,7 +430,7 @@ function calculateAndSet() {
     saveFields();
 
     //debugging
-    document.getElementById("initial-text").innerHTML = "initial: " + initial;
+   /* document.getElementById("initial-text").innerHTML = "initial: " + initial;
     document.getElementById("rollover-text").innerHTML = "rollover: " + rollover;
     document.getElementById("current-text").innerHTML = "remaining: " + remaining;
     document.getElementById("start-text").innerHTML = "start: " + start;
@@ -438,7 +438,7 @@ function calculateAndSet() {
     document.getElementById("dayDiff-text").innerHTML = "day diff: " + dayDiff;
     document.getElementById("currentDayDiff-text").innerHTML = "current day diff: " + currentDayDiff;
     document.getElementById("total-days-off-text").innerHTML = "total days off: " + totalDaysOff;
-    document.getElementById("past-days-off-text").innerHTML = "past days off: " + pastDaysOff;
+    document.getElementById("past-days-off-text").innerHTML = "past days off: " + pastDaysOff; */
 }
 
 //when key pressed, calculate if enter
