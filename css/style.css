@@ -277,7 +277,7 @@ footer a {
         display: none;
     }
 
-    a, a:visited {
+    a:not(#contact-link), a:not(#contact-link):visited {
         color: #303030;
         text-decoration: none;
         font-weight: normal;
