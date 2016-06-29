@@ -174,6 +174,10 @@ footer a {
     display: none;
 }
 
+.ui-widget {
+    outline: none;
+}
+
 /* media queries */
 @media only screen and (max-width : 1279px) {
     select {
@@ -277,7 +281,7 @@ footer a {
         display: none;
     }
 
-    a, a:visited {
+    a:not(#contact-link), a:not(#contact-link):visited {
         color: #303030;
         text-decoration: none;
         font-weight: normal;
