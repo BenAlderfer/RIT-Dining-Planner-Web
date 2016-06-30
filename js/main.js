@@ -6,10 +6,10 @@ var initial = 0;
 var rollover = 0;
 var remaining = 0;
 var dayDiff = 0;
-var totalDaysOff = 0;
+var totalDaysOff = 3;
 var pastDaysOff = 0;
-var startDate = "01/24/2016";
-var endDate = "05/20/2016";
+var startDate = "08/22/2016";
+var endDate = "12/17/2016";
 var start, end, today;
 
 //snackbar variables
@@ -28,6 +28,13 @@ function startUp() {
 
     //calculate numbers and set fields
     calculateAndSet();
+}
+
+//clears the local storage on option selected
+//used to reset to defaults
+//ex - getting new default dates for next semester
+function clearLocalStorage() {
+    localStorage.clear();
 }
 
 //saves input
@@ -183,6 +190,16 @@ function initialIsValid() {
         return false;
     }
 
+    if (planName == "") {
+        data = {
+            message: 'The dining plan must be selected.',
+            timeout: 8000
+        };
+        showSnackbarMessage(data);
+        hideResults();
+        return false;
+    }
+
     return true;
 }
 
@@ -225,6 +242,7 @@ function startDateIsValid() {
         };
         showSnackbarMessage(data);
         hideResults();
+        return false;
     }
 
     return true;
@@ -239,6 +257,7 @@ function endDateIsValid() {
         };
         showSnackbarMessage(data);
         hideResults();
+        return false;
     }
 
     return true;
@@ -305,6 +324,16 @@ function pastDaysOffIsValid() {
     if (! /[0-9]*/.test(String(pastDaysOff))) {
         data = {
             message: 'The past days off must be a positive whole number.',
+            timeout: 8000
+        };
+        showSnackbarMessage(data);
+        hideResults();
+        return false;
+    }
+
+    if (pastDaysOff > totalDaysOff) {
+        data = {
+            message: 'The past days off cannot exceed the total days off.',
             timeout: 8000
         };
         showSnackbarMessage(data);
@@ -452,6 +481,7 @@ function calculateIfEnter() {
 function help() {
     $("span.ui-dialog-title").text('Help');
     document.getElementById("dialog-text").innerHTML = "-Hover over elements for descriptive hints.<br />" +
+        "-To load defaults, click \"Clear Saved\" and refresh.<br />" +
         "-If you have any questions, bug reports, or suggestions, contact: alderferstudios@gmail.com.<br />" +
         "-You can also submit these as issues on the Github repo.<br />" +
         "-Please include your browser and version with any bug reports.";
