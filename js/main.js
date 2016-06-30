@@ -481,6 +481,7 @@ function calculateIfEnter() {
 function help() {
     $("span.ui-dialog-title").text('Help');
     document.getElementById("dialog-text").innerHTML = "-Hover over elements for descriptive hints.<br />" +
+        "-To load defaults, click \"Clear Saved\" and refresh.<br />" +
         "-If you have any questions, bug reports, or suggestions, contact: alderferstudios@gmail.com.<br />" +
         "-You can also submit these as issues on the Github repo.<br />" +
         "-Please include your browser and version with any bug reports.";
