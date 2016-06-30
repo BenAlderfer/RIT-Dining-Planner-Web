@@ -331,6 +331,16 @@ function pastDaysOffIsValid() {
         return false;
     }
 
+    if (pastDaysOff > totalDaysOff) {
+        data = {
+            message: 'The past days off cannot exceed the total days off.',
+            timeout: 8000
+        };
+        showSnackbarMessage(data);
+        hideResults();
+        return false;
+    }
+
     return true;
 }
 
