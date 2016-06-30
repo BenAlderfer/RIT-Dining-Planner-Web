@@ -30,6 +30,13 @@ function startUp() {
     calculateAndSet();
 }
 
+//clears the local storage on option selected
+//used to reset to defaults
+//ex - getting new default dates for next semester
+function clearLocalStorage() {
+    localStorage.clear();
+}
+
 //saves input
 function saveFields() {
     localStorage.setItem("planName", planName);
@@ -176,6 +183,16 @@ function initialIsValid() {
     if (! /[0-9]*[.,]?[0-9]+/.test(String(initial))) {
         data = {
             message: 'The initial dining must be a positive number.',
+            timeout: 8000
+        };
+        showSnackbarMessage(data);
+        hideResults();
+        return false;
+    }
+
+    if (planName == "") {
+        data = {
+            message: 'The dining plan must be selected.',
             timeout: 8000
         };
         showSnackbarMessage(data);
