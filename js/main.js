@@ -6,10 +6,10 @@ var initial = 0;
 var rollover = 0;
 var remaining = 0;
 var dayDiff = 0;
-var totalDaysOff = 0;
+var totalDaysOff = 3;
 var pastDaysOff = 0;
-var startDate = "01/24/2016";
-var endDate = "05/20/2016";
+var startDate = "08/22/2016";
+var endDate = "12/17/2016";
 var start, end, today;
 
 //snackbar variables
