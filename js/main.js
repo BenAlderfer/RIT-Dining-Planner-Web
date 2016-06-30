@@ -480,11 +480,11 @@ function calculateIfEnter() {
 //when clicking on help
 function help() {
     $("span.ui-dialog-title").text('Help');
-    document.getElementById("dialog-text").innerHTML = "-Hover over elements for descriptive hints.<br />" +
-        "-To load defaults, click \"Clear Saved\" and refresh.<br />" +
-        "-If you have any questions, bug reports, or suggestions, contact: alderferstudios@gmail.com.<br />" +
-        "-You can also submit these as issues on the Github repo.<br />" +
-        "-Please include your browser and version with any bug reports.";
+    document.getElementById("dialog-text").innerHTML = "&#8226; Hover over elements for descriptive hints.<br />" +
+        "&#8226; To load defaults, click \"Clear Saved\" and refresh.<br />" +
+        "&#8226; If you have any questions, bug reports, or suggestions, contact: alderferstudios@gmail.com.<br />" +
+        "&#8226; You can also submit these as issues on the Github repo.<br />" +
+        "&#8226; Please include your browser and version with any bug reports.";
     $( "#dialog" ).dialog('open');
 }
 
@@ -493,13 +493,13 @@ function about() {
     $("span.ui-dialog-title").text('About');
     document.getElementById("dialog-text").innerHTML = "RIT Dining Planner by Alderfer Studios.<br />" +
         "Browser support is based on what the design library (MDL) can support. These browsers are:<br />" +
-        "-Chrome<br />" +
-        "-Edge<br />" +
-        "-Firefox<br />" +
-        "-Opera<br />" +
-        "-Internet Explorer 11+<br />" +
-        "-Safari 8+<br />" +
-        "-Mobile Safari 8+";
+        "&#8226; Chrome<br />" +
+        "&#8226; Edge<br />" +
+        "&#8226; Firefox<br />" +
+        "&#8226; Opera<br />" +
+        "&#8226; Internet Explorer 11+<br />" +
+        "&#8226; Safari 8+<br />" +
+        "&#8226; Mobile Safari 8+";
     $( "#dialog" ).dialog('open');
 }
 
