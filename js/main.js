@@ -242,6 +242,7 @@ function startDateIsValid() {
         };
         showSnackbarMessage(data);
         hideResults();
+        return false;
     }
 
     return true;
@@ -256,6 +257,7 @@ function endDateIsValid() {
         };
         showSnackbarMessage(data);
         hideResults();
+        return false;
     }
 
     return true;
