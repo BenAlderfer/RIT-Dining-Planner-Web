@@ -1,15 +1,15 @@
 "use strict";
 
 //global variables
-var planName = "";
-var initial = 0;
-var rollover = 0;
-var remaining = 0;
-var dayDiff = 0;
-var totalDaysOff = 3;
-var pastDaysOff = 0;
-var startDate = "08/22/2016";
-var endDate = "12/17/2016";
+var planName;
+var initial;
+var rollover;
+var remaining;
+var dayDiff;
+var totalDaysOff;
+var pastDaysOff;
+var startDate;
+var endDate;
 var start, end, today;
 
 //snackbar variables
@@ -35,6 +35,43 @@ function startUp() {
 //ex - getting new default dates for next semester
 function clearLocalStorage() {
     localStorage.clear();
+    setVarDefaults();
+    blankFields();
+    setFields();
+}
+
+//sets the default values for variables
+function setVarDefaults() {
+    planName = "";
+    initial = 0;
+    rollover = 0;
+    remaining = 0;
+    dayDiff = 0;
+    totalDaysOff = 3;
+    pastDaysOff = 0;
+    startDate = "08/22/2016";
+    endDate = "12/17/2016";
+}
+
+//clears out fields
+function blankFields() {
+    //empty fields
+    document.getElementById("custom-dining").value = "";
+    document.getElementById("rollover").value = "";
+    document.getElementById("remaining").value = "";
+    document.getElementById("start-date").value = "";
+    document.getElementById("end-date").value = "";
+    document.getElementById("total-days-off").value = "";
+    document.getElementById("past-days-off").value = "";
+
+    //drop floating labels
+    $("#custom-dining").parent().removeClass("is-dirty");
+    $("#rollover").parent().removeClass("is-dirty");
+    $("#remaining").parent().removeClass("is-dirty");
+    $("#start-date").parent().removeClass("is-dirty");
+    $("#end-date").parent().removeClass("is-dirty");
+    $("#total-days-off").parent().removeClass("is-dirty");
+    $("#past-days-off").parent().removeClass("is-dirty");
 }
 
 //saves input
@@ -89,8 +126,12 @@ function restoreFields() {
         pastDaysOff = localStorage.getItem("pastDaysOff");
     }
 
-    //set fields, need to set class "is-dirty" to make labels float
-    //if custom, show custom field and fill it in
+    setFields();
+}
+
+//set fields, need to set class "is-dirty" to make labels float
+//if custom, show custom field and fill it in
+function setFields() {
     if (planName == "custom") {
         document.getElementById("plan").value = planName;
         planSelected();
@@ -480,11 +521,11 @@ function calculateIfEnter() {
 //when clicking on help
 function help() {
     $("span.ui-dialog-title").text('Help');
-    document.getElementById("dialog-text").innerHTML = "-Hover over elements for descriptive hints.<br />" +
-        "-To load defaults, click \"Clear Saved\" and refresh.<br />" +
-        "-If you have any questions, bug reports, or suggestions, contact: alderferstudios@gmail.com.<br />" +
-        "-You can also submit these as issues on the Github repo.<br />" +
-        "-Please include your browser and version with any bug reports.";
+    document.getElementById("dialog-text").innerHTML = "&#8226; Hover over elements for descriptive hints.<br />" +
+        "&#8226; To load defaults, click \"Clear saved\" and refresh.<br />" +
+        "&#8226; If you have any questions, bug reports, or suggestions, contact: alderferstudios@gmail.com.<br />" +
+        "&#8226; You can also submit these as issues on the Github repo.<br />" +
+        "&#8226; Please include your browser and version with any bug reports.";
     $( "#dialog" ).dialog('open');
 }
 
@@ -493,13 +534,13 @@ function about() {
     $("span.ui-dialog-title").text('About');
     document.getElementById("dialog-text").innerHTML = "RIT Dining Planner by Alderfer Studios.<br />" +
         "Browser support is based on what the design library (MDL) can support. These browsers are:<br />" +
-        "-Chrome<br />" +
-        "-Edge<br />" +
-        "-Firefox<br />" +
-        "-Opera<br />" +
-        "-Internet Explorer 11+<br />" +
-        "-Safari 8+<br />" +
-        "-Mobile Safari 8+";
+        "&#8226; Chrome<br />" +
+        "&#8226; Edge<br />" +
+        "&#8226; Firefox<br />" +
+        "&#8226; Opera<br />" +
+        "&#8226; Internet Explorer 11+<br />" +
+        "&#8226; Safari 8+<br />" +
+        "&#8226; Mobile Safari 8+";
     $( "#dialog" ).dialog('open');
 }
 
@@ -513,6 +554,8 @@ function source() {
 //hide things that shouldn't show all the time
 planSelected(); //hide custom box if necessary
 hideResults(); //hide results
+
+setVarDefaults(); //sets variable defaults
 
 //when page loaded
 $( document ).ready( function() {
