@@ -40,6 +40,7 @@ function clearLocalStorage() {
     localStorage.clear();
     setVarDefaults();
     blankFields();
+    hideResults();
     setFields();
 }
 
