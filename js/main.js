@@ -525,10 +525,14 @@ function calculateIfEnter() {
 //when clicking on help
 function help() {
     $("span.ui-dialog-title").text('Help');
-    document.getElementById("dialog-text").innerHTML = "&#8226; Hover over elements for descriptive hints.<br />" +
+    document.getElementById("dialog-text1").innerHTML = "&#8226; Hover over elements for descriptive hints.<br />" +
         "&#8226; To load defaults, click \"Clear saved\".<br />" +
-        "&#8226; If you have any questions, bug reports, or suggestions, contact: alderferstudios@gmail.com.<br />" +
-        "&#8226; You can also submit these as issues on the Github repo.<br />" +
+        "&#8226; If you have any questions, bug reports, or suggestions, contact:";
+
+    document.getElementById("dialog-link-text").innerHTML = "alderferstudios@gmail.com"
+    document.getElementById("dialog-link-text").setAttribute('href', 'mailto:alderferstudios@gmail.com?subject=RIT%20Dining%20Planner%20Web');
+
+    document.getElementById("dialog-text2").innerHTML = "&#8226; You can also submit these as issues on the Github repo.<br />" +
         "&#8226; Please include your browser and version with any bug reports.";
     $( "#dialog" ).dialog('open');
 }
@@ -536,7 +540,7 @@ function help() {
 //when clicking on about
 function about() {
     $("span.ui-dialog-title").text('About');
-    document.getElementById("dialog-text").innerHTML = "RIT Dining Planner by Alderfer Studios.<br />" +
+    document.getElementById("dialog-text1").innerHTML = "RIT Dining Planner by Alderfer Studios.<br />" +
         "Browser support is based on what the design library (MDL) can support. These browsers are:<br />" +
         "&#8226; Chrome<br />" +
         "&#8226; Edge<br />" +
@@ -545,13 +549,20 @@ function about() {
         "&#8226; Internet Explorer 11+<br />" +
         "&#8226; Safari 8+<br />" +
         "&#8226; Mobile Safari 8+";
+    document.getElementById("dialog-link-text").innerHTML = "";
+    document.getElementById("dialog-text2").innerHTML = "";
     $( "#dialog" ).dialog('open');
 }
 
 //when clicking on source
 function source() {
     $("span.ui-dialog-title").text('Source');
-    document.getElementById("dialog-text").innerHTML = "This site is open source. You can find it here: https://github.com/BenAlderfer/rit-dining-planner-web.";
+    document.getElementById("dialog-text1").innerHTML = "This site is open source. You can find it here:";
+
+    document.getElementById("dialog-link-text").innerHTML = "https://github.com/BenAlderfer/rit-dining-planner-web";
+    document.getElementById("dialog-link-text").setAttribute('href', 'https://github.com/BenAlderfer/rit-dining-planner-web');
+
+    document.getElementById("dialog-text2").innerHTML = "";
     $( "#dialog" ).dialog('open');
 }
 

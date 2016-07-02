@@ -101,6 +101,10 @@ select {
     margin-bottom: 30px;
 }
 
+select:active, select:hover {
+    outline-color: #FF5722;
+}
+
 .select-section {
     margin-left: -10px;
     margin-top: 0;
@@ -178,6 +182,10 @@ footer a {
 }
 
 .ui-widget {
+    outline: none;
+}
+
+#dialog-link-text {
     outline: none;
 }
 
