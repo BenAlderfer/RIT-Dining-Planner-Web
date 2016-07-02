@@ -529,7 +529,7 @@ function help() {
         "&#8226; To load defaults, click \"Clear saved\".<br />" +
         "&#8226; If you have any questions, bug reports, or suggestions, contact:";
 
-    document.getElementById("dialog-link-text").innerHTML = "alderferstudios@gmail.com"
+    document.getElementById("dialog-link-text").innerHTML = "alderferstudios@gmail.com";
     document.getElementById("dialog-link-text").setAttribute('href', 'mailto:alderferstudios@gmail.com?subject=RIT%20Dining%20Planner%20Web');
 
     document.getElementById("dialog-text2").innerHTML = "&#8226; You can also submit these as issues on the Github repo.<br />" +
