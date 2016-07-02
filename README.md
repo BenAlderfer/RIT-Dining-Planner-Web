@@ -6,9 +6,17 @@ See the license file for copying permission.
 
 Dining planner web app to manage RIT Dining Dollars.
 
-Master branch is being used as the development branch, gh-pages is the master branch (what shows on the site), and
-minified will be storage for minified files.
+Made with input from Joel Eager, Tim Endersby, and Stephen Cioffi.
 
 Available at http://ritdebit.com/
 
-Made with input from Joel Eager, Tim Endersby, and Stephen Cioffi.
+Master branch is being used as the development branch, gh-pages is the master branch (what shows on the site), and
+minified will be storage for minified files.
+
+Resources used:
+
+-Material Design Lite (MDL) - http://getmdl.io/
+
+-jQuery - https://jquery.com/
+
+-jQueryUI - https://jqueryui.com/
