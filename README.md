@@ -14,6 +14,9 @@ Master branch is being used as the development branch, gh-pages is the master br
 minified will be storage for minified files.
 
 Resources used:
+
 -Material Design Lite (MDL) - http://getmdl.io/
+
 -jQuery - https://jquery.com/
+
 -jQueryUI - https://jqueryui.com/
