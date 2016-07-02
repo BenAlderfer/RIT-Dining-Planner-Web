@@ -225,9 +225,9 @@ function getInitial() {
 
 //checks if the initial value is valid
 function initialIsValid() {
-    if ( initial <= 0 || ! /\d*(\.\d{2})?/.test(String(initial)) ) {
+    if (planName == "") {
         data = {
-            message: 'The initial dining must be a positive number.',
+            message: 'The dining plan must be selected.',
             timeout: 8000
         };
         showSnackbarMessage(data);
@@ -235,9 +235,9 @@ function initialIsValid() {
         return false;
     }
 
-    if (planName == "") {
+    if ( initial <= 0 || ! /\d*(\.\d{2})?/.test(String(initial)) ) {
         data = {
-            message: 'The dining plan must be selected.',
+            message: 'The initial dining must be a positive number.',
             timeout: 8000
         };
         showSnackbarMessage(data);
