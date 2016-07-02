@@ -18,6 +18,14 @@
     display: none;
 }
 
+.mdl-snackbar, .mdl-snackbar__text, .mdl-snackbar__action {
+    display: none;
+}
+
+.separator, #contact-link {
+    display: none;
+}
+
 #summary-card, #table-card {
     display: block;
 }
