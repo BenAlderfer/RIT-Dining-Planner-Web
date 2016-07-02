@@ -550,7 +550,7 @@ function about() {
 //when clicking on source
 function source() {
     $("span.ui-dialog-title").text('Source');
-    document.getElementById("dialog-text").innerHTML = "This site is open source. You can find it here: https://github.com/BenAlderfer/rit-debit-splitter-web.";
+    document.getElementById("dialog-text").innerHTML = "This site is open source. You can find it here: https://github.com/BenAlderfer/rit-dining-planner-web.";
     $( "#dialog" ).dialog('open');
 }
 
