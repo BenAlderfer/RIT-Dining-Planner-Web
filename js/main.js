@@ -146,7 +146,7 @@ function setFields() {
         planSelected();
     }
 
-    //only fill in rollover and remaining if something was saved
+    //only fill in if something was saved
     if (rollover != 0) {
         document.getElementById("rollover").value = String(rollover);
         $("#rollover").parent().addClass("is-dirty");
@@ -225,7 +225,7 @@ function getInitial() {
 
 //checks if the initial value is valid
 function initialIsValid() {
-    if (! /[0-9]*[.,]?[0-9]+/.test(String(initial))) {
+    if ( initial <= 0 || ! /\d*(\.\d{2})?/.test(String(initial)) ) {
         data = {
             message: 'The initial dining must be a positive number.',
             timeout: 8000
@@ -250,7 +250,7 @@ function initialIsValid() {
 
 //checks if the rollover value is valid
 function rolloverIsValid() {
-    if (rollover != '' && ! /[0-9]*[.,]?[0-9]+/.test(String(rollover))) {
+    if ( rollover != '' && ( rollover < 0 || ! /\d*(\.\d{2})?/.test(String(rollover)) ) ) {
         data = {
             message: 'The rollover must be a positive number.',
             timeout: 8000
@@ -265,7 +265,7 @@ function rolloverIsValid() {
 
 //checks if the remaining value is valid
 function remainingIsValid() {
-    if (! /[0-9]*[.,]?[0-9]+/.test(String(remaining))) {
+    if ( remaining <= 0 || ! /\d*(\.\d{2})?/.test(String(remaining)) ) {
         data = {
             message: 'The remaining must be a positive number.',
             timeout: 8000
@@ -351,7 +351,7 @@ function checkIfTodayInRange() {
 
 //checks if the total days off value is valid
 function totalDaysOffIsValid() {
-    if (! /[0-9]*/.test(String(totalDaysOff))) {
+    if (! /\d*/.test(String(totalDaysOff))) {
         data = {
             message: 'The total days off must be a positive whole number.',
             timeout: 8000
@@ -366,7 +366,7 @@ function totalDaysOffIsValid() {
 
 //checks if the past days off value is valid
 function pastDaysOffIsValid() {
-    if (! /[0-9]*/.test(String(pastDaysOff))) {
+    if (! /\d*/.test(String(pastDaysOff))) {
         data = {
             message: 'The past days off must be a positive whole number.',
             timeout: 8000
