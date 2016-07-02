@@ -138,9 +138,12 @@ select {
     font-size: 1.5em;
 }
 
+#summary-contents {
+    margin: 10px;
+}
+
 #summary-contents > * {
     text-align: center;
-    margin-left: -20px;
 }
 
 #summary {
