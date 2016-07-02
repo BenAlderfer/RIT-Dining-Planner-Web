@@ -299,8 +299,24 @@ footer a {
     }
 }
 
+@media only screen and (max-width : 399px) {
+    .ui-datepicker {
+       margin-left: -5%;
+    }
+
+    .ui-datepicker table td {
+        padding: 8px;
+        font-size: 1.5em;
+    }
+}
+
 @media only screen and (max-width : 349px) {
     table {
         font-size: 1em;
+    }
+
+    .ui-datepicker table td {
+        padding: 5px;
+        font-size: 1.5em;
     }
 }
