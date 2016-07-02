@@ -127,7 +127,7 @@
                                         <!-- current dining input -->
                                         <form action="#">
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end last-item" id="remaining-form" tabindex="99">
-                                                <input class="mdl-textfield__input" type="number" pattern="\d*(\.\d{2})?" step="0.01" id="remaining" onkeypress="calculateIfEnter()">
+                                                <input class="mdl-textfield__input" type="number" pattern="\d*(\.\d{2})?" step="0.01" maxlength="4" id="remaining" onkeypress="calculateIfEnter()">
                                                 <label class="mdl-textfield__label" for="remaining">Remaining</label>
                                                 <span class="mdl-textfield__error">Format should look like "1234.56"</span>
                                             </div>
@@ -293,7 +293,7 @@
             <div class="mdl-layout-spacer"></div>
 
             <footer>
-                <p>&copy; Alderfer Studios | <a href="mailto:alderferstudios@gmail.com?subject=RIT%20Dining%20Planner%20Web" id="contact-link">Contact</a></p>
+                <p>&copy; Alderfer Studios <span class="separator"> | </span> <a href="mailto:alderferstudios@gmail.com?subject=RIT%20Dining%20Planner%20Web" id="contact-link">Contact</a></p>
             </footer>
         </div>
 

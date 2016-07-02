@@ -26,8 +26,11 @@ function startUp() {
     //show or hide custom dining field as needed
     planSelected();
 
-    //calculate numbers and set fields
-    calculateAndSet();
+    //if they have a saved plan, they should have everything else to calculate
+    if (planName != "") {
+        //calculate numbers and set fields
+        calculateAndSet();
+    }
 }
 
 //clears the local storage on option selected
