@@ -312,7 +312,7 @@ function endDateIsValid() {
 function endDateIsAfterStartDate() {
     if (dayDiff < 1) {
         data = {
-            message: 'The end date should be at least 1 day after the start date.',
+            message: 'The end date must be at least 1 day after the start date.',
             timeout: 8000
         };
         showSnackbarMessage(data);
