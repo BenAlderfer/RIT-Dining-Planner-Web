@@ -94,7 +94,7 @@
                                         <!-- custom dining input-->
                                         <form action="#" id="custom-dining-section">
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end" id="custom-dining-form" tabindex="99">
-                                                <input class="mdl-textfield__input" type="number" pattern="\d*(\.\d{2})?" step="0.01" id="custom-dining" onkeypress="calculateIfEnter()">
+                                                <input class="mdl-textfield__input" type="number" max="9999.99" pattern="\d*(\.\d{2})?" step="0.01" id="custom-dining" onkeypress="calculateIfEnter()">
                                                 <label class="mdl-textfield__label" for="custom-dining">Custom dining</label>
                                                 <span class="mdl-textfield__error">Format should look like "1234.56"</span>
                                             </div>
@@ -114,7 +114,7 @@
                                         <!-- rollover input-->
                                         <form action="#" >
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="rollover-form" tabindex="99">
-                                                <input class="mdl-textfield__input" type="number" pattern="\d*(\.\d{2})?" step="0.01" id="rollover" onkeypress="calculateIfEnter()">
+                                                <input class="mdl-textfield__input" type="number" max="9999.99" pattern="\d*(\.\d{2})?" step="0.01" id="rollover" onkeypress="calculateIfEnter()">
                                                 <label class="mdl-textfield__label" for="rollover">Rollover</label>
                                                 <span class="mdl-textfield__error">Format should look like "1234.56"</span>
                                             </div>
@@ -127,7 +127,7 @@
                                         <!-- current dining input -->
                                         <form action="#">
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end last-item" id="remaining-form" tabindex="99">
-                                                <input class="mdl-textfield__input" type="number" pattern="\d*(\.\d{2})?" step="0.01" maxlength="4" id="remaining" onkeypress="calculateIfEnter()">
+                                                <input class="mdl-textfield__input" type="number" max="9999.99" pattern="\d*(\.\d{2})?" step="0.01" id="remaining" onkeypress="calculateIfEnter()">
                                                 <label class="mdl-textfield__label" for="remaining">Remaining</label>
                                                 <span class="mdl-textfield__error">Format should look like "1234.56"</span>
                                             </div>
@@ -152,7 +152,7 @@
                                     <div class="mdl-cell mdl-cell--6-col full-width-when-small two-part-section-start">
                                         <form action="#">
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="start-form" tabindex="99">
-                                                <input class="mdl-textfield__input" type="text"
+                                                <input class="mdl-textfield__input" type="text" maxlength="10"
                                                        pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d" id="start-date" onkeypress="calculateIfEnter()">
                                                 <label class="mdl-textfield__label" for="start-date">Start date</label>
                                                 <span class="mdl-textfield__error">Format should be "MM/DD/YYYY"</span>
@@ -165,7 +165,7 @@
                                     <div class="mdl-cell mdl-cell--6-col full-width-when-small two-part-section-end">
                                         <form action="#">
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="end-form" tabindex="99">
-                                                <input class="mdl-textfield__input" type="text"
+                                                <input class="mdl-textfield__input" type="text" maxlength="10"
                                                        pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d" id="end-date" onkeypress="calculateIfEnter()">
                                                 <label class="mdl-textfield__label" for="end-date">End date</label>
                                                 <span class="mdl-textfield__error">Format should be "MM/DD/YYYY"</span>
@@ -185,7 +185,7 @@
                                     <div class="mdl-cell mdl-cell--6-col full-width-when-small two-part-section-start">
                                         <form action="#" >
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="total-days-off-form" tabindex="99">
-                                                <input class="mdl-textfield__input" type="number" pattern="\d*" id="total-days-off" onkeypress="calculateIfEnter()">
+                                                <input class="mdl-textfield__input" type="number" max="99" pattern="\d*" id="total-days-off" onkeypress="calculateIfEnter()">
                                                 <label class="mdl-textfield__label" for="total-days-off">Total days off</label>
                                                 <span class="mdl-textfield__error">Format should look like "12"</span>
                                             </div>
@@ -197,7 +197,7 @@
                                     <div class="mdl-cell mdl-cell--6-col full-width-when-small">
                                         <form action="#">
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end last-item" id="past-days-off-form" tabindex="99">
-                                                <input class="mdl-textfield__input" type="number" pattern="\d*" id="past-days-off" onkeypress="calculateIfEnter()">
+                                                <input class="mdl-textfield__input" type="number" max="99" pattern="\d*" id="past-days-off" onkeypress="calculateIfEnter()">
                                                 <label class="mdl-textfield__label" for="past-days-off">Past days off</label>
                                                 <span class="mdl-textfield__error">Format should look like "12"</span>
                                             </div>
