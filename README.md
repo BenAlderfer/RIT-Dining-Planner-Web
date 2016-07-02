@@ -15,8 +15,8 @@ minified will be storage for minified files.
 
 Resources used:
 
--Material Design Lite (MDL) - http://getmdl.io/
+• Material Design Lite (MDL) - http://getmdl.io/
 
--jQuery - https://jquery.com/
+• jQuery - https://jquery.com/
 
--jQueryUI - https://jqueryui.com/
+• jQueryUI - https://jqueryui.com/

@@ -146,7 +146,7 @@ function setFields() {
         planSelected();
     }
 
-    //only fill in rollover and remaining if something was saved
+    //only fill in if something was saved
     if (rollover != 0) {
         document.getElementById("rollover").value = String(rollover);
         $("#rollover").parent().addClass("is-dirty");
@@ -225,9 +225,9 @@ function getInitial() {
 
 //checks if the initial value is valid
 function initialIsValid() {
-    if (! /[0-9]*[.,]?[0-9]+/.test(String(initial))) {
+    if (planName == "") {
         data = {
-            message: 'The initial dining must be a positive number.',
+            message: 'The dining plan must be selected.',
             timeout: 8000
         };
         showSnackbarMessage(data);
@@ -235,9 +235,9 @@ function initialIsValid() {
         return false;
     }
 
-    if (planName == "") {
+    if ( initial <= 0 || ! /\d*(\.\d{2})?/.test(String(initial)) ) {
         data = {
-            message: 'The dining plan must be selected.',
+            message: 'The initial dining must be a positive number.',
             timeout: 8000
         };
         showSnackbarMessage(data);
@@ -250,7 +250,7 @@ function initialIsValid() {
 
 //checks if the rollover value is valid
 function rolloverIsValid() {
-    if (rollover != '' && ! /[0-9]*[.,]?[0-9]+/.test(String(rollover))) {
+    if ( rollover != '' && ( rollover < 0 || ! /\d*(\.\d{2})?/.test(String(rollover)) ) ) {
         data = {
             message: 'The rollover must be a positive number.',
             timeout: 8000
@@ -265,7 +265,7 @@ function rolloverIsValid() {
 
 //checks if the remaining value is valid
 function remainingIsValid() {
-    if (! /[0-9]*[.,]?[0-9]+/.test(String(remaining))) {
+    if ( remaining <= 0 || ! /\d*(\.\d{2})?/.test(String(remaining)) ) {
         data = {
             message: 'The remaining must be a positive number.',
             timeout: 8000
@@ -312,7 +312,7 @@ function endDateIsValid() {
 function endDateIsAfterStartDate() {
     if (dayDiff < 1) {
         data = {
-            message: 'The end date should be at least 1 day after the start date.',
+            message: 'The end date must be at least 1 day after the start date.',
             timeout: 8000
         };
         showSnackbarMessage(data);
@@ -351,7 +351,7 @@ function checkIfTodayInRange() {
 
 //checks if the total days off value is valid
 function totalDaysOffIsValid() {
-    if (! /[0-9]*/.test(String(totalDaysOff))) {
+    if (! /\d*/.test(String(totalDaysOff))) {
         data = {
             message: 'The total days off must be a positive whole number.',
             timeout: 8000
@@ -366,7 +366,7 @@ function totalDaysOffIsValid() {
 
 //checks if the past days off value is valid
 function pastDaysOffIsValid() {
-    if (! /[0-9]*/.test(String(pastDaysOff))) {
+    if (! /\d*/.test(String(pastDaysOff))) {
         data = {
             message: 'The past days off must be a positive whole number.',
             timeout: 8000
@@ -525,10 +525,14 @@ function calculateIfEnter() {
 //when clicking on help
 function help() {
     $("span.ui-dialog-title").text('Help');
-    document.getElementById("dialog-text").innerHTML = "&#8226; Hover over elements for descriptive hints.<br />" +
+    document.getElementById("dialog-text1").innerHTML = "&#8226; Hover over elements for descriptive hints.<br />" +
         "&#8226; To load defaults, click \"Clear saved\".<br />" +
-        "&#8226; If you have any questions, bug reports, or suggestions, contact: alderferstudios@gmail.com.<br />" +
-        "&#8226; You can also submit these as issues on the Github repo.<br />" +
+        "&#8226; If you have any questions, bug reports, or suggestions, contact:";
+
+    document.getElementById("dialog-link-text").innerHTML = "alderferstudios@gmail.com";
+    document.getElementById("dialog-link-text").setAttribute('href', 'mailto:alderferstudios@gmail.com?subject=RIT%20Dining%20Planner%20Web');
+
+    document.getElementById("dialog-text2").innerHTML = "&#8226; You can also submit these as issues on the Github repo.<br />" +
         "&#8226; Please include your browser and version with any bug reports.";
     $( "#dialog" ).dialog('open');
 }
@@ -536,7 +540,7 @@ function help() {
 //when clicking on about
 function about() {
     $("span.ui-dialog-title").text('About');
-    document.getElementById("dialog-text").innerHTML = "RIT Dining Planner by Alderfer Studios.<br />" +
+    document.getElementById("dialog-text1").innerHTML = "RIT Dining Planner by Alderfer Studios.<br />" +
         "Browser support is based on what the design library (MDL) can support. These browsers are:<br />" +
         "&#8226; Chrome<br />" +
         "&#8226; Edge<br />" +
@@ -545,13 +549,20 @@ function about() {
         "&#8226; Internet Explorer 11+<br />" +
         "&#8226; Safari 8+<br />" +
         "&#8226; Mobile Safari 8+";
+    document.getElementById("dialog-link-text").innerHTML = "";
+    document.getElementById("dialog-text2").innerHTML = "";
     $( "#dialog" ).dialog('open');
 }
 
 //when clicking on source
 function source() {
     $("span.ui-dialog-title").text('Source');
-    document.getElementById("dialog-text").innerHTML = "This site is open source. You can find it here: https://github.com/BenAlderfer/rit-dining-planner-web.";
+    document.getElementById("dialog-text1").innerHTML = "This site is open source. You can find it here:";
+
+    document.getElementById("dialog-link-text").innerHTML = "https://github.com/BenAlderfer/rit-dining-planner-web";
+    document.getElementById("dialog-link-text").setAttribute('href', 'https://github.com/BenAlderfer/rit-dining-planner-web');
+
+    document.getElementById("dialog-text2").innerHTML = "";
     $( "#dialog" ).dialog('open');
 }
 
