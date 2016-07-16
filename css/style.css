@@ -118,6 +118,10 @@ select:active, select:hover {
     font-size: 1.5em;
 }
 
+#date-section {
+    margin-bottom: -25px;
+}
+
 /* datepicker */
 .ui-datepicker {
     width: auto;
