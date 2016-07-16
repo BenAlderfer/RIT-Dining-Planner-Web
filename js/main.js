@@ -245,6 +245,16 @@ function initialIsValid() {
         return false;
     }
 
+    if ( initial > 9999.99 ) {
+        data = {
+            message: 'The initial cannot exceed 9999.99.',
+            timeout: 8000
+        };
+        showSnackbarMessage(data);
+        hideResults();
+        return false;
+    }
+
     return true;
 }
 
@@ -253,6 +263,16 @@ function rolloverIsValid() {
     if ( rollover != '' && ( rollover < 0 || ! /^\d{1,4}(?:[.]\d{1,2}|$)$/.test(String(rollover)) ) ) {
         data = {
             message: 'The rollover must be a positive number.',
+            timeout: 8000
+        };
+        showSnackbarMessage(data);
+        hideResults();
+        return false;
+    }
+
+    if ( rollover > 9999.99 ) {
+        data = {
+            message: 'The rollover cannot exceed 9999.99.',
             timeout: 8000
         };
         showSnackbarMessage(data);
@@ -273,6 +293,25 @@ function remainingIsValid() {
         showSnackbarMessage(data);
         hideResults();
         return false;
+    }
+
+    if ( remaining > 9999.99 ) {
+        data = {
+            message: 'The remaining cannot exceed 9999.99.',
+            timeout: 8000
+        };
+        showSnackbarMessage(data);
+        hideResults();
+        return false;
+    }
+
+    //rollover already added
+    if ( remaining > initial ) {
+        data = {
+            message: 'The remaining should not exceed the initial + rollover.',
+            timeout: 8000
+        };
+        showSnackbarMessage(data);
     }
 
     return true;
@@ -361,12 +400,22 @@ function totalDaysOffIsValid() {
         return false;
     }
 
+    if ( totalDaysOff > 99 ) {
+        data = {
+            message: 'The total days off cannot exceed 99.',
+            timeout: 8000
+        };
+        showSnackbarMessage(data);
+        hideResults();
+        return false;
+    }
+
     return true;
 }
 
 //checks if the past days off value is valid
 function pastDaysOffIsValid() {
-    if (! /\d{1,2}/.test(String(pastDaysOff))) {
+    if (pastDaysOff != 0 && ! /\d{1,2}/.test(String(pastDaysOff))) {
         data = {
             message: 'The past days off must be a positive whole number.',
             timeout: 8000
@@ -379,6 +428,16 @@ function pastDaysOffIsValid() {
     if (pastDaysOff > totalDaysOff) {
         data = {
             message: 'The past days off cannot exceed the total days off.',
+            timeout: 8000
+        };
+        showSnackbarMessage(data);
+        hideResults();
+        return false;
+    }
+
+    if ( pastDaysOff > 99 ) {
+        data = {
+            message: 'The past days off cannot exceed 99.',
             timeout: 8000
         };
         showSnackbarMessage(data);
@@ -424,6 +483,8 @@ function getFieldsAndCheck() {
     if (!remainingIsValid()) {
         return;
     }
+
+    checkifRemainingExceedsInitial();
 
     startDate = document.getElementById("start-date").value;
     //validate startDate, end if not
