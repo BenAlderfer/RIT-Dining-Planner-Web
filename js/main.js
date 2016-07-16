@@ -235,9 +235,19 @@ function initialIsValid() {
         return false;
     }
 
-    if ( initial <= 0 || ! /\d*(\.\d{2})?/.test(String(initial)) ) {
+    if ( initial <= 0 || ! /^\d{1,4}(?:[.]\d{1,2}|$)$/.test(String(initial)) ) {
         data = {
             message: 'The initial dining must be a positive number.',
+            timeout: 8000
+        };
+        showSnackbarMessage(data);
+        hideResults();
+        return false;
+    }
+
+    if ( initial > 9999.99 ) {
+        data = {
+            message: 'The initial cannot exceed 9999.99.',
             timeout: 8000
         };
         showSnackbarMessage(data);
@@ -250,9 +260,19 @@ function initialIsValid() {
 
 //checks if the rollover value is valid
 function rolloverIsValid() {
-    if ( rollover != '' && ( rollover < 0 || ! /\d*(\.\d{2})?/.test(String(rollover)) ) ) {
+    if ( rollover != '' && ( rollover < 0 || ! /^\d{1,4}(?:[.]\d{1,2}|$)$/.test(String(rollover)) ) ) {
         data = {
             message: 'The rollover must be a positive number.',
+            timeout: 8000
+        };
+        showSnackbarMessage(data);
+        hideResults();
+        return false;
+    }
+
+    if ( rollover > 9999.99 ) {
+        data = {
+            message: 'The rollover cannot exceed 9999.99.',
             timeout: 8000
         };
         showSnackbarMessage(data);
@@ -265,7 +285,7 @@ function rolloverIsValid() {
 
 //checks if the remaining value is valid
 function remainingIsValid() {
-    if ( remaining <= 0 || ! /\d*(\.\d{2})?/.test(String(remaining)) ) {
+    if ( remaining <= 0 || ! /^\d{1,4}(?:[.]\d{1,2}|$)$/.test(String(remaining)) ) {
         data = {
             message: 'The remaining must be a positive number.',
             timeout: 8000
@@ -273,6 +293,25 @@ function remainingIsValid() {
         showSnackbarMessage(data);
         hideResults();
         return false;
+    }
+
+    if ( remaining > 9999.99 ) {
+        data = {
+            message: 'The remaining cannot exceed 9999.99.',
+            timeout: 8000
+        };
+        showSnackbarMessage(data);
+        hideResults();
+        return false;
+    }
+
+    //rollover already added
+    if ( remaining > initial ) {
+        data = {
+            message: 'The remaining should not exceed the initial + rollover.',
+            timeout: 8000
+        };
+        showSnackbarMessage(data);
     }
 
     return true;
@@ -351,9 +390,19 @@ function checkIfTodayInRange() {
 
 //checks if the total days off value is valid
 function totalDaysOffIsValid() {
-    if (! /\d*/.test(String(totalDaysOff))) {
+    if (! /\d{1,2}/.test(String(totalDaysOff))) {
         data = {
             message: 'The total days off must be a positive whole number.',
+            timeout: 8000
+        };
+        showSnackbarMessage(data);
+        hideResults();
+        return false;
+    }
+
+    if ( totalDaysOff > 99 ) {
+        data = {
+            message: 'The total days off cannot exceed 99.',
             timeout: 8000
         };
         showSnackbarMessage(data);
@@ -366,7 +415,7 @@ function totalDaysOffIsValid() {
 
 //checks if the past days off value is valid
 function pastDaysOffIsValid() {
-    if (! /\d*/.test(String(pastDaysOff))) {
+    if (pastDaysOff != 0 && ! /\d{1,2}/.test(String(pastDaysOff))) {
         data = {
             message: 'The past days off must be a positive whole number.',
             timeout: 8000
@@ -379,6 +428,16 @@ function pastDaysOffIsValid() {
     if (pastDaysOff > totalDaysOff) {
         data = {
             message: 'The past days off cannot exceed the total days off.',
+            timeout: 8000
+        };
+        showSnackbarMessage(data);
+        hideResults();
+        return false;
+    }
+
+    if ( pastDaysOff > 99 ) {
+        data = {
+            message: 'The past days off cannot exceed 99.',
             timeout: 8000
         };
         showSnackbarMessage(data);
@@ -424,6 +483,8 @@ function getFieldsAndCheck() {
     if (!remainingIsValid()) {
         return;
     }
+
+    checkifRemainingExceedsInitial();
 
     startDate = document.getElementById("start-date").value;
     //validate startDate, end if not
