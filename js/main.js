@@ -235,7 +235,7 @@ function initialIsValid() {
         return false;
     }
 
-    if ( initial <= 0 || ! /\d*(\.\d{2})?/.test(String(initial)) ) {
+    if ( initial <= 0 || ! /^\d{1,4}(?:[.]\d{1,2}|$)$/.test(String(initial)) ) {
         data = {
             message: 'The initial dining must be a positive number.',
             timeout: 8000
@@ -250,7 +250,7 @@ function initialIsValid() {
 
 //checks if the rollover value is valid
 function rolloverIsValid() {
-    if ( rollover != '' && ( rollover < 0 || ! /\d*(\.\d{2})?/.test(String(rollover)) ) ) {
+    if ( rollover != '' && ( rollover < 0 || ! /^\d{1,4}(?:[.]\d{1,2}|$)$/.test(String(rollover)) ) ) {
         data = {
             message: 'The rollover must be a positive number.',
             timeout: 8000
@@ -265,7 +265,7 @@ function rolloverIsValid() {
 
 //checks if the remaining value is valid
 function remainingIsValid() {
-    if ( remaining <= 0 || ! /\d*(\.\d{2})?/.test(String(remaining)) ) {
+    if ( remaining <= 0 || ! /^\d{1,4}(?:[.]\d{1,2}|$)$/.test(String(remaining)) ) {
         data = {
             message: 'The remaining must be a positive number.',
             timeout: 8000
@@ -351,7 +351,7 @@ function checkIfTodayInRange() {
 
 //checks if the total days off value is valid
 function totalDaysOffIsValid() {
-    if (! /\d*/.test(String(totalDaysOff))) {
+    if (! /\d{1,2}/.test(String(totalDaysOff))) {
         data = {
             message: 'The total days off must be a positive whole number.',
             timeout: 8000
@@ -366,7 +366,7 @@ function totalDaysOffIsValid() {
 
 //checks if the past days off value is valid
 function pastDaysOffIsValid() {
-    if (! /\d*/.test(String(pastDaysOff))) {
+    if (! /\d{1,2}/.test(String(pastDaysOff))) {
         data = {
             message: 'The past days off must be a positive whole number.',
             timeout: 8000
