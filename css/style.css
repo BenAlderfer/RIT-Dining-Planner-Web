@@ -285,6 +285,12 @@ footer a {
     }
 }
 
+@media only screen and (max-width : 629px) {
+    #show-hints {
+        display: none;
+    }
+}
+
 @media only screen and (max-width : 549px) {
     .mdl-tooltip:not(.table-tip) {
         display: none;

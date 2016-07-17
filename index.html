@@ -19,6 +19,7 @@
 		<link rel="stylesheet" href="css/fonts-icons.css">
 		<link rel="stylesheet" href="css/material.orange-indigo.min.css" />
         <link rel="stylesheet" href="css/jquery-ui.css">
+        <link rel="stylesheet" href="css/chardinjs.css">
         <link rel="stylesheet" href="css/style.css" media="screen">
 		<link rel="stylesheet" href="css/print.css" media="print">
 	</head>
@@ -47,6 +48,7 @@
                         <li class="mdl-menu__item" onclick="help()">Help</li>
                         <li class="mdl-menu__item" onclick="about()">About</li>
                         <li class="mdl-menu__item" onclick="source()">Source</li>
+                        <li class="mdl-menu__item mobile-only" id="show-hints" onclick="showHints()">Show hints</li>
                         <li class="mdl-menu__item" onclick="clearLocalStorage()">Clear saved</li>
                     </ul>
                 </div>
@@ -73,7 +75,8 @@
                                 <div class="mdl-grid inside-grid" id="plan-section">
                                     <div class="mdl-cell mdl-cell--6-col full-width-when-small select-section">
                                         <br /> <!-- drop down a line to line up with custom dining input -->
-                                        <select id="plan" onclick="planSelected()">
+                                        <select id="plan" onclick="planSelected()"
+                                            data-intro="Your meal plan" data-position="right">
                                             <option value="" disabled selected>Select plan</option>
                                             <option value="5">Tiger 5 ($1300)</option>
                                             <option value="10">Tiger 10 ($700)</option>
@@ -94,7 +97,9 @@
                                         <!-- custom dining input-->
                                         <form action="#" id="custom-dining-section">
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end" id="custom-dining-form" tabindex="99">
-                                                <input class="mdl-textfield__input" type="number" min="0" max="9999.99" pattern="^\d{1,4}(?:[.]\d{1,2}|$)$" step="0.01" id="custom-dining" onkeypress="calculateIfEnter()">
+                                                <input class="mdl-textfield__input" type="number" min="0" max="9999.99"
+                                                   pattern="^\d{1,4}(?:[.]\d{1,2}|$)$" step="0.01" id="custom-dining" onkeypress="calculateIfEnter()"
+                                                   data-intro="Custom amount of dining" data-position="right">
                                                 <label class="mdl-textfield__label" for="custom-dining">Custom dining</label>
                                                 <span class="mdl-textfield__error">Format should look like "1234.56"</span>
                                             </div>
@@ -112,9 +117,11 @@
                                 <div class="mdl-grid" id="rollover-remaining-section">
                                     <div class="mdl-cell mdl-cell--6-col full-width-when-small two-part-section-start">
                                         <!-- rollover input-->
-                                        <form action="#" >
+                                        <form action="#">
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="rollover-form" tabindex="99">
-                                                <input class="mdl-textfield__input" type="number" min="0" max="9999.99" pattern="^\d{1,4}(?:[.]\d{1,2}|$)$" step="0.01" id="rollover" onkeypress="calculateIfEnter()">
+                                                <input class="mdl-textfield__input" type="number" min="0" max="9999.99"
+                                                   pattern="^\d{1,4}(?:[.]\d{1,2}|$)$" step="0.01" id="rollover" onkeypress="calculateIfEnter()"
+                                                   data-intro="Rollover from previous semester" data-position="right">
                                                 <label class="mdl-textfield__label" for="rollover">Rollover</label>
                                                 <span class="mdl-textfield__error">Format should look like "1234.56"</span>
                                             </div>
@@ -127,7 +134,9 @@
                                         <!-- current dining input -->
                                         <form action="#">
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end last-item" id="remaining-form" tabindex="99">
-                                                <input class="mdl-textfield__input" type="number" min="0" max="9999.99" pattern="^\d{1,4}(?:[.]\d{1,2}|$)$" step="0.01" id="remaining" onkeypress="calculateIfEnter()">
+                                                <input class="mdl-textfield__input" type="number" min="0" max="9999.99"
+                                                   pattern="^\d{1,4}(?:[.]\d{1,2}|$)$" step="0.01" id="remaining" onkeypress="calculateIfEnter()"
+                                                   data-intro="Remaining amount of dining" data-position="right">
                                                 <label class="mdl-textfield__label" for="remaining">Remaining</label>
                                                 <span class="mdl-textfield__error">Format should look like "1234.56"</span>
                                             </div>
@@ -153,7 +162,8 @@
                                         <form action="#">
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="start-form" tabindex="99">
                                                 <input class="mdl-textfield__input" type="text" maxlength="10"
-                                                       pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](20)\d\d" id="start-date" onkeypress="calculateIfEnter()">
+                                                       pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](20)\d\d" id="start-date" onkeypress="calculateIfEnter()"
+                                                       data-intro="Semester start date" data-position="right">
                                                 <label class="mdl-textfield__label" for="start-date">Start date</label>
                                                 <span class="mdl-textfield__error">Format should look like "08/22/2016"</span>
                                             </div>
@@ -166,7 +176,8 @@
                                         <form action="#">
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="end-form" tabindex="99">
                                                 <input class="mdl-textfield__input" type="text" maxlength="10"
-                                                       pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](20)\d\d" id="end-date" onkeypress="calculateIfEnter()">
+                                                       pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](20)\d\d" id="end-date" onkeypress="calculateIfEnter()"
+                                                       data-intro="Semester end date" data-position="right">
                                                 <label class="mdl-textfield__label" for="end-date">End date</label>
                                                 <span class="mdl-textfield__error">Format should look like "12/17/2016"</span>
                                             </div>
@@ -185,7 +196,8 @@
                                     <div class="mdl-cell mdl-cell--6-col full-width-when-small two-part-section-start">
                                         <form action="#" >
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="total-days-off-form" tabindex="99">
-                                                <input class="mdl-textfield__input" type="number" min="0" max="99" pattern="\d{1,2}" id="total-days-off" onkeypress="calculateIfEnter()">
+                                                <input class="mdl-textfield__input" type="number" min="0" max="99" pattern="\d{1,2}" id="total-days-off" onkeypress="calculateIfEnter()"
+                                                   data-intro="Total number of days off" data-position="right">
                                                 <label class="mdl-textfield__label" for="total-days-off">Total days off</label>
                                                 <span class="mdl-textfield__error">Format should look like "12"</span>
                                             </div>
@@ -197,7 +209,8 @@
                                     <div class="mdl-cell mdl-cell--6-col full-width-when-small">
                                         <form action="#">
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end last-item" id="past-days-off-form" tabindex="99">
-                                                <input class="mdl-textfield__input" type="number" min="0" max="99" pattern="\d{1,2}" id="past-days-off" onkeypress="calculateIfEnter()">
+                                                <input class="mdl-textfield__input" type="number" min="0" max="99" pattern="\d{1,2}" id="past-days-off" onkeypress="calculateIfEnter()"
+                                                   data-intro="Days off already past" data-position="right">
                                                 <label class="mdl-textfield__label" for="past-days-off">Past days off</label>
                                                 <span class="mdl-textfield__error">Format should look like "12"</span>
                                             </div>
@@ -242,7 +255,8 @@
                                     </tr>
                                     <tr>
                                         <td class="head-item" id="average-label">Average</td>
-                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right table-tip" for="average-label">
+                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right table-tip" for="average-label"
+                                         data-intro=" Average amount you can spend with your dollars" data-position="right">
                                             Average amount you can spend with your dollars
                                         </div>
                                         <td></td>
@@ -251,7 +265,8 @@
                                     </tr>
                                     <tr>
                                         <td class="head-item" id="current-label">Currently</td>
-                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right table-tip" for="current-label">
+                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right table-tip" for="current-label"
+                                         data-intro="How much you can spend with your current dollars" data-position="right">
                                             How much you can spend with your current dollars
                                         </div>
                                         <td></td>
@@ -260,7 +275,8 @@
                                     </tr>
                                     <tr>
                                         <td class="head-item" id="diff-label">Difference</td>
-                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right table-tip" for="diff-label">
+                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right table-tip" for="diff-label"
+                                         data-intro="Difference in the current and average amounts" data-position="right">
                                             Difference in the current and average amounts
                                         </div>
                                         <td></td>
@@ -302,6 +318,7 @@
         <script src="js/material.min.js" defer></script>
         <script src="js/jquery-1.12.3.min.js" defer></script>
         <script src="js/jquery-ui.min.js" defer></script>
+        <script src="js/chardinjs.min.js" defer></script>
         <script src="js/main.js" defer></script>
     </body>
 </html>
