@@ -627,6 +627,11 @@ function source() {
     $( "#dialog" ).dialog('open');
 }
 
+//shows the chardin.js hints
+function showHints() {
+    $('body').chardinJs('start');
+}
+
 //hide things that shouldn't show all the time
 planSelected(); //hide custom box if necessary
 hideResults(); //hide results
