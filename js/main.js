@@ -11,6 +11,7 @@ var pastDaysOff;
 var startDate;
 var endDate;
 var start, end, today;
+var dialog;
 
 //snackbar variables
 var notification;
@@ -68,14 +69,34 @@ function blankFields() {
     document.getElementById("total-days-off").value = "";
     document.getElementById("past-days-off").value = "";
 
-    //drop floating labels
-    $("#custom-dining").parent().removeClass("is-dirty");
-    $("#rollover").parent().removeClass("is-dirty");
-    $("#remaining").parent().removeClass("is-dirty");
-    $("#start-date").parent().removeClass("is-dirty");
-    $("#end-date").parent().removeClass("is-dirty");
-    $("#total-days-off").parent().removeClass("is-dirty");
-    $("#past-days-off").parent().removeClass("is-dirty");
+    //drop floating labels and error messages
+    var customDining = $("#custom-dining");
+    customDining.parent().removeClass("is-dirty");
+    customDining.parent().removeClass("is-invalid");
+
+    var rollOver = $("#rollover");
+    rollOver.parent().removeClass("is-dirty");
+    rollOver.parent().removeClass("is-invalid");
+
+    var remaining = $("#remaining");
+    remaining.parent().removeClass("is-dirty");
+    remaining.parent().removeClass("is-invalid");
+
+    var startDate = $("#start-date");
+    startDate.parent().removeClass("is-dirty");
+    startDate.parent().removeClass("is-invalid");
+
+    var endDate = $("#end-date");
+    endDate.parent().removeClass("is-dirty");
+    endDate.parent().removeClass("is-invalid");
+
+    var totalDaysOff = $("#total-days-off");
+    totalDaysOff.parent().removeClass("is-dirty");
+    totalDaysOff.parent().removeClass("is-invalid");
+
+    var pastDaysOff = $("#past-days-off");
+    pastDaysOff.parent().removeClass("is-dirty");
+    pastDaysOff.parent().removeClass("is-invalid");
 }
 
 //saves input
@@ -593,7 +614,7 @@ function help() {
 
     document.getElementById("dialog-text2").innerHTML = "&#8226; You can also submit these as issues on the Github repo.<br />" +
         "&#8226; Please include your browser and version with any bug reports.";
-    $( "#dialog" ).dialog('open');
+    dialog.dialog('open');
 }
 
 //when clicking on about
@@ -610,7 +631,7 @@ function about() {
         "&#8226; Mobile Safari 8+";
     document.getElementById("dialog-link-text").innerHTML = "";
     document.getElementById("dialog-text2").innerHTML = "";
-    $( "#dialog" ).dialog('open');
+    dialog.dialog('open');
 }
 
 //when clicking on source
@@ -622,7 +643,7 @@ function source() {
     document.getElementById("dialog-link-text").setAttribute('href', 'https://github.com/BenAlderfer/rit-dining-planner-web');
 
     document.getElementById("dialog-text2").innerHTML = "";
-    $( "#dialog" ).dialog('open');
+    dialog.dialog('open');
 }
 
 //shows the chardin.js hints
@@ -641,8 +662,10 @@ $( document ).ready( function() {
     //assign datepickers and setup dialog
     $( "#start-date" ).datepicker();
     $( "#end-date" ).datepicker();
-    $( "#dialog" ).dialog({ modal: true});
-    $( "#dialog" ).dialog('close');
+
+    dialog = $( "#dialog" );
+    dialog.dialog({ modal: true});
+    dialog.dialog('close');
 
     //run start up items
     startUp();
