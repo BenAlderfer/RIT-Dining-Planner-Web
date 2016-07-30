@@ -64,6 +64,10 @@ p {
     display: none;
 }
 
+#dining-plans a {
+    text-decoration: none;
+}
+
 .material-icons {
     color: white;
 }
