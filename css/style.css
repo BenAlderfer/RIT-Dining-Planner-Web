@@ -64,6 +64,15 @@ p {
     display: none;
 }
 
+.mdl-menu__item a {
+    text-decoration: none;
+}
+
+.mdl-menu__item * {
+    color: #494949;
+    font-weight: normal;
+}
+
 .material-icons {
     color: white;
 }
