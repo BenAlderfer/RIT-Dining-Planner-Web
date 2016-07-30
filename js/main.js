@@ -484,8 +484,6 @@ function getFieldsAndCheck() {
         return;
     }
 
-    checkifRemainingExceedsInitial();
-
     startDate = document.getElementById("start-date").value;
     //validate startDate, end if not
     if (!startDateIsValid()) {
