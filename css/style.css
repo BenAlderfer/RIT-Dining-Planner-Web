@@ -187,6 +187,12 @@ footer a {
     color: white;
 }
 
+.stickToBottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
 .mobile-only {
     display: none;
 }
