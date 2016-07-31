@@ -623,12 +623,13 @@ function about() {
     document.getElementById("dialog-text1").innerHTML = "RIT Dining Planner by Alderfer Studios.<br />" +
         "Browser support is based on what the design library (MDL) can support. These browsers are:<br />" +
         "&#8226; Chrome<br />" +
-        "&#8226; Edge<br />" +
         "&#8226; Firefox<br />" +
         "&#8226; Opera<br />" +
-        "&#8226; Internet Explorer 11+<br />" +
-        "&#8226; Safari 8+<br />" +
-        "&#8226; Mobile Safari 8+";
+        "&#8226; Edge*<br />" +
+        "&#8226; Internet Explorer 11+*<br />" +
+        "&#8226; Safari 8+*<br />" +
+        "&#8226; Mobile Safari 8+*<br />" +
+        "* May still have issues";
     document.getElementById("dialog-link-text").innerHTML = "";
     document.getElementById("dialog-text2").innerHTML = "";
     dialog.dialog('open');
