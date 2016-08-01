@@ -80,7 +80,7 @@ p {
 #content {
     width: 80%;
     margin-left: 10%;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .inside-grid {
@@ -225,6 +225,10 @@ footer a {
 
     .mobile-only {
         display: block;
+    }
+
+    #content {
+        margin-top: 0;
     }
 
     #mobile-footer {
