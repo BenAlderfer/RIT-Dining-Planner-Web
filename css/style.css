@@ -219,8 +219,18 @@ footer a {
 
 /* when it becomes one column */
 @media only screen and (max-width : 1124px) {
+    .desktop-only {
+        display: none;
+    }
+
     .mobile-only {
         display: block;
+    }
+
+    #mobile-footer {
+        width: 140%;
+        margin-left: -20%;
+        padding: 1px;
     }
 
     .mdl-textfield {

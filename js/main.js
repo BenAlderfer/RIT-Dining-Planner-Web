@@ -652,30 +652,6 @@ function showHints() {
     $('body').chardinJs('start');
 }
 
-//if #date-card bottom is above the viewport + footer
-//stick footer to bottom
-function alignFooter() {
-    var dateCard = $("#date-card");
-    var footer = $("footer");
-
-    var viewportHeight = $(window).height();
-    var viewportWidth = $(window).width();
-    var cardBottom = dateCard.outerHeight();
-    var footerHeight = footer.outerHeight();
-
-    //if bottom of card can fit on screen, above footer, and dual pane
-    if (cardBottom < viewportHeight - footerHeight && viewportWidth > 1124) {
-        footer.addClass("stickToBottom");
-    } else {
-        footer.removeClass("stickToBottom");
-    }
-}
-
-//realign footer on resize
-window.onresize = function() {
-    alignFooter();
-};
-
 //hide things that shouldn't show all the time
 planSelected(); //hide custom box if necessary
 hideResults(); //hide results
@@ -691,8 +667,6 @@ $( document ).ready( function() {
     dialog = $( "#dialog" );
     dialog.dialog({ modal: true});
     dialog.dialog('close');
-
-    alignFooter();
 
     //run start up items
     startUp();
