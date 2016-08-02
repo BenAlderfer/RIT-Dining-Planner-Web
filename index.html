@@ -63,15 +63,15 @@
 
                 <div class="mdl-grid">
 
-                    <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-cell--4-col-phone full-width-when-small">
+                    <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
 
-                        <div class="card-wide mdl-card mdl-shadow--2dp .half-width-when-mid" id="balance-card">
+                        <div class="card-wide mdl-card mdl-shadow--2dp" id="balance-card">
                             <div class="card-contents">
                                 <!-- meal plan selector -->
                                 <h4 id="dining-header">Dining Dollars</h4>
 
                                 <div class="mdl-grid inside-grid" id="plan-section">
-                                    <div class="mdl-cell mdl-cell--6-col full-width-when-small select-section">
+                                    <div class="mdl-cell mdl-cell--6-col full-width-when-tablet half-width-when-phablet select-section">
                                         <br /> <!-- drop down a line to line up with custom dining input -->
                                         <select id="plan" onclick="planSelected()"
                                             data-intro="Your meal plan" data-position="right">
@@ -91,7 +91,7 @@
                                             Your meal plan
                                         </div>
                                     </div>
-                                    <div class="mdl-cell mdl-cell--6-col full-width-when-small">
+                                    <div class="mdl-cell mdl-cell--6-col full-width-when-tablet half-width-when-phablet">
                                         <!-- custom dining input-->
                                         <form action="#" id="custom-dining-section">
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end" id="custom-dining-form" tabindex="99">
@@ -113,7 +113,7 @@
                                 </div>
 
                                 <div class="mdl-grid" id="rollover-remaining-section">
-                                    <div class="mdl-cell mdl-cell--6-col full-width-when-small two-part-section-start">
+                                    <div class="mdl-cell mdl-cell--6-col full-width-when-tablet half-width-when-phablet two-part-section-start">
                                         <!-- rollover input-->
                                         <form action="#">
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="rollover-form" tabindex="99">
@@ -128,7 +128,7 @@
                                             How much you are rolling over from last semester
                                         </div>
                                     </div>
-                                    <div class="mdl-cell mdl-cell--6-col full-width-when-small">
+                                    <div class="mdl-cell mdl-cell--6-col full-width-when-tablet half-width-when-phablet">
                                         <!-- current dining input -->
                                         <form action="#">
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end last-item" id="remaining-form" tabindex="99">
@@ -151,12 +151,12 @@
                             </div>
                         </div>
 
-                        <div class="card-wide mdl-card mdl-shadow--2dp .half-width-when-mid" id="date-card">
+                        <div class="card-wide mdl-card mdl-shadow--2dp" id="date-card">
                             <div class="card-contents">
                                 <h4>Date Range</h4>
 
                                 <div class="mdl-grid inside-grid" id="date-section">
-                                    <div class="mdl-cell mdl-cell--6-col full-width-when-small two-part-section-start">
+                                    <div class="mdl-cell mdl-cell--6-col full-width-when-tablet half-width-when-phablet two-part-section-start">
                                         <form action="#">
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="start-form" tabindex="99">
                                                 <input class="mdl-textfield__input" type="text" maxlength="10"
@@ -170,7 +170,7 @@
                                             The start date for the semester
                                         </div>
                                     </div>
-                                    <div class="mdl-cell mdl-cell--6-col full-width-when-small two-part-section-end">
+                                    <div class="mdl-cell mdl-cell--6-col full-width-when-tablet half-width-when-phablet two-part-section-end">
                                         <form action="#">
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="end-form" tabindex="99">
                                                 <input class="mdl-textfield__input" type="text" maxlength="10"
@@ -191,7 +191,7 @@
                                 </div>
 
                                 <div class="mdl-grid">
-                                    <div class="mdl-cell mdl-cell--6-col full-width-when-small two-part-section-start">
+                                    <div class="mdl-cell mdl-cell--6-col full-width-when-tablet half-width-when-phablet two-part-section-start">
                                         <form action="#" >
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="total-days-off-form" tabindex="99">
                                                 <input class="mdl-textfield__input" type="number" min="0" max="99" pattern="\d{1,2}" id="total-days-off" onkeypress="calculateIfEnter()"
@@ -204,7 +204,7 @@
                                             How many days off in total
                                         </div>
                                     </div>
-                                    <div class="mdl-cell mdl-cell--6-col full-width-when-small">
+                                    <div class="mdl-cell mdl-cell--6-col full-width-when-tablet half-width-when-phablet">
                                         <form action="#">
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end last-item" id="past-days-off-form" tabindex="99">
                                                 <input class="mdl-textfield__input" type="number" min="0" max="99" pattern="\d{1,2}" id="past-days-off" onkeypress="calculateIfEnter()"
@@ -228,7 +228,7 @@
 
                     </div>
 
-                    <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-cell--4-col-phone full-width-when-small">
+                    <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
 
                         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="calculate-button" onclick="getFieldsAndCheck()">
                             Calculate
@@ -252,7 +252,7 @@
                                         <td>Weekly</td>
                                     </tr>
                                     <tr>
-                                        <td class="head-item" id="average-label" data-intro="Average amount you can spend with your dollars">Average</td>
+                                        <td class="head-item" id="average-label" data-intro="Average amount you can spend with your dollars" data-position="right">Average</td>
                                         <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right table-tip" for="average-label" data-position="right">
                                             Average amount you can spend with your dollars
                                         </div>
@@ -261,7 +261,7 @@
                                         <td id="avg-weekly"></td>
                                     </tr>
                                     <tr>
-                                        <td class="head-item" id="current-label" data-intro="How much you can spend with your current dollars">Currently</td>
+                                        <td class="head-item" id="current-label" data-intro="How much you can spend with your current dollars" data-position="right">Currently</td>
                                         <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right table-tip" for="current-label" data-position="right">
                                             How much you can spend with your current dollars
                                         </div>
@@ -270,7 +270,7 @@
                                         <td id="cur-weekly"></td>
                                     </tr>
                                     <tr>
-                                        <td class="head-item" id="diff-label" data-intro="Difference in the current and average amounts">Difference</td>
+                                        <td class="head-item" id="diff-label" data-intro="Difference in the current and average amounts" data-position="right">Difference</td>
                                         <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right table-tip" for="diff-label" data-position="right">
                                             Difference in the current and average amounts
                                         </div>

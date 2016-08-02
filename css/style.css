@@ -217,26 +217,7 @@ footer a {
     }
 }
 
-/* when it becomes one column */
 @media only screen and (max-width : 1124px) {
-    .desktop-only {
-        display: none;
-    }
-
-    .mobile-only {
-        display: block;
-    }
-
-    #content {
-        margin-top: 0;
-    }
-
-    #mobile-footer {
-        width: 140%;
-        margin-left: -20%;
-        padding: 1px;
-    }
-
     .mdl-textfield {
         margin-bottom: 0;
     }
@@ -246,17 +227,9 @@ footer a {
         margin-bottom: 10px;
     }
 
-	.full-width-when-small {
+	.full-width-when-tablet {
         width: 100%;
 	}
-
-	.half-width-when-mid {
-		width: 50%;
-	}
-
-    .mdl-tooltip--left {
-        display: none;
-    }
 
     form {
         width: 90%;
@@ -304,6 +277,35 @@ footer a {
     }
 }
 
+/* when it becomes one column */
+@media only screen and (max-width : 839px) {
+    .desktop-only {
+        display: none;
+    }
+
+    .mobile-only {
+        display: block;
+    }
+
+    #content {
+        margin-top: 0;
+    }
+
+    #mobile-footer {
+        width: 140%;
+        margin-left: -20%;
+        padding: 1px;
+    }
+
+    .mdl-tooltip--left {
+        display: none;
+    }
+
+    .half-width-when-phablet {
+        width: 45%;
+    }
+}
+
 @media only screen and (max-width : 649px) {
     #content {
         width: 100%;
@@ -326,6 +328,10 @@ footer a {
 @media only screen and (max-width : 499px) {
     #tigerbucks, #eservices {
         display: none;
+    }
+
+    .half-width-when-phablet {
+        width: 100%;
     }
 
     a:not(.contact-link), a:not(.contact-link):visited {
