@@ -17,6 +17,8 @@ The site runs through CloudFlare which minifies the code and adds a layer of sec
 
 Resources used:
 
+• Github Pages - https://pages.github.com/
+
 • Material Design Lite (MDL) - http://getmdl.io/
 
 • jQuery - https://jquery.com/
