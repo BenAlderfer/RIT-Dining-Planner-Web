@@ -1,6 +1,6 @@
 #Dining Planner Web
 
-Copyright (c) 2016 Alderfer Studios.
+Copyright © 2016 Alderfer Studios.
 
 See the license file for copying permission.
 
