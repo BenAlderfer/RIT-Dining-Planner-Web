@@ -249,7 +249,9 @@ function initialIsValid() {
     if (planName == "") {
         data = {
             message: 'The dining plan must be selected.',
-            timeout: 8000
+            timeout: 8000,
+            actionHandler: hideSnackbar,
+            actionText: 'Dismiss'
         };
         showSnackbarMessage(data);
         hideResults();
@@ -259,7 +261,9 @@ function initialIsValid() {
     if ( initial <= 0 || ! /^\d{1,4}(?:[.]\d{1,2}|$)$/.test(String(initial)) ) {
         data = {
             message: 'The initial dining must be a positive number.',
-            timeout: 8000
+            timeout: 8000,
+            actionHandler: hideSnackbar,
+            actionText: 'Dismiss'
         };
         showSnackbarMessage(data);
         hideResults();
@@ -269,7 +273,9 @@ function initialIsValid() {
     if ( initial > 9999.99 ) {
         data = {
             message: 'The initial cannot exceed 9999.99.',
-            timeout: 8000
+            timeout: 8000,
+            actionHandler: hideSnackbar,
+            actionText: 'Dismiss'
         };
         showSnackbarMessage(data);
         hideResults();
@@ -284,7 +290,9 @@ function rolloverIsValid() {
     if ( rollover != '' && ( rollover < 0 || ! /^\d{1,4}(?:[.]\d{1,2}|$)$/.test(String(rollover)) ) ) {
         data = {
             message: 'The rollover must be a positive number.',
-            timeout: 8000
+            timeout: 8000,
+            actionHandler: hideSnackbar,
+            actionText: 'Dismiss'
         };
         showSnackbarMessage(data);
         hideResults();
@@ -294,7 +302,9 @@ function rolloverIsValid() {
     if ( rollover > 9999.99 ) {
         data = {
             message: 'The rollover cannot exceed 9999.99.',
-            timeout: 8000
+            timeout: 8000,
+            actionHandler: hideSnackbar,
+            actionText: 'Dismiss'
         };
         showSnackbarMessage(data);
         hideResults();
@@ -309,7 +319,9 @@ function remainingIsValid() {
     if ( remaining <= 0 || ! /^\d{1,4}(?:[.]\d{1,2}|$)$/.test(String(remaining)) ) {
         data = {
             message: 'The remaining must be a positive number.',
-            timeout: 8000
+            timeout: 8000,
+            actionHandler: hideSnackbar,
+            actionText: 'Dismiss'
         };
         showSnackbarMessage(data);
         hideResults();
@@ -319,7 +331,9 @@ function remainingIsValid() {
     if ( remaining > 9999.99 ) {
         data = {
             message: 'The remaining cannot exceed 9999.99.',
-            timeout: 8000
+            timeout: 8000,
+            actionHandler: hideSnackbar,
+            actionText: 'Dismiss'
         };
         showSnackbarMessage(data);
         hideResults();
@@ -330,7 +344,9 @@ function remainingIsValid() {
     if ( remaining > initial ) {
         data = {
             message: 'The remaining should not exceed the initial + rollover.',
-            timeout: 8000
+            timeout: 8000,
+            actionHandler: hideSnackbar,
+            actionText: 'Dismiss'
         };
         showSnackbarMessage(data);
     }
@@ -343,7 +359,9 @@ function startDateIsValid() {
     if (! /(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d/.test(String(startDate))) {
         data = {
             message: 'The start date should be in form MM/DD/YYYY.',
-            timeout: 8000
+            timeout: 8000,
+            actionHandler: hideSnackbar,
+            actionText: 'Dismiss'
         };
         showSnackbarMessage(data);
         hideResults();
@@ -358,7 +376,9 @@ function endDateIsValid() {
     if (! /(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d/.test(String(endDate))) {
         data = {
             message: 'The end date should be in form MM/DD/YYYY.',
-            timeout: 8000
+            timeout: 8000,
+            actionHandler: hideSnackbar,
+            actionText: 'Dismiss'
         };
         showSnackbarMessage(data);
         hideResults();
@@ -373,7 +393,9 @@ function endDateIsAfterStartDate() {
     if (dayDiff < 1) {
         data = {
             message: 'The end date must be at least 1 day after the start date.',
-            timeout: 8000
+            timeout: 8000,
+            actionHandler: hideSnackbar,
+            actionText: 'Dismiss'
         };
         showSnackbarMessage(data);
         hideResults();
@@ -403,7 +425,9 @@ function checkIfTodayInRange() {
     if ( getDateDiff(start, today) < 0 || getDateDiff(end, today) > 0 ) {
         data = {
             message: 'Today is not in the date range and some calculations may be off.',
-            timeout: 8000
+            timeout: 8000,
+            actionHandler: hideSnackbar,
+            actionText: 'Dismiss'
         };
         showSnackbarMessage(data);
     }
@@ -414,7 +438,9 @@ function totalDaysOffIsValid() {
     if (! /\d{1,2}/.test(String(totalDaysOff))) {
         data = {
             message: 'The total days off must be a positive whole number.',
-            timeout: 8000
+            timeout: 8000,
+            actionHandler: hideSnackbar,
+            actionText: 'Dismiss'
         };
         showSnackbarMessage(data);
         hideResults();
@@ -424,7 +450,9 @@ function totalDaysOffIsValid() {
     if ( totalDaysOff > 99 ) {
         data = {
             message: 'The total days off cannot exceed 99.',
-            timeout: 8000
+            timeout: 8000,
+            actionHandler: hideSnackbar,
+            actionText: 'Dismiss'
         };
         showSnackbarMessage(data);
         hideResults();
@@ -439,7 +467,9 @@ function pastDaysOffIsValid() {
     if (pastDaysOff != 0 && ! /\d{1,2}/.test(String(pastDaysOff))) {
         data = {
             message: 'The past days off must be a positive whole number.',
-            timeout: 8000
+            timeout: 8000,
+            actionHandler: hideSnackbar,
+            actionText: 'Dismiss'
         };
         showSnackbarMessage(data);
         hideResults();
@@ -449,7 +479,9 @@ function pastDaysOffIsValid() {
     if (pastDaysOff > totalDaysOff) {
         data = {
             message: 'The past days off cannot exceed the total days off.',
-            timeout: 8000
+            timeout: 8000,
+            actionHandler: hideSnackbar,
+            actionText: 'Dismiss'
         };
         showSnackbarMessage(data);
         hideResults();
@@ -459,7 +491,9 @@ function pastDaysOffIsValid() {
     if ( pastDaysOff > 99 ) {
         data = {
             message: 'The past days off cannot exceed 99.',
-            timeout: 8000
+            timeout: 8000,
+            actionHandler: hideSnackbar,
+            actionText: 'Dismiss'
         };
         showSnackbarMessage(data);
         hideResults();
