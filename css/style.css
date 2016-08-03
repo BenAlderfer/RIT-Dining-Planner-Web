@@ -231,6 +231,14 @@ footer a {
         width: 100%;
 	}
 
+    .mdl-tooltip--left {
+        display: none;
+    }
+
+    .mdl-tooltip--right {
+        display: none;
+    }
+
     form {
         width: 90%;
     }
@@ -298,6 +306,14 @@ footer a {
     }
 
     .mdl-tooltip--left {
+        display: block;
+    }
+
+    .mdl-tooltip--right {
+        display: block;
+    }
+
+    .mdl-tooltip--right.mobile-only {
         display: none;
     }
 
