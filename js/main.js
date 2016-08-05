@@ -693,7 +693,7 @@ function calculateAndSet() {
 //when key pressed, calculate if enter
 function calculateIfEnter() {
     if (event.keyCode == 13) {
-        getFieldsAndCheck();
+        getFieldsAndCheckManual();
     }
 }
 
@@ -742,6 +742,12 @@ function source() {
     dialog.dialog('open');
 }
 
+function addFieldListeners() {
+    $( "#plan" ).change( function() { getFieldsAndCheck(false) });
+    $( "input[type='number']" ).change( function() { getFieldsAndCheck(false) });
+    $( "input[type='text']" ).change( function() { getFieldsAndCheck(false) });
+}
+
 //hide things that shouldn't show all the time
 planSelected(); //hide custom box if necessary
 hideResults(); //hide results
@@ -757,6 +763,8 @@ $( document ).ready( function() {
     dialog = $( "#dialog" );
     dialog.dialog({ modal: true});
     dialog.dialog('close');
+
+    addFieldListeners();
 
     //run start up items
     startUp();
