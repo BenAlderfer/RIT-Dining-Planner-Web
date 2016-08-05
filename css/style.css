@@ -295,6 +295,10 @@ footer a {
         display: block;
     }
 
+    .mdl-snackbar__action {
+        margin-bottom: 20px;
+    }
+
     #content {
         margin-top: 0;
     }
