@@ -295,8 +295,8 @@ footer a {
         display: block;
     }
 
-    .mdl-snackbar__action {
-        margin-bottom: 30px;
+    .mdl-snackbar {
+        padding-bottom: 30px;
     }
 
     #content {
