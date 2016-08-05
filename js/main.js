@@ -245,39 +245,49 @@ function getInitial() {
 }
 
 //checks if the initial value is valid
-function initialIsValid() {
+//only show error message if true passed
+function initialIsValid(willShowErrorMessage) {
     if (planName == "") {
-        data = {
-            message: 'The dining plan must be selected.',
-            timeout: 8000,
-            actionHandler: hideSnackbar,
-            actionText: 'Dismiss'
-        };
-        showSnackbarMessage(data);
+        if (willShowErrorMessage) {
+            data = {
+                message: 'The dining plan must be selected.',
+                timeout: 8000,
+                actionHandler: hideSnackbar,
+                actionText: 'Dismiss'
+            };
+            showSnackbarMessage(data);
+        }
+
         hideResults();
         return false;
     }
 
     if ( initial <= 0 || ! /^\d{1,4}(?:[.]\d{1,2}|$)$/.test(String(initial)) ) {
-        data = {
-            message: 'The initial dining must be a positive number.',
-            timeout: 8000,
-            actionHandler: hideSnackbar,
-            actionText: 'Dismiss'
-        };
-        showSnackbarMessage(data);
+        if (willShowErrorMessage) {
+            data = {
+                message: 'The initial dining must be a positive number.',
+                timeout: 8000,
+                actionHandler: hideSnackbar,
+                actionText: 'Dismiss'
+            };
+            showSnackbarMessage(data);
+        }
+
         hideResults();
         return false;
     }
 
     if ( initial > 9999.99 ) {
-        data = {
-            message: 'The initial cannot exceed 9999.99.',
-            timeout: 8000,
-            actionHandler: hideSnackbar,
-            actionText: 'Dismiss'
-        };
-        showSnackbarMessage(data);
+        if (willShowErrorMessage) {
+            data = {
+                message: 'The initial cannot exceed 9999.99.',
+                timeout: 8000,
+                actionHandler: hideSnackbar,
+                actionText: 'Dismiss'
+            };
+            showSnackbarMessage(data);
+        }
+
         hideResults();
         return false;
     }
@@ -286,27 +296,34 @@ function initialIsValid() {
 }
 
 //checks if the rollover value is valid
-function rolloverIsValid() {
+//only show error message if true passed
+function rolloverIsValid(willShowErrorMessage) {
     if ( rollover != '' && ( rollover < 0 || ! /^\d{1,4}(?:[.]\d{1,2}|$)$/.test(String(rollover)) ) ) {
-        data = {
-            message: 'The rollover must be a positive number.',
-            timeout: 8000,
-            actionHandler: hideSnackbar,
-            actionText: 'Dismiss'
-        };
-        showSnackbarMessage(data);
+        if (willShowErrorMessage) {
+            data = {
+                message: 'The rollover must be a positive number.',
+                timeout: 8000,
+                actionHandler: hideSnackbar,
+                actionText: 'Dismiss'
+            };
+            showSnackbarMessage(data);
+        }
+
         hideResults();
         return false;
     }
 
     if ( rollover > 9999.99 ) {
-        data = {
-            message: 'The rollover cannot exceed 9999.99.',
-            timeout: 8000,
-            actionHandler: hideSnackbar,
-            actionText: 'Dismiss'
-        };
-        showSnackbarMessage(data);
+        if (willShowErrorMessage) {
+            data = {
+                message: 'The rollover cannot exceed 9999.99.',
+                timeout: 8000,
+                actionHandler: hideSnackbar,
+                actionText: 'Dismiss'
+            };
+            showSnackbarMessage(data);
+        }
+
         hideResults();
         return false;
     }
@@ -315,55 +332,71 @@ function rolloverIsValid() {
 }
 
 //checks if the remaining value is valid
-function remainingIsValid() {
+//only show error message if true passed
+function remainingIsValid(willShowErrorMessage) {
     if ( remaining <= 0 || ! /^\d{1,4}(?:[.]\d{1,2}|$)$/.test(String(remaining)) ) {
-        data = {
-            message: 'The remaining must be a positive number.',
-            timeout: 8000,
-            actionHandler: hideSnackbar,
-            actionText: 'Dismiss'
-        };
-        showSnackbarMessage(data);
+        if (willShowErrorMessage) {
+            data = {
+                message: 'The remaining must be a positive number.',
+                timeout: 8000,
+                actionHandler: hideSnackbar,
+                actionText: 'Dismiss'
+            };
+            showSnackbarMessage(data);
+        }
+
         hideResults();
         return false;
     }
 
     if ( remaining > 9999.99 ) {
-        data = {
-            message: 'The remaining cannot exceed 9999.99.',
-            timeout: 8000,
-            actionHandler: hideSnackbar,
-            actionText: 'Dismiss'
-        };
-        showSnackbarMessage(data);
+        if (willShowErrorMessage) {
+            data = {
+                message: 'The remaining cannot exceed 9999.99.',
+                timeout: 8000,
+                actionHandler: hideSnackbar,
+                actionText: 'Dismiss'
+            };
+            showSnackbarMessage(data);
+        }
+
         hideResults();
         return false;
     }
 
     //rollover already added
     if ( remaining > initial ) {
-        data = {
-            message: 'The remaining should not exceed the initial + rollover.',
-            timeout: 8000,
-            actionHandler: hideSnackbar,
-            actionText: 'Dismiss'
-        };
-        showSnackbarMessage(data);
+        if (willShowErrorMessage) {
+            data = {
+                message: 'The remaining should not exceed the initial + rollover.',
+                timeout: 8000,
+                actionHandler: hideSnackbar,
+                actionText: 'Dismiss'
+            };
+            showSnackbarMessage(data);
+        }
+
+        hideResults();
+        return false;
     }
 
     return true;
 }
 
 //checks if the start date is valid
-function startDateIsValid() {
+//only show error message if true passed
+function startDateIsValid(willShowErrorMessage) {
     if (! /(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d/.test(String(startDate))) {
-        data = {
-            message: 'The start date should be in form MM/DD/YYYY.',
-            timeout: 8000,
-            actionHandler: hideSnackbar,
-            actionText: 'Dismiss'
-        };
-        showSnackbarMessage(data);
+        if (willShowErrorMessage) {
+            data = {
+                message: 'The start date should be in form MM/DD/YYYY.',
+                timeout: 8000,
+                actionHandler: hideSnackbar,
+                actionText: 'Dismiss'
+            };
+            showSnackbarMessage(data);
+        }
+
         hideResults();
         return false;
     }
@@ -372,15 +405,19 @@ function startDateIsValid() {
 }
 
 //checks if the end date is valid
-function endDateIsValid() {
+//only show error message if true passed
+function endDateIsValid(willShowErrorMessage) {
     if (! /(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d/.test(String(endDate))) {
-        data = {
-            message: 'The end date should be in form MM/DD/YYYY.',
-            timeout: 8000,
-            actionHandler: hideSnackbar,
-            actionText: 'Dismiss'
-        };
-        showSnackbarMessage(data);
+        if (willShowErrorMessage) {
+            data = {
+                message: 'The end date should be in form MM/DD/YYYY.',
+                timeout: 8000,
+                actionHandler: hideSnackbar,
+                actionText: 'Dismiss'
+            };
+            showSnackbarMessage(data);
+        }
+
         hideResults();
         return false;
     }
@@ -434,27 +471,34 @@ function checkIfTodayInRange() {
 }
 
 //checks if the total days off value is valid
-function totalDaysOffIsValid() {
+//only show error message if true passed
+function totalDaysOffIsValid(willShowErrorMessage) {
     if (! /\d{1,2}/.test(String(totalDaysOff))) {
-        data = {
-            message: 'The total days off must be a positive whole number.',
-            timeout: 8000,
-            actionHandler: hideSnackbar,
-            actionText: 'Dismiss'
-        };
-        showSnackbarMessage(data);
+        if (willShowErrorMessage) {
+            data = {
+                message: 'The total days off must be a positive whole number.',
+                timeout: 8000,
+                actionHandler: hideSnackbar,
+                actionText: 'Dismiss'
+            };
+            showSnackbarMessage(data);
+        }
+
         hideResults();
         return false;
     }
 
     if ( totalDaysOff > 99 ) {
-        data = {
-            message: 'The total days off cannot exceed 99.',
-            timeout: 8000,
-            actionHandler: hideSnackbar,
-            actionText: 'Dismiss'
-        };
-        showSnackbarMessage(data);
+        if (willShowErrorMessage) {
+            data = {
+                message: 'The total days off cannot exceed 99.',
+                timeout: 8000,
+                actionHandler: hideSnackbar,
+                actionText: 'Dismiss'
+            };
+            showSnackbarMessage(data);
+        }
+
         hideResults();
         return false;
     }
@@ -463,39 +507,49 @@ function totalDaysOffIsValid() {
 }
 
 //checks if the past days off value is valid
-function pastDaysOffIsValid() {
+//only show error message if true passed
+function pastDaysOffIsValid(willShowErrorMessage) {
     if (pastDaysOff != 0 && ! /\d{1,2}/.test(String(pastDaysOff))) {
-        data = {
-            message: 'The past days off must be a positive whole number.',
-            timeout: 8000,
-            actionHandler: hideSnackbar,
-            actionText: 'Dismiss'
-        };
-        showSnackbarMessage(data);
+        if (willShowErrorMessage) {
+            data = {
+                message: 'The past days off must be a positive whole number.',
+                timeout: 8000,
+                actionHandler: hideSnackbar,
+                actionText: 'Dismiss'
+            };
+            showSnackbarMessage(data);
+        }
+
         hideResults();
         return false;
     }
 
     if (pastDaysOff > totalDaysOff) {
-        data = {
-            message: 'The past days off cannot exceed the total days off.',
-            timeout: 8000,
-            actionHandler: hideSnackbar,
-            actionText: 'Dismiss'
-        };
-        showSnackbarMessage(data);
+        if (willShowErrorMessage) {
+            data = {
+                message: 'The past days off cannot exceed the total days off.',
+                timeout: 8000,
+                actionHandler: hideSnackbar,
+                actionText: 'Dismiss'
+            };
+            showSnackbarMessage(data);
+        }
+
         hideResults();
         return false;
     }
 
     if ( pastDaysOff > 99 ) {
-        data = {
-            message: 'The past days off cannot exceed 99.',
-            timeout: 8000,
-            actionHandler: hideSnackbar,
-            actionText: 'Dismiss'
-        };
-        showSnackbarMessage(data);
+        if (willShowErrorMessage) {
+            data = {
+                message: 'The past days off cannot exceed 99.',
+                timeout: 8000,
+                actionHandler: hideSnackbar,
+                actionText: 'Dismiss'
+            };
+            showSnackbarMessage(data);
+        }
+
         hideResults();
         return false;
     }
@@ -515,18 +569,25 @@ function hideSnackbar() {
 }
 
 // gets the fields and calls calculateAndSet() if all are valid
-function getFieldsAndCheck() {
+// used by calculate button
+function getFieldsAndCheckManual() {
+    //calculate and show error messages
+    getFieldsAndCheck(true);
+}
+
+// gets the fields and calls calculateAndSet() if all are valid
+function getFieldsAndCheck(willShowErrorMessage) {
     //setup - get & check input
     initial = getInitial();
 
     //validate initial, end if not
-    if (!initialIsValid()) {
+    if (!initialIsValid(willShowErrorMessage)) {
         return;
     }
 
     rollover = document.getElementById("rollover").value;
     //validate rollover, end if not
-    if (!rolloverIsValid()) {
+    if (!rolloverIsValid(willShowErrorMessage)) {
         return;
     }
 
@@ -535,31 +596,31 @@ function getFieldsAndCheck() {
 
     remaining = document.getElementById("remaining").value;
     //validate remaining, end if not
-    if (!remainingIsValid()) {
+    if (!remainingIsValid(willShowErrorMessage)) {
         return;
     }
 
     startDate = document.getElementById("start-date").value;
     //validate startDate, end if not
-    if (!startDateIsValid()) {
+    if (!startDateIsValid(willShowErrorMessage)) {
         return;
     }
 
     endDate = document.getElementById("end-date").value;
     //validate endDate, end if not
-    if (!endDateIsValid()) {
+    if (!endDateIsValid(willShowErrorMessage)) {
         return;
     }
 
     totalDaysOff = document.getElementById("total-days-off").value;
     //validate totalDaysOff, end if not
-    if (!totalDaysOffIsValid()) {
+    if (!totalDaysOffIsValid(willShowErrorMessage)) {
         return;
     }
 
     pastDaysOff = document.getElementById("past-days-off").value;
     //validate pastDaysOff, end if not
-    if (!pastDaysOffIsValid()) {
+    if (!pastDaysOffIsValid(willShowErrorMessage)) {
         return;
     }
 
