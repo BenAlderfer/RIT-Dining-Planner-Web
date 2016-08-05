@@ -25,6 +25,4 @@ Resources used:
 
 • jQueryUI - https://jqueryui.com/
 
-• Chardin.js - https://github.com/heelhook/chardin.js
-
 • CloudFlare - https://www.cloudflare.com/
