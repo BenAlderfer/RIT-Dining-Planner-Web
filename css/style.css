@@ -111,6 +111,16 @@ select:active, select:hover {
     outline-color: #FF5722;
 }
 
+option:checked {
+    color: white;
+    background: #FF5722;
+}
+
+option:hover {
+    color: white;
+    background: #FF9800;
+}
+
 .select-section {
     margin-left: -10px;
     margin-top: 0;
