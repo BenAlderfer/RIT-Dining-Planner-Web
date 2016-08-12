@@ -197,6 +197,10 @@ footer a {
     color: white;
 }
 
+footer * {
+    font-weight: bold;
+}
+
 .stickToBottom {
     position: fixed;
     bottom: 0;
