@@ -661,37 +661,37 @@ function calculateAndSet() {
     var curWeekly = getWeekly(remaining, currentDayDiff);
 
     //set table fields with leading sign and $
-    if (avgDaily > 0) {
+    if (avgDaily >= 0) {
         document.getElementById("avg-daily").innerHTML = "+$" + avgDaily.toFixed(2);
     } else {
         document.getElementById("avg-daily").innerHTML = "-$" + Math.abs(avgDaily).toFixed(2);
     }
 
-    if (avgWeekly > 0) {
+    if (avgWeekly >= 0) {
         document.getElementById("avg-weekly").innerHTML = "+$" + avgWeekly.toFixed(2);
     } else {
         document.getElementById("avg-weekly").innerHTML = "-$" + Math.abs(avgWeekly).toFixed(2);
     }
 
-    if (curDaily > 0) {
+    if (curDaily >= 0) {
         document.getElementById("cur-daily").innerHTML = "+$" + curDaily.toFixed(2);
     } else {
         document.getElementById("cur-daily").innerHTML = "-$" + Math.abs(curDaily).toFixed(2);
     }
 
-    if (curWeekly > 0) {
+    if (curWeekly >= 0) {
         document.getElementById("cur-weekly").innerHTML = "+$" + curWeekly.toFixed(2);
     } else {
         document.getElementById("cur-weekly").innerHTML = "-$" + Math.abs(curWeekly).toFixed(2);
     }
 
-    if (curDaily - avgDaily > 0) {
+    if (curDaily - avgDaily >= 0) {
         document.getElementById("diff-daily").innerHTML = "+$" + (curDaily - avgDaily).toFixed(2);
     } else {
         document.getElementById("diff-daily").innerHTML = "-$" + Math.abs(curDaily - avgDaily).toFixed(2);
     }
 
-    if (curWeekly - avgWeekly > 0) {
+    if (curWeekly - avgWeekly >= 0) {
         document.getElementById("diff-weekly").innerHTML = "+$" + (curWeekly - avgWeekly).toFixed(2);
     } else {
         document.getElementById("diff-weekly").innerHTML = "-$" + Math.abs(curWeekly - avgWeekly).toFixed(2);
@@ -700,7 +700,7 @@ function calculateAndSet() {
     //set summary
     //excess from what you should have spent and the remaining
     var diff = remaining - (avgWeekly * (currentDayDiff / 7) + avgDaily * currentDayDiff);
-    if (diff > 0) {
+    if (diff >= 0) {
         document.getElementById("summary").innerHTML = "+$" + diff.toFixed(2);
     } else {
         document.getElementById("summary").innerHTML = "-$" + Math.abs(diff).toFixed(2);
