@@ -13,6 +13,8 @@ var endDate;
 var start, end, today;
 var dialog;
 
+const ENTER_KEY = 13;
+
 //snackbar variables
 var notification;
 var data;
@@ -697,9 +699,21 @@ function calculateAndSet() {
         document.getElementById("diff-weekly").innerHTML = "-$" + Math.abs(curWeekly - avgWeekly).toFixed(2);
     }
 
+    //debugging
+    /* document.getElementById("initial-text").innerHTML = "initial: " + initial;
+    document.getElementById("rollover-text").innerHTML = "rollover: " + rollover;
+    document.getElementById("current-text").innerHTML = "remaining: " + remaining;
+    document.getElementById("start-text").innerHTML = "start: " + start;
+    document.getElementById("end-text").innerHTML = "end: " + end;
+    document.getElementById("dayDiff-text").innerHTML = "day diff: " + dayDiff;
+    document.getElementById("currentDayDiff-text").innerHTML = "current day diff: " + currentDayDiff;
+    document.getElementById("total-days-off-text").innerHTML = "total days off: " + totalDaysOff;
+    document.getElementById("past-days-off-text").innerHTML = "past days off: " + pastDaysOff; */
+
     //set summary
     //excess from what you should have spent and the remaining
-    var diff = remaining - (avgWeekly * Math.floor(currentDayDiff / 7) + avgDaily * currentDayDiff);
+    //only uses the daily since currentDayDiff is the total number of days here
+    var diff = remaining - (avgDaily * currentDayDiff);
     if (diff >= 0) {
         document.getElementById("summary").innerHTML = "+$" + diff.toFixed(2);
     } else {
@@ -711,22 +725,11 @@ function calculateAndSet() {
 
     //save input
     saveFields();
-
-    //debugging
-   /* document.getElementById("initial-text").innerHTML = "initial: " + initial;
-    document.getElementById("rollover-text").innerHTML = "rollover: " + rollover;
-    document.getElementById("current-text").innerHTML = "remaining: " + remaining;
-    document.getElementById("start-text").innerHTML = "start: " + start;
-    document.getElementById("end-text").innerHTML = "end: " + end;
-    document.getElementById("dayDiff-text").innerHTML = "day diff: " + dayDiff;
-    document.getElementById("currentDayDiff-text").innerHTML = "current day diff: " + currentDayDiff;
-    document.getElementById("total-days-off-text").innerHTML = "total days off: " + totalDaysOff;
-    document.getElementById("past-days-off-text").innerHTML = "past days off: " + pastDaysOff; */
 }
 
 //when key pressed, calculate if enter
 function calculateIfEnter() {
-    if (event.keyCode == 13) {
+    if (event.keyCode == ENTER_KEY) {
         getFieldsAndCheckManual();
     }
 }
