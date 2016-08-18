@@ -473,7 +473,7 @@ function checkIfTodayInRange() {
 //checks if the total days off value is valid
 //only show error message if true passed
 function totalDaysOffIsValid(willShowErrorMessage) {
-    if (! /\d{1,2}/.test(String(totalDaysOff))) {
+    if (totalDaysOff != 0 && ! /\d{1,2}/.test(String(totalDaysOff))) {
         if (willShowErrorMessage) {
             data = {
                 message: 'The total days off must be a positive whole number.',
@@ -699,7 +699,7 @@ function calculateAndSet() {
 
     //set summary
     //excess from what you should have spent and the remaining
-    var diff = remaining - (avgWeekly * (currentDayDiff / 7) + avgDaily * currentDayDiff);
+    var diff = remaining - (avgWeekly * Math.floor(currentDayDiff / 7) + avgDaily * currentDayDiff);
     if (diff >= 0) {
         document.getElementById("summary").innerHTML = "+$" + diff.toFixed(2);
     } else {
