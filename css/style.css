@@ -172,6 +172,7 @@ option:hover {
 
 #summary {
     color: #FF5722;
+    font-weight: bold;
 }
 
 #results-table {
