@@ -8,7 +8,7 @@ Dining planner website to help manage RIT Dining Dollars.
 
 Made with input from Joel Eager, Tim Endersby, and Stephen Cioffi.
 
-Available at https://ritdebit.com/
+Available at https://ritdiningplanner.xyz/
 
 The site is running off Github Pages.
 Master branch is being used as the development branch, gh-pages is the master branch (what shows on the site).
