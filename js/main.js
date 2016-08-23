@@ -13,7 +13,7 @@ var endDate;
 var start, end, today;
 var dialog;
 
-const ENTER_KEY = 13;
+var ENTER_KEY = 13;
 
 //snackbar variables
 var notification;
