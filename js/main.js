@@ -578,6 +578,7 @@ function getFieldsAndCheckManual() {
 }
 
 // gets the fields and calls calculateAndSet() if all are valid
+//willShowErrorMessage - boolean, if error messages should be shown
 function getFieldsAndCheck(willShowErrorMessage) {
     //setup - get & check input
     initial = getInitial();
@@ -646,7 +647,7 @@ function calculateAndSet() {
     }
 
     //remove total days off from dayDiff
-    dayDiff -= totalDaysOff;
+    dayDiff -= Number(totalDaysOff);
 
     var avgDaily = getDaily(initial, dayDiff);
     var avgWeekly = getWeekly(initial, dayDiff);
@@ -657,10 +658,10 @@ function calculateAndSet() {
     checkIfTodayInRange();
 
     //remove total days off
-    currentDayDiff -= totalDaysOff;
+    currentDayDiff -= Number(totalDaysOff);
 
     //add back past days off
-    currentDayDiff += pastDaysOff;
+    currentDayDiff += Number(pastDaysOff);
 
     var curDaily = getDaily(remaining, currentDayDiff);
     var curWeekly = getWeekly(remaining, currentDayDiff);
