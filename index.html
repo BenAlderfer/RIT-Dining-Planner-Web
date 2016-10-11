@@ -71,33 +71,35 @@
                                 <div class="mdl-grid inside-grid" id="plan-section">
                                     <div class="mdl-cell mdl-cell--6-col full-width-when-tablet half-width-when-phablet select-section">
                                         <br /> <!-- drop down a line to line up with custom dining input -->
-                                        <select id="plan" onclick="planSelected()">
-                                            <option value="" disabled selected>Select plan</option>
-                                            <option value="5">Tiger 5 ($1300)</option>
-                                            <option value="10">Tiger 10 ($700)</option>
-                                            <option value="14">Tiger 14 ($500)</option>
-                                            <option value="20">Tiger 20 ($300)</option>
-                                            <option value="orange">Orange ($2669)</option>
-                                            <option value="brown">Brown ($1914)</option>
-                                            <option value="gold">Gold ($1340)</option>
-                                            <option value="silver">Silver ($930)</option>
-                                            <option value="bronze">Bronze ($515)</option>
-                                            <option value="custom">Custom</option>
-                                        </select>
-                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="plan">
-                                            Your meal plan
-                                        </div>
+                                        <form action="javascript:getFieldsAndCheckManual();" id="form1">
+                                            <select id="plan" onclick="planSelected()">
+                                                <option value="" disabled selected>Select plan</option>
+                                                <option value="5">Tiger 5 ($1300)</option>
+                                                <option value="10">Tiger 10 ($700)</option>
+                                                <option value="14">Tiger 14 ($500)</option>
+                                                <option value="20">Tiger 20 ($300)</option>
+                                                <option value="orange">Orange ($2669)</option>
+                                                <option value="brown">Brown ($1914)</option>
+                                                <option value="gold">Gold ($1340)</option>
+                                                <option value="silver">Silver ($930)</option>
+                                                <option value="bronze">Bronze ($515)</option>
+                                                <option value="custom">Custom</option>
+                                            </select>
+                                            <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="plan">
+                                                Your meal plan
+                                            </div>
+                                        </form>
                                     </div>
                                     <div class="mdl-cell mdl-cell--6-col full-width-when-tablet half-width-when-phablet">
                                         <!-- custom dining input-->
-                                        <form action="#" id="custom-dining-section">
+                                        <div id="custom-dining-section">
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end" id="custom-dining-form" tabindex="99">
                                                 <input class="mdl-textfield__input" type="number" min="0" max="9999.99"
-                                                   pattern="^\d{1,4}(?:[.]\d{1,2}|$)$" step="0.01" id="custom-dining" onkeypress="calculateIfEnter()">
+                                                   pattern="^\d{1,4}(?:[.]\d{1,2}|$)$" step="0.01" id="custom-dining" onkeypress="calculateIfEnter()" form="form1">
                                                 <label class="mdl-textfield__label" for="custom-dining">Custom dining</label>
                                                 <span class="mdl-textfield__error">Format should look like "1234.56"</span>
                                             </div>
-                                        </form>
+                                        </div>
                                         <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" for="custom-dining-form">
                                             Your custom amount of dining dollars
                                         </div>
@@ -111,28 +113,24 @@
                                 <div class="mdl-grid" id="rollover-remaining-section">
                                     <div class="mdl-cell mdl-cell--6-col full-width-when-tablet half-width-when-phablet two-part-section-start">
                                         <!-- rollover input-->
-                                        <form action="#">
-                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="rollover-form" tabindex="99">
-                                                <input class="mdl-textfield__input" type="number" min="0" max="9999.99"
-                                                   pattern="^\d{1,4}(?:[.]\d{1,2}|$)$" step="0.01" id="rollover" onkeypress="calculateIfEnter()">
-                                                <label class="mdl-textfield__label" for="rollover">Rollover</label>
-                                                <span class="mdl-textfield__error">Format should look like "1234.56"</span>
-                                            </div>
-                                        </form>
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="rollover-form" tabindex="99">
+                                            <input class="mdl-textfield__input" type="number" min="0" max="9999.99"
+                                               pattern="^\d{1,4}(?:[.]\d{1,2}|$)$" step="0.01" id="rollover" form="form1">
+                                            <label class="mdl-textfield__label" for="rollover">Rollover</label>
+                                            <span class="mdl-textfield__error">Format should look like "1234.56"</span>
+                                        </div>
                                         <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="rollover-form">
                                             How much you are rolling over from last semester
                                         </div>
                                     </div>
                                     <div class="mdl-cell mdl-cell--6-col full-width-when-tablet half-width-when-phablet">
                                         <!-- current dining input -->
-                                        <form action="#">
-                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end last-item" id="remaining-form" tabindex="99">
-                                                <input class="mdl-textfield__input" type="number" min="0" max="9999.99"
-                                                   pattern="^\d{1,4}(?:[.]\d{1,2}|$)$" step="0.01" id="remaining" onkeypress="calculateIfEnter()">
-                                                <label class="mdl-textfield__label" for="remaining">Remaining</label>
-                                                <span class="mdl-textfield__error">Format should look like "1234.56"</span>
-                                            </div>
-                                        </form>
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end last-item" id="remaining-form" tabindex="99">
+                                            <input class="mdl-textfield__input" type="number" min="0" max="9999.99"
+                                               pattern="^\d{1,4}(?:[.]\d{1,2}|$)$" step="0.01" id="remaining" onkeypress="calculateIfEnter()" form="form1" autofocus>
+                                            <label class="mdl-textfield__label" for="remaining">Remaining</label>
+                                            <span class="mdl-textfield__error">Format should look like "1234.56"</span>
+                                        </div>
                                         <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" for="remaining-form">
                                             How many dollars you have remaining
                                         </div>
@@ -151,27 +149,23 @@
 
                                 <div class="mdl-grid inside-grid" id="date-section">
                                     <div class="mdl-cell mdl-cell--6-col full-width-when-tablet half-width-when-phablet two-part-section-start">
-                                        <form action="#">
-                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="start-form" tabindex="99">
-                                                <input class="mdl-textfield__input" type="text" maxlength="10"
-                                                       pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](20)\d\d" id="start-date" onkeypress="calculateIfEnter()">
-                                                <label class="mdl-textfield__label" for="start-date">Start date</label>
-                                                <span class="mdl-textfield__error">Format should look like "08/22/2016"</span>
-                                            </div>
-                                        </form>
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="start-form" tabindex="99">
+                                            <input class="mdl-textfield__input" type="text" maxlength="10"
+                                                   pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](20)\d\d" id="start-date" onkeypress="calculateIfEnter()" form="form1">
+                                            <label class="mdl-textfield__label" for="start-date">Start date</label>
+                                            <span class="mdl-textfield__error">Format should look like "08/22/2016"</span>
+                                        </div>
                                         <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="start-form">
                                             The start date for the semester
                                         </div>
                                     </div>
                                     <div class="mdl-cell mdl-cell--6-col full-width-when-tablet half-width-when-phablet two-part-section-end">
-                                        <form action="#">
-                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="end-form" tabindex="99">
-                                                <input class="mdl-textfield__input" type="text" maxlength="10"
-                                                       pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](20)\d\d" id="end-date" onkeypress="calculateIfEnter()">
-                                                <label class="mdl-textfield__label" for="end-date">End date</label>
-                                                <span class="mdl-textfield__error">Format should look like "12/17/2016"</span>
-                                            </div>
-                                        </form>
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="end-form" tabindex="99">
+                                            <input class="mdl-textfield__input" type="text" maxlength="10"
+                                                   pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](20)\d\d" id="end-date" onkeypress="calculateIfEnter()" form="form1">
+                                            <label class="mdl-textfield__label" for="end-date">End date</label>
+                                            <span class="mdl-textfield__error">Format should look like "12/17/2016"</span>
+                                        </div>
                                         <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" for="end-form">
                                             The end date for the semester
                                         </div>
@@ -184,25 +178,21 @@
 
                                 <div class="mdl-grid">
                                     <div class="mdl-cell mdl-cell--6-col full-width-when-tablet half-width-when-phablet two-part-section-start">
-                                        <form action="#" >
-                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="total-days-off-form" tabindex="99">
-                                                <input class="mdl-textfield__input" type="number" min="0" max="99" pattern="\d{1,2}" id="total-days-off" onkeypress="calculateIfEnter()">
-                                                <label class="mdl-textfield__label" for="total-days-off">Total days off</label>
-                                                <span class="mdl-textfield__error">Format should look like "12"</span>
-                                            </div>
-                                        </form>
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="total-days-off-form" tabindex="99">
+                                            <input class="mdl-textfield__input" type="number" min="0" max="99" pattern="\d{1,2}" id="total-days-off" onkeypress="calculateIfEnter()" form="form1">
+                                            <label class="mdl-textfield__label" for="total-days-off">Total days off</label>
+                                            <span class="mdl-textfield__error">Format should look like "12"</span>
+                                        </div>
                                         <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="total-days-off-form">
                                             How many days off in total
                                         </div>
                                     </div>
                                     <div class="mdl-cell mdl-cell--6-col full-width-when-tablet half-width-when-phablet">
-                                        <form action="#">
-                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end last-item" id="past-days-off-form" tabindex="99">
-                                                <input class="mdl-textfield__input" type="number" min="0" max="99" pattern="\d{1,2}" id="past-days-off" onkeypress="calculateIfEnter()">
-                                                <label class="mdl-textfield__label" for="past-days-off">Past days off</label>
-                                                <span class="mdl-textfield__error">Format should look like "12"</span>
-                                            </div>
-                                        </form>
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end last-item" id="past-days-off-form" tabindex="99">
+                                            <input class="mdl-textfield__input" type="number" min="0" max="99" pattern="\d{1,2}" id="past-days-off" onkeypress="calculateIfEnter()" form="form1">
+                                            <label class="mdl-textfield__label" for="past-days-off">Past days off</label>
+                                            <span class="mdl-textfield__error">Format should look like "12"</span>
+                                        </div>
                                         <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" for="past-days-off-form">
                                             How many days off have passed
                                         </div>
@@ -220,7 +210,8 @@
 
                     <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
 
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="calculate-button" onclick="getFieldsAndCheckManual()">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="calculate-button"
+                                onclick="getFieldsAndCheckManual()" form="form1">
                             Calculate
                         </button>
 
@@ -282,7 +273,7 @@
                     <p id="dialog-text2"></p>
                 </div>
 
-                <!--<p id="initial-text">initial-text: <p>
+                <p id="initial-text">initial-text: <p>
                 <p id="rollover-text">rollover-text: <p>
                 <p id="current-text">current-text: <p>
                 <p id="start-text">start-text: <p>
@@ -290,7 +281,7 @@
                 <p id="dayDiff-text">dayDiff-text: <p>
                 <p id="currentDayDiff-text">currentDayDiff-text: <p>
                 <p id="total-days-off-text">total-days-off-text: <p>
-                <p id="past-days-off-text">past-days-off-text: <p>-->
+                <p id="past-days-off-text">past-days-off-text: <p>
 
                 <footer class="mobile-only" id="mobile-footer">
                     <p>
