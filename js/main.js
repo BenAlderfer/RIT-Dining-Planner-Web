@@ -54,7 +54,7 @@ function setVarDefaults() {
     rollover = 0;
     remaining = 0;
     dayDiff = 0;
-    totalDaysOff = 3;
+    totalDaysOff = 5;
     pastDaysOff = 0;
     startDate = "08/22/2016";
     endDate = "12/17/2016";
