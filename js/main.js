@@ -21,7 +21,7 @@ var data;
 
 //runs startup commands after page loads
 function startUp() {
-    notification = document.querySelector(".mdl-js-snackbar");
+    notification = $(".mdl-js-snackbar");
 
     //restore saved fields
     restoreFields();
@@ -63,13 +63,13 @@ function setVarDefaults() {
 //clears out fields
 function blankFields() {
     //empty fields
-    document.getElementById("custom-dining").value = "";
-    document.getElementById("rollover").value = "";
-    document.getElementById("remaining").value = "";
-    document.getElementById("start-date").value = "";
-    document.getElementById("end-date").value = "";
-    document.getElementById("total-days-off").value = "";
-    document.getElementById("past-days-off").value = "";
+    $("#custom-dining").val("");
+    $("#rollover").val("");
+    $("#remaining").val("");
+    $("#start-date").val("");
+    $("#end-date").val("");
+    $("#total-days-off").val("");
+    $("#past-days-off").val("");
 
     //drop floating labels and error messages
     var customDining = $("#custom-dining");
@@ -160,68 +160,68 @@ function restoreFields() {
 //if custom, show custom field and fill it in
 function setFields() {
     if (planName == "custom") {
-        document.getElementById("plan").value = planName;
+        $("#plan").val(planName);
         planSelected();
-        document.getElementById("custom-dining").value = String(initial - rollover);
+        $("#custom-dining").val(String(initial - rollover));
         $("#custom-dining").parent().addClass("is-dirty");
     } else { //otherwise, set plan normally
-        document.getElementById("plan").value = planName;
+        $("#plan").val(planName);
         planSelected();
     }
 
     //only fill in if something was saved
     if (rollover != 0) {
-        document.getElementById("rollover").value = String(rollover);
+        $("#rollover").val(String(rollover));
         $("#rollover").parent().addClass("is-dirty");
     }
 
     if (remaining != 0) {
-        document.getElementById("remaining").value = String(remaining);
+        $("#remaining").val(String(remaining));
         $("#remaining").parent().addClass("is-dirty");
     }
 
-    document.getElementById("start-date").value = String(startDate);
+    $("#start-date").val(String(startDate));
     $("#start-date").parent().addClass("is-dirty");
 
-    document.getElementById("end-date").value = String(endDate);
+    $("#end-date").val(String(endDate));
     $("#end-date").parent().addClass("is-dirty");
 
     if (totalDaysOff != 0) {
-        document.getElementById("total-days-off").value = String(totalDaysOff);
+        $("#total-days-off").val(String(totalDaysOff));
         $("#total-days-off").parent().addClass("is-dirty");
     }
 
     if (pastDaysOff != 0) {
-        document.getElementById("past-days-off").value = String(pastDaysOff);
+        $("#past-days-off").val(String(pastDaysOff));
         $("#past-days-off").parent().addClass("is-dirty");
     }
 }
 
 //hides the results cards
 function hideResults() {
-    document.getElementById("summary-card").style.display = "none";
-    document.getElementById("table-card").style.display = "none";
+    $("#summary-card").css("display", "none");
+    $("#table-card").css("display", "none");
 }
 
 //shows the results cards
 function showResults() {
-    document.getElementById("summary-card").style.display = "block";
-    document.getElementById("table-card").style.display = "block";
+    $("#summary-card").css("display", "block");
+    $("#table-card").css("display", "block");
 }
 
 //if custom plan selected, show custom input line
 function planSelected() {
     //hide or show custom dining input
-    if (document.getElementById("plan").value == "custom") {
-        document.getElementById("custom-dining-form").style.display = "block";
+    if ($("#plan").value == "custom") {
+        $("#custom-dining-form").css("display", "block");
     } else {
-        document.getElementById("custom-dining-form").style.display = "none";
+        $("#custom-dining-form").css("display", "none");
     }
 }
 
 //get the initial dining from dropdown menu
 function getInitial() {
-    planName = document.getElementById("plan").value;
+    planName = $("#plan").val();
     switch(planName) {
         case "5":
             return 1300.0;
@@ -242,7 +242,7 @@ function getInitial() {
         case "bronze":
             return 515.0;
         default: //custom
-            return Number(document.getElementById("custom-dining").value);
+            return Number($("#custom-dining").val());
     }
 }
 
@@ -264,7 +264,7 @@ function initialIsValid(willShowErrorMessage) {
         return false;
     }
 
-    if ( initial <= 0 || ! /^\d{1,4}(?:[.]\d{1,2}|$)$/.test(String(initial)) ) {
+    if (initial <= 0 || ! /^\d{1,4}(?:[.]\d{1,2}|$)$/.test(String(initial))) {
         if (willShowErrorMessage) {
             data = {
                 message: "The initial dining must be a positive number.",
@@ -279,7 +279,7 @@ function initialIsValid(willShowErrorMessage) {
         return false;
     }
 
-    if ( initial > 9999.99 ) {
+    if (initial > 9999.99) {
         if (willShowErrorMessage) {
             data = {
                 message: "The initial cannot exceed 9999.99.",
@@ -300,7 +300,7 @@ function initialIsValid(willShowErrorMessage) {
 //checks if the rollover value is valid
 //only show error message if true passed
 function rolloverIsValid(willShowErrorMessage) {
-    if ( rollover != "" && ( rollover < 0 || ! /^\d{1,4}(?:[.]\d{1,2}|$)$/.test(String(rollover)) ) ) {
+    if (rollover != "" && ( rollover < 0 || ! /^\d{1,4}(?:[.]\d{1,2}|$)$/.test(String(rollover)))) {
         if (willShowErrorMessage) {
             data = {
                 message: "The rollover must be a positive number.",
@@ -315,7 +315,7 @@ function rolloverIsValid(willShowErrorMessage) {
         return false;
     }
 
-    if ( rollover > 9999.99 ) {
+    if (rollover > 9999.99) {
         if (willShowErrorMessage) {
             data = {
                 message: "The rollover cannot exceed 9999.99.",
@@ -336,7 +336,7 @@ function rolloverIsValid(willShowErrorMessage) {
 //checks if the remaining value is valid
 //only show error message if true passed
 function remainingIsValid(willShowErrorMessage) {
-    if ( remaining <= 0 || ! /^\d{1,4}(?:[.]\d{1,2}|$)$/.test(String(remaining)) ) {
+    if (remaining <= 0 || ! /^\d{1,4}(?:[.]\d{1,2}|$)$/.test(String(remaining))) {
         if (willShowErrorMessage) {
             data = {
                 message: "The remaining must be a positive number.",
@@ -351,7 +351,7 @@ function remainingIsValid(willShowErrorMessage) {
         return false;
     }
 
-    if ( remaining > 9999.99 ) {
+    if (remaining > 9999.99) {
         if (willShowErrorMessage) {
             data = {
                 message: "The remaining cannot exceed 9999.99.",
@@ -367,7 +367,7 @@ function remainingIsValid(willShowErrorMessage) {
     }
 
     //rollover already added
-    if ( remaining > initial ) {
+    if (remaining > initial) {
         if (willShowErrorMessage) {
             data = {
                 message: "The remaining should not exceed the initial + rollover.",
@@ -461,7 +461,7 @@ function getWeekly(amount, diffInDays) {
 
 //checks if today is in the date range
 function checkIfTodayInRange() {
-    if ( getDateDiff(start, today) < 0 || getDateDiff(end, today) > 0 ) {
+    if (getDateDiff(start, today) < 0 || getDateDiff(end, today) > 0) {
         data = {
             message: "Today is not in the date range and some calculations may be off.",
             timeout: 8000,
@@ -490,7 +490,7 @@ function totalDaysOffIsValid(willShowErrorMessage) {
         return false;
     }
 
-    if ( totalDaysOff > 99 ) {
+    if (totalDaysOff > 99) {
         if (willShowErrorMessage) {
             data = {
                 message: "The total days off cannot exceed 99.",
@@ -541,7 +541,7 @@ function pastDaysOffIsValid(willShowErrorMessage) {
         return false;
     }
 
-    if ( pastDaysOff > 99 ) {
+    if (pastDaysOff > 99) {
         if (willShowErrorMessage) {
             data = {
                 message: "The past days off cannot exceed 99.",
@@ -561,13 +561,13 @@ function pastDaysOffIsValid(willShowErrorMessage) {
 
 // shows the snackbar with given message
 function showSnackbarMessage(textData) {
-    notification.style.display = "block";
-    notification.MaterialSnackbar.showSnackbar(textData);
+    notification.css("display", "block");
+    notification[0].MaterialSnackbar.showSnackbar(textData);
 }
 
 // hides the snackbar
 function hideSnackbar() {
-    notification.style.display = "none";
+    notification.css("display", "none");
 }
 
 // gets the fields and calls calculateAndSet() if all are valid
@@ -588,7 +588,7 @@ function getFieldsAndCheck(willShowErrorMessage) {
         return;
     }
 
-    rollover = document.getElementById("rollover").value;
+    rollover = $("#rollover").val();
     //validate rollover, end if not
     if (!rolloverIsValid(willShowErrorMessage)) {
         return;
@@ -597,31 +597,31 @@ function getFieldsAndCheck(willShowErrorMessage) {
     //add rollover to initial
     initial += Number(rollover);
 
-    remaining = document.getElementById("remaining").value;
+    remaining = $("#remaining").val();
     //validate remaining, end if not
     if (!remainingIsValid(willShowErrorMessage)) {
         return;
     }
 
-    startDate = document.getElementById("start-date").value;
+    startDate = $("#start-date").val();
     //validate startDate, end if not
     if (!startDateIsValid(willShowErrorMessage)) {
         return;
     }
 
-    endDate = document.getElementById("end-date").value;
+    endDate = $("#end-date").val();
     //validate endDate, end if not
     if (!endDateIsValid(willShowErrorMessage)) {
         return;
     }
 
-    totalDaysOff = document.getElementById("total-days-off").value;
+    totalDaysOff = $("#total-days-off").val();
     //validate totalDaysOff, end if not
     if (!totalDaysOffIsValid(willShowErrorMessage)) {
         return;
     }
 
-    pastDaysOff = document.getElementById("past-days-off").value;
+    pastDaysOff = $("#past-days-off").val();
     //validate pastDaysOff, end if not
     if (!pastDaysOffIsValid(willShowErrorMessage)) {
         return;
@@ -668,39 +668,39 @@ function calculateAndSet() {
 
     //set table fields with leading sign and $
     if (avgDaily >= 0) {
-        document.getElementById("avg-daily").innerHTML = "+$" + avgDaily.toFixed(2);
+        $("#avg-daily").html("+$" + avgDaily.toFixed(2));
     } else {
-        document.getElementById("avg-daily").innerHTML = "-$" + Math.abs(avgDaily).toFixed(2);
+        $("#avg-daily").html("-$" + Math.abs(avgDaily).toFixed(2));
     }
 
     if (avgWeekly >= 0) {
-        document.getElementById("avg-weekly").innerHTML = "+$" + avgWeekly.toFixed(2);
+        $("#avg-weekly").html("+$" + avgWeekly.toFixed(2));
     } else {
-        document.getElementById("avg-weekly").innerHTML = "-$" + Math.abs(avgWeekly).toFixed(2);
+        $("#avg-weekly").html("-$" + Math.abs(avgWeekly).toFixed(2));
     }
 
     if (curDaily >= 0) {
-        document.getElementById("cur-daily").innerHTML = "+$" + curDaily.toFixed(2);
+        $("#cur-daily").html("+$" + curDaily.toFixed(2));
     } else {
-        document.getElementById("cur-daily").innerHTML = "-$" + Math.abs(curDaily).toFixed(2);
+        $("#cur-daily").html("-$" + Math.abs(curDaily).toFixed(2));
     }
 
     if (curWeekly >= 0) {
-        document.getElementById("cur-weekly").innerHTML = "+$" + curWeekly.toFixed(2);
+        $("#cur-weekly").html("+$" + curWeekly.toFixed(2));
     } else {
-        document.getElementById("cur-weekly").innerHTML = "-$" + Math.abs(curWeekly).toFixed(2);
+        $("#cur-weekly").html("-$" + Math.abs(curWeekly).toFixed(2));
     }
 
     if (curDaily - avgDaily >= 0) {
-        document.getElementById("diff-daily").innerHTML = "+$" + (curDaily - avgDaily).toFixed(2);
+        $("#diff-daily").html("+$" + (curDaily - avgDaily).toFixed(2));
     } else {
-        document.getElementById("diff-daily").innerHTML = "-$" + Math.abs(curDaily - avgDaily).toFixed(2);
+        $("#diff-daily").html("-$" + Math.abs(curDaily - avgDaily).toFixed(2));
     }
 
     if (curWeekly - avgWeekly >= 0) {
-        document.getElementById("diff-weekly").innerHTML = "+$" + (curWeekly - avgWeekly).toFixed(2);
+        $("#diff-weekly").html("+$" + (curWeekly - avgWeekly).toFixed(2));
     } else {
-        document.getElementById("diff-weekly").innerHTML = "-$" + Math.abs(curWeekly - avgWeekly).toFixed(2);
+        $("#diff-weekly").html("-$" + Math.abs(curWeekly - avgWeekly).toFixed(2));
     }
 
     //debugging
@@ -719,9 +719,9 @@ function calculateAndSet() {
     //only uses the daily since currentDayDiff is the total number of days here
     var diff = remaining - (avgDaily * currentDayDiff);
     if (diff >= 0) {
-        document.getElementById("summary").innerHTML = "+$" + diff.toFixed(2);
+        $("#summary").html("+$" + diff.toFixed(2));
     } else {
-        document.getElementById("summary").innerHTML = "-$" + Math.abs(diff).toFixed(2);
+        $("#summary").html("-$" + Math.abs(diff).toFixed(2));
     }
 
     //show results
@@ -741,22 +741,22 @@ function calculateIfEnter() {
 //when clicking on help
 function help() {
     $("span.ui-dialog-title").text("Help");
-    document.getElementById("dialog-text1").innerHTML = "&#8226; Hover over elements for descriptive hints.<br />" +
+    $("#dialog-text1").html("&#8226; Hover over elements for descriptive hints.<br />" +
         "&#8226; To load defaults, click \"Clear saved\".<br />" +
-        "&#8226; If you have any questions, bug reports, or suggestions, contact:";
+        "&#8226; If you have any questions, bug reports, or suggestions, contact:");
 
-    document.getElementById("dialog-link-text").innerHTML = "alderferstudios@gmail.com";
-    document.getElementById("dialog-link-text").setAttribute("href", "mailto:alderferstudios@gmail.com?subject=RIT%20Dining%20Planner%20Web");
+    $("#dialog-link-text").html("alderferstudios@gmail.com");
+    $("#dialog-link-text").prop("href", "mailto:alderferstudios@gmail.com?subject=RIT%20Dining%20Planner%20Web");
 
-    document.getElementById("dialog-text2").innerHTML = "&#8226; You can also submit these as issues on the Github repo.<br />" +
-        "&#8226; Please include your browser and version with any bug reports.";
+    $("#dialog-text2").html("&#8226; You can also submit these as issues on the Github repo.<br />" +
+        "&#8226; Please include your browser and version with any bug reports.");
     dialog.dialog("open");
 }
 
 //when clicking on about
 function about() {
     $("span.ui-dialog-title").text("About");
-    document.getElementById("dialog-text1").innerHTML = "RIT Dining Planner by Alderfer Studios.<br />" +
+    $("#dialog-text1").html("RIT Dining Planner by Alderfer Studios.<br />" +
         "Browser support is based on what the design library (MDL) can support. These browsers are:<br />" +
         "&#8226; Chrome<br />" +
         "&#8226; Firefox<br />" +
@@ -765,21 +765,21 @@ function about() {
         "&#8226; Internet Explorer 11+*<br />" +
         "&#8226; Safari 8+*<br />" +
         "&#8226; Mobile Safari 8+*<br />" +
-        "* May still have issues";
-    document.getElementById("dialog-link-text").innerHTML = "";
-    document.getElementById("dialog-text2").innerHTML = "";
+        "* May still have issues");
+    $("#dialog-link-text").html("");
+    $("#dialog-text2").html("");
     dialog.dialog("open");
 }
 
 //when clicking on source
 function source() {
     $("span.ui-dialog-title").text("Source");
-    document.getElementById("dialog-text1").innerHTML = "This site is open source. You can find it here:";
+    $("#dialog-text1").html("This site is open source. You can find it here:");
 
-    document.getElementById("dialog-link-text").innerHTML = "https://github.com/BenAlderfer/rit-dining-planner-web";
-    document.getElementById("dialog-link-text").setAttribute("href", "https://github.com/BenAlderfer/rit-dining-planner-web");
+    $("#dialog-link-text").html("https://github.com/BenAlderfer/rit-dining-planner-web");
+    $("#dialog-link-text").setAttribute("href", "https://github.com/BenAlderfer/rit-dining-planner-web");
 
-    document.getElementById("dialog-text2").innerHTML = "";
+    $("#dialog-text2").html("");
     dialog.dialog("open");
 }
 
