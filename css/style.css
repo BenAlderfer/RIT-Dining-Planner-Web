@@ -160,6 +160,7 @@ option:hover {
     background-color: #FF5722;
     color: white;
     font-size: 1.5em;
+	text-transform: none;
 }
 
 #summary-contents {
