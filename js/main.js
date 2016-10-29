@@ -21,7 +21,7 @@ var data;
 
 //runs startup commands after page loads
 function startUp() {
-    notification = document.querySelector('.mdl-js-snackbar');
+    notification = document.querySelector(".mdl-js-snackbar");
 
     //restore saved fields
     restoreFields();
@@ -199,23 +199,23 @@ function setFields() {
 
 //hides the results cards
 function hideResults() {
-    document.getElementById("summary-card").style.display = 'none';
-    document.getElementById("table-card").style.display = 'none';
+    document.getElementById("summary-card").style.display = "none";
+    document.getElementById("table-card").style.display = "none";
 }
 
 //shows the results cards
 function showResults() {
-    document.getElementById("summary-card").style.display = 'block';
-    document.getElementById("table-card").style.display = 'block';
+    document.getElementById("summary-card").style.display = "block";
+    document.getElementById("table-card").style.display = "block";
 }
 
 //if custom plan selected, show custom input line
 function planSelected() {
     //hide or show custom dining input
     if (document.getElementById("plan").value == "custom") {
-        document.getElementById("custom-dining-form").style.display = 'block';
+        document.getElementById("custom-dining-form").style.display = "block";
     } else {
-        document.getElementById("custom-dining-form").style.display = 'none';
+        document.getElementById("custom-dining-form").style.display = "none";
     }
 }
 
@@ -252,10 +252,10 @@ function initialIsValid(willShowErrorMessage) {
     if (planName == "") {
         if (willShowErrorMessage) {
             data = {
-                message: 'The dining plan must be selected.',
+                message: "The dining plan must be selected.",
                 timeout: 8000,
                 actionHandler: hideSnackbar,
-                actionText: 'Dismiss'
+                actionText: "Dismiss"
             };
             showSnackbarMessage(data);
         }
@@ -267,10 +267,10 @@ function initialIsValid(willShowErrorMessage) {
     if ( initial <= 0 || ! /^\d{1,4}(?:[.]\d{1,2}|$)$/.test(String(initial)) ) {
         if (willShowErrorMessage) {
             data = {
-                message: 'The initial dining must be a positive number.',
+                message: "The initial dining must be a positive number.",
                 timeout: 8000,
                 actionHandler: hideSnackbar,
-                actionText: 'Dismiss'
+                actionText: "Dismiss"
             };
             showSnackbarMessage(data);
         }
@@ -282,10 +282,10 @@ function initialIsValid(willShowErrorMessage) {
     if ( initial > 9999.99 ) {
         if (willShowErrorMessage) {
             data = {
-                message: 'The initial cannot exceed 9999.99.',
+                message: "The initial cannot exceed 9999.99.",
                 timeout: 8000,
                 actionHandler: hideSnackbar,
-                actionText: 'Dismiss'
+                actionText: "Dismiss"
             };
             showSnackbarMessage(data);
         }
@@ -300,13 +300,13 @@ function initialIsValid(willShowErrorMessage) {
 //checks if the rollover value is valid
 //only show error message if true passed
 function rolloverIsValid(willShowErrorMessage) {
-    if ( rollover != '' && ( rollover < 0 || ! /^\d{1,4}(?:[.]\d{1,2}|$)$/.test(String(rollover)) ) ) {
+    if ( rollover != "" && ( rollover < 0 || ! /^\d{1,4}(?:[.]\d{1,2}|$)$/.test(String(rollover)) ) ) {
         if (willShowErrorMessage) {
             data = {
-                message: 'The rollover must be a positive number.',
+                message: "The rollover must be a positive number.",
                 timeout: 8000,
                 actionHandler: hideSnackbar,
-                actionText: 'Dismiss'
+                actionText: "Dismiss"
             };
             showSnackbarMessage(data);
         }
@@ -318,10 +318,10 @@ function rolloverIsValid(willShowErrorMessage) {
     if ( rollover > 9999.99 ) {
         if (willShowErrorMessage) {
             data = {
-                message: 'The rollover cannot exceed 9999.99.',
+                message: "The rollover cannot exceed 9999.99.",
                 timeout: 8000,
                 actionHandler: hideSnackbar,
-                actionText: 'Dismiss'
+                actionText: "Dismiss"
             };
             showSnackbarMessage(data);
         }
@@ -339,10 +339,10 @@ function remainingIsValid(willShowErrorMessage) {
     if ( remaining <= 0 || ! /^\d{1,4}(?:[.]\d{1,2}|$)$/.test(String(remaining)) ) {
         if (willShowErrorMessage) {
             data = {
-                message: 'The remaining must be a positive number.',
+                message: "The remaining must be a positive number.",
                 timeout: 8000,
                 actionHandler: hideSnackbar,
-                actionText: 'Dismiss'
+                actionText: "Dismiss"
             };
             showSnackbarMessage(data);
         }
@@ -354,10 +354,10 @@ function remainingIsValid(willShowErrorMessage) {
     if ( remaining > 9999.99 ) {
         if (willShowErrorMessage) {
             data = {
-                message: 'The remaining cannot exceed 9999.99.',
+                message: "The remaining cannot exceed 9999.99.",
                 timeout: 8000,
                 actionHandler: hideSnackbar,
-                actionText: 'Dismiss'
+                actionText: "Dismiss"
             };
             showSnackbarMessage(data);
         }
@@ -370,10 +370,10 @@ function remainingIsValid(willShowErrorMessage) {
     if ( remaining > initial ) {
         if (willShowErrorMessage) {
             data = {
-                message: 'The remaining should not exceed the initial + rollover.',
+                message: "The remaining should not exceed the initial + rollover.",
                 timeout: 8000,
                 actionHandler: hideSnackbar,
-                actionText: 'Dismiss'
+                actionText: "Dismiss"
             };
             showSnackbarMessage(data);
         }
@@ -391,10 +391,10 @@ function startDateIsValid(willShowErrorMessage) {
     if (! /(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d/.test(String(startDate))) {
         if (willShowErrorMessage) {
             data = {
-                message: 'The start date should be in form MM/DD/YYYY.',
+                message: "The start date should be in form MM/DD/YYYY.",
                 timeout: 8000,
                 actionHandler: hideSnackbar,
-                actionText: 'Dismiss'
+                actionText: "Dismiss"
             };
             showSnackbarMessage(data);
         }
@@ -412,10 +412,10 @@ function endDateIsValid(willShowErrorMessage) {
     if (! /(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d/.test(String(endDate))) {
         if (willShowErrorMessage) {
             data = {
-                message: 'The end date should be in form MM/DD/YYYY.',
+                message: "The end date should be in form MM/DD/YYYY.",
                 timeout: 8000,
                 actionHandler: hideSnackbar,
-                actionText: 'Dismiss'
+                actionText: "Dismiss"
             };
             showSnackbarMessage(data);
         }
@@ -431,10 +431,10 @@ function endDateIsValid(willShowErrorMessage) {
 function endDateIsAfterStartDate() {
     if (dayDiff < 1) {
         data = {
-            message: 'The end date must be at least 1 day after the start date.',
+            message: "The end date must be at least 1 day after the start date.",
             timeout: 8000,
             actionHandler: hideSnackbar,
-            actionText: 'Dismiss'
+            actionText: "Dismiss"
         };
         showSnackbarMessage(data);
         hideResults();
@@ -463,10 +463,10 @@ function getWeekly(amount, diffInDays) {
 function checkIfTodayInRange() {
     if ( getDateDiff(start, today) < 0 || getDateDiff(end, today) > 0 ) {
         data = {
-            message: 'Today is not in the date range and some calculations may be off.',
+            message: "Today is not in the date range and some calculations may be off.",
             timeout: 8000,
             actionHandler: hideSnackbar,
-            actionText: 'Dismiss'
+            actionText: "Dismiss"
         };
         showSnackbarMessage(data);
     }
@@ -478,10 +478,10 @@ function totalDaysOffIsValid(willShowErrorMessage) {
     if (totalDaysOff != 0 && ! /\d{1,2}/.test(String(totalDaysOff))) {
         if (willShowErrorMessage) {
             data = {
-                message: 'The total days off must be a positive whole number.',
+                message: "The total days off must be a positive whole number.",
                 timeout: 8000,
                 actionHandler: hideSnackbar,
-                actionText: 'Dismiss'
+                actionText: "Dismiss"
             };
             showSnackbarMessage(data);
         }
@@ -493,10 +493,10 @@ function totalDaysOffIsValid(willShowErrorMessage) {
     if ( totalDaysOff > 99 ) {
         if (willShowErrorMessage) {
             data = {
-                message: 'The total days off cannot exceed 99.',
+                message: "The total days off cannot exceed 99.",
                 timeout: 8000,
                 actionHandler: hideSnackbar,
-                actionText: 'Dismiss'
+                actionText: "Dismiss"
             };
             showSnackbarMessage(data);
         }
@@ -514,10 +514,10 @@ function pastDaysOffIsValid(willShowErrorMessage) {
     if (pastDaysOff != 0 && ! /\d{1,2}/.test(String(pastDaysOff))) {
         if (willShowErrorMessage) {
             data = {
-                message: 'The past days off must be a positive whole number.',
+                message: "The past days off must be a positive whole number.",
                 timeout: 8000,
                 actionHandler: hideSnackbar,
-                actionText: 'Dismiss'
+                actionText: "Dismiss"
             };
             showSnackbarMessage(data);
         }
@@ -529,10 +529,10 @@ function pastDaysOffIsValid(willShowErrorMessage) {
     if (pastDaysOff > totalDaysOff) {
         if (willShowErrorMessage) {
             data = {
-                message: 'The past days off cannot exceed the total days off.',
+                message: "The past days off cannot exceed the total days off.",
                 timeout: 8000,
                 actionHandler: hideSnackbar,
-                actionText: 'Dismiss'
+                actionText: "Dismiss"
             };
             showSnackbarMessage(data);
         }
@@ -544,10 +544,10 @@ function pastDaysOffIsValid(willShowErrorMessage) {
     if ( pastDaysOff > 99 ) {
         if (willShowErrorMessage) {
             data = {
-                message: 'The past days off cannot exceed 99.',
+                message: "The past days off cannot exceed 99.",
                 timeout: 8000,
                 actionHandler: hideSnackbar,
-                actionText: 'Dismiss'
+                actionText: "Dismiss"
             };
             showSnackbarMessage(data);
         }
@@ -561,13 +561,13 @@ function pastDaysOffIsValid(willShowErrorMessage) {
 
 // shows the snackbar with given message
 function showSnackbarMessage(textData) {
-    notification.style.display = 'block';
+    notification.style.display = "block";
     notification.MaterialSnackbar.showSnackbar(textData);
 }
 
 // hides the snackbar
 function hideSnackbar() {
-    notification.style.display = 'none';
+    notification.style.display = "none";
 }
 
 // gets the fields and calls calculateAndSet() if all are valid
@@ -740,22 +740,22 @@ function calculateIfEnter() {
 
 //when clicking on help
 function help() {
-    $("span.ui-dialog-title").text('Help');
+    $("span.ui-dialog-title").text("Help");
     document.getElementById("dialog-text1").innerHTML = "&#8226; Hover over elements for descriptive hints.<br />" +
         "&#8226; To load defaults, click \"Clear saved\".<br />" +
         "&#8226; If you have any questions, bug reports, or suggestions, contact:";
 
     document.getElementById("dialog-link-text").innerHTML = "alderferstudios@gmail.com";
-    document.getElementById("dialog-link-text").setAttribute('href', 'mailto:alderferstudios@gmail.com?subject=RIT%20Dining%20Planner%20Web');
+    document.getElementById("dialog-link-text").setAttribute("href", "mailto:alderferstudios@gmail.com?subject=RIT%20Dining%20Planner%20Web");
 
     document.getElementById("dialog-text2").innerHTML = "&#8226; You can also submit these as issues on the Github repo.<br />" +
         "&#8226; Please include your browser and version with any bug reports.";
-    dialog.dialog('open');
+    dialog.dialog("open");
 }
 
 //when clicking on about
 function about() {
-    $("span.ui-dialog-title").text('About');
+    $("span.ui-dialog-title").text("About");
     document.getElementById("dialog-text1").innerHTML = "RIT Dining Planner by Alderfer Studios.<br />" +
         "Browser support is based on what the design library (MDL) can support. These browsers are:<br />" +
         "&#8226; Chrome<br />" +
@@ -768,25 +768,25 @@ function about() {
         "* May still have issues";
     document.getElementById("dialog-link-text").innerHTML = "";
     document.getElementById("dialog-text2").innerHTML = "";
-    dialog.dialog('open');
+    dialog.dialog("open");
 }
 
 //when clicking on source
 function source() {
-    $("span.ui-dialog-title").text('Source');
+    $("span.ui-dialog-title").text("Source");
     document.getElementById("dialog-text1").innerHTML = "This site is open source. You can find it here:";
 
     document.getElementById("dialog-link-text").innerHTML = "https://github.com/BenAlderfer/rit-dining-planner-web";
-    document.getElementById("dialog-link-text").setAttribute('href', 'https://github.com/BenAlderfer/rit-dining-planner-web');
+    document.getElementById("dialog-link-text").setAttribute("href", "https://github.com/BenAlderfer/rit-dining-planner-web");
 
     document.getElementById("dialog-text2").innerHTML = "";
-    dialog.dialog('open');
+    dialog.dialog("open");
 }
 
 function addFieldListeners() {
-    $( "#plan" ).change( function() { getFieldsAndCheck(false) });
-    $( "input[type='number']" ).change( function() { getFieldsAndCheck(false) });
-    $( "input[type='text']" ).change( function() { getFieldsAndCheck(false) });
+    $("#plan").change(function() { getFieldsAndCheck(false) });
+    $("input[type='number']").change(function() { getFieldsAndCheck(false) });
+    $("input[type='text']").change(function() { getFieldsAndCheck(false) });
 }
 
 //hide things that shouldn't show all the time
@@ -796,14 +796,14 @@ hideResults(); //hide results
 setVarDefaults(); //sets variable defaults
 
 //when page loaded
-$( document ).ready( function() {
+$(document).ready(function() {
     //assign datepickers and setup dialog
-    $( "#start-date" ).datepicker();
-    $( "#end-date" ).datepicker();
+    $("#start-date").datepicker();
+    $("#end-date").datepicker();
 
-    dialog = $( "#dialog" );
+    dialog = $("#dialog");
     dialog.dialog({ modal: true});
-    dialog.dialog('close');
+    dialog.dialog("close");
 
     addFieldListeners();
 
