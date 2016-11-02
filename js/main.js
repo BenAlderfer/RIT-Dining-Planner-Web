@@ -746,7 +746,7 @@ function help() {
         "&#8226; If you have any questions, bug reports, or suggestions, contact:");
 
     $("#dialog-link-text").html("alderferstudios@gmail.com");
-    $("#dialog-link-text").prop("href", "mailto:alderferstudios@gmail.com?subject=RIT%20Dining%20Planner%20Web");
+    $("#dialog-link-text").attr("href", "mailto:alderferstudios@gmail.com?subject=RIT%20Dining%20Planner%20Web");
 
     $("#dialog-text2").html("&#8226; You can also submit these as issues on the Github repo.<br />" +
         "&#8226; Please include your browser and version with any bug reports.");
@@ -777,7 +777,7 @@ function source() {
     $("#dialog-text1").html("This site is open source. You can find it here:");
 
     $("#dialog-link-text").html("https://github.com/BenAlderfer/rit-dining-planner-web");
-    $("#dialog-link-text").setAttribute("href", "https://github.com/BenAlderfer/rit-dining-planner-web");
+    $("#dialog-link-text").attr("href", "https://github.com/BenAlderfer/rit-dining-planner-web");
 
     $("#dialog-text2").html("");
     dialog.dialog("open");
