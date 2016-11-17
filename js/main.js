@@ -704,16 +704,16 @@ function calculateAndSet() {
     }
 
     //debugging
-    document.getElementById("initial-text").innerHTML = "initial: " + (initial - rollover);
-    document.getElementById("rollover-text").innerHTML = "rollover: " + rollover;
-    document.getElementById("total-text").innerHTML = "total: " + initial;
-    document.getElementById("current-text").innerHTML = "remaining: " + remaining;
-    document.getElementById("start-text").innerHTML = "start: " + start;
-    document.getElementById("end-text").innerHTML = "end: " + end;
-    document.getElementById("dayDiff-text").innerHTML = "day diff: " + dayDiff;
-    document.getElementById("currentDayDiff-text").innerHTML = "current day diff: " + currentDayDiff;
-    document.getElementById("total-days-off-text").innerHTML = "total days off: " + totalDaysOff;
-    document.getElementById("past-days-off-text").innerHTML = "past days off: " + pastDaysOff;
+    // document.getElementById("initial-text").innerHTML = "initial: " + (initial - rollover);
+    // document.getElementById("rollover-text").innerHTML = "rollover: " + rollover;
+    // document.getElementById("total-text").innerHTML = "total: " + initial;
+    // document.getElementById("current-text").innerHTML = "remaining: " + remaining;
+    // document.getElementById("start-text").innerHTML = "start: " + start;
+    // document.getElementById("end-text").innerHTML = "end: " + end;
+    // document.getElementById("dayDiff-text").innerHTML = "day diff: " + dayDiff;
+    // document.getElementById("currentDayDiff-text").innerHTML = "current day diff: " + currentDayDiff;
+    // document.getElementById("total-days-off-text").innerHTML = "total days off: " + totalDaysOff;
+    // document.getElementById("past-days-off-text").innerHTML = "past days off: " + pastDaysOff;
 
     //set summary
     //excess from what you should have spent and the remaining
