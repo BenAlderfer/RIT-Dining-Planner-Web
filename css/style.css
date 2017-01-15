@@ -36,6 +36,11 @@ p {
     text-align: center;
 }
 
+/* underline navbar links on hover */
+.mdl-navigation__link:hover {
+    border-bottom: 2px solid white;
+}
+
 /* disable input borders */
 .mdl-textfield {
     outline: none;
