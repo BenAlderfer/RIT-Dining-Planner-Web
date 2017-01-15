@@ -54,10 +54,10 @@ function setVarDefaults() {
     rollover = 0;
     remaining = 0;
     dayDiff = 0;
-    totalDaysOff = 5;
+    totalDaysOff = 9;
     pastDaysOff = 0;
-    startDate = "08/22/2016";
-    endDate = "12/17/2016";
+    startDate = "01/23/2017";
+    endDate = "05/19/2017";
 }
 
 //clears out fields
