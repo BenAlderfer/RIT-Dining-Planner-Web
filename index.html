@@ -52,6 +52,12 @@
                 </div>
             </header>
 
+            <div class="alert">
+                <div class="container">
+                    Default dates and days off have been updated for spring. Go to the 3 dot menu and click "Reset defaults" to apply them.
+                </div>
+            </div>
+
             <section class="container" id="content">
 
                 <div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar" id="snackbar">
@@ -153,7 +159,7 @@
                                             <input class="mdl-textfield__input" type="text" maxlength="10"
                                                    pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](20)\d\d" id="start-date" onkeypress="calculateIfEnter()" form="form1">
                                             <label class="mdl-textfield__label" for="start-date">Start date</label>
-                                            <span class="mdl-textfield__error">Format should look like "08/22/2016"</span>
+                                            <span class="mdl-textfield__error">Format should look like "01/23/2017"</span>
                                         </div>
                                         <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="start-form">
                                             The start date for the semester
@@ -164,7 +170,7 @@
                                             <input class="mdl-textfield__input" type="text" maxlength="10"
                                                    pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](20)\d\d" id="end-date" onkeypress="calculateIfEnter()" form="form1">
                                             <label class="mdl-textfield__label" for="end-date">End date</label>
-                                            <span class="mdl-textfield__error">Format should look like "12/17/2016"</span>
+                                            <span class="mdl-textfield__error">Format should look like "05/19/2017"</span>
                                         </div>
                                         <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" for="end-form">
                                             The end date for the semester
@@ -211,7 +217,7 @@
                     <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
 
                         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="calculate-button"
-                                onclick="getFieldsAndCheckManual()" form="form1">
+                                onclick="getFieldsAndCheckManual()" form="form1" type="submit">
                             Calculate
                         </button>
 
