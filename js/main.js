@@ -54,10 +54,10 @@ function setVarDefaults() {
     rollover = 0;
     remaining = 0;
     dayDiff = 0;
-    totalDaysOff = 9;
+    totalDaysOff = 5;
     pastDaysOff = 0;
-    startDate = "01/23/2017";
-    endDate = "05/19/2017";
+    startDate = "08/28/2017";
+    endDate = "12/19/2017";
 }
 
 //clears out fields
@@ -224,23 +224,23 @@ function getInitial() {
     planName = $("#plan").val();
     switch(planName) {
         case "5":
-            return 1300.0;
+            return 1325.0;
         case "10":
-            return 700.0;
+            return 725.0;
         case "14":
-            return 500.0;
+            return 525.0;
         case "20":
-            return 300.0;
+            return 325.0;
         case "orange":
-            return 2669.0;
+            return 2762.0;
         case "brown":
-            return 1914.0;
+            return 2000.0;
         case "gold":
-            return 1340.0;
+            return 1400.0;
         case "silver":
-            return 930.0;
+            return 1000.0;
         case "bronze":
-            return 515.0;
+            return 550.0;
         default: //custom
             return Number($("#custom-dining").val());
     }
