@@ -212,7 +212,7 @@ function showResults() {
 //if custom plan selected, show custom input line
 function planSelected() {
     //hide or show custom dining input
-    if ($("#plan").value == "custom") {
+    if ($("#plan").val() == "custom") {
         $("#custom-dining-form").css("display", "block");
     } else {
         $("#custom-dining-form").css("display", "none");
