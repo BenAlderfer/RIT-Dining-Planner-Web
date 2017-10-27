@@ -62,41 +62,42 @@ function setVarDefaults() {
 
 //clears out fields
 function blankFields() {
-    //empty fields
-    $("#custom-dining").val("");
-    $("#rollover").val("");
-    $("#remaining").val("");
-    $("#start-date").val("");
-    $("#end-date").val("");
-    $("#total-days-off").val("");
-    $("#past-days-off").val("");
+    var customDining = $("#custom-dining");
+    var rollOver = $("#rollover");
+    var remaining = $("#remaining");
+    var startDate = $("#start-date");
+    var endDate = $("#end-date");
+    var totalDaysOff = $("#total-days-off");
+    var pastDaysOff = $("#past-days-off");
+
+    //blank fields
+    customDining.val("");
+    rollOver.val("");
+    remaining.val("");
+    startDate.val("");
+    endDate.val("");
+    totalDaysOff.val("");
+    pastDaysOff.val("");
 
     //drop floating labels and error messages
-    var customDining = $("#custom-dining");
     customDining.parent().removeClass("is-dirty");
     customDining.parent().removeClass("is-invalid");
 
-    var rollOver = $("#rollover");
     rollOver.parent().removeClass("is-dirty");
     rollOver.parent().removeClass("is-invalid");
 
-    var remaining = $("#remaining");
     remaining.parent().removeClass("is-dirty");
     remaining.parent().removeClass("is-invalid");
 
-    var startDate = $("#start-date");
     startDate.parent().removeClass("is-dirty");
     startDate.parent().removeClass("is-invalid");
 
-    var endDate = $("#end-date");
     endDate.parent().removeClass("is-dirty");
     endDate.parent().removeClass("is-invalid");
 
-    var totalDaysOff = $("#total-days-off");
     totalDaysOff.parent().removeClass("is-dirty");
     totalDaysOff.parent().removeClass("is-invalid");
 
-    var pastDaysOff = $("#past-days-off");
     pastDaysOff.parent().removeClass("is-dirty");
     pastDaysOff.parent().removeClass("is-invalid");
 }
@@ -222,7 +223,7 @@ function planSelected() {
 //get the initial dining from dropdown menu
 function getInitial() {
     planName = $("#plan").val();
-    switch(planName) {
+    switch (planName) {
         case "5":
             return 1325.0;
         case "10":
@@ -264,7 +265,7 @@ function initialIsValid(willShowErrorMessage) {
         return false;
     }
 
-    if (initial <= 0 || ! /^\d{1,4}(?:[.]\d{1,2}|$)$/.test(String(initial))) {
+    if (initial <= 0 || !/^\d{1,4}(?:[.]\d{1,2}|$)$/.test(String(initial))) {
         if (willShowErrorMessage) {
             data = {
                 message: "The initial dining must be a positive number.",
@@ -300,7 +301,7 @@ function initialIsValid(willShowErrorMessage) {
 //checks if the rollover value is valid
 //only show error message if true passed
 function rolloverIsValid(willShowErrorMessage) {
-    if (rollover != "" && ( rollover < 0 || ! /^\d{1,4}(?:[.]\d{1,2}|$)$/.test(String(rollover)))) {
+    if (rollover != "" && ( rollover < 0 || !/^\d{1,4}(?:[.]\d{1,2}|$)$/.test(String(rollover)))) {
         if (willShowErrorMessage) {
             data = {
                 message: "The rollover must be a positive number.",
@@ -336,7 +337,7 @@ function rolloverIsValid(willShowErrorMessage) {
 //checks if the remaining value is valid
 //only show error message if true passed
 function remainingIsValid(willShowErrorMessage) {
-    if (remaining <= 0 || ! /^\d{1,4}(?:[.]\d{1,2}|$)$/.test(String(remaining))) {
+    if (remaining <= 0 || !/^\d{1,4}(?:[.]\d{1,2}|$)$/.test(String(remaining))) {
         if (willShowErrorMessage) {
             data = {
                 message: "The remaining must be a positive number.",
@@ -388,7 +389,7 @@ function remainingIsValid(willShowErrorMessage) {
 //checks if the start date is valid
 //only show error message if true passed
 function startDateIsValid(willShowErrorMessage) {
-    if (! /(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d/.test(String(startDate))) {
+    if (!/(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d/.test(String(startDate))) {
         if (willShowErrorMessage) {
             data = {
                 message: "The start date should be in form MM/DD/YYYY.",
@@ -409,7 +410,7 @@ function startDateIsValid(willShowErrorMessage) {
 //checks if the end date is valid
 //only show error message if true passed
 function endDateIsValid(willShowErrorMessage) {
-    if (! /(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d/.test(String(endDate))) {
+    if (!/(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d/.test(String(endDate))) {
         if (willShowErrorMessage) {
             data = {
                 message: "The end date should be in form MM/DD/YYYY.",
@@ -445,7 +446,7 @@ function endDateIsAfterStartDate() {
 }
 
 //gets the day difference between two dates
-function getDateDiff(startingDate, endingDate){
+function getDateDiff(startingDate, endingDate) {
     return Math.floor((endingDate - startingDate) / (1000 * 60 * 60 * 24)) + 1;
 }
 
@@ -475,7 +476,7 @@ function checkIfTodayInRange() {
 //checks if the total days off value is valid
 //only show error message if true passed
 function totalDaysOffIsValid(willShowErrorMessage) {
-    if (totalDaysOff != 0 && ! /\d{1,2}/.test(String(totalDaysOff))) {
+    if (totalDaysOff != 0 && !/\d{1,2}/.test(String(totalDaysOff))) {
         if (willShowErrorMessage) {
             data = {
                 message: "The total days off must be a positive whole number.",
@@ -511,7 +512,7 @@ function totalDaysOffIsValid(willShowErrorMessage) {
 //checks if the past days off value is valid
 //only show error message if true passed
 function pastDaysOffIsValid(willShowErrorMessage) {
-    if (pastDaysOff != 0 && ! /\d{1,2}/.test(String(pastDaysOff))) {
+    if (pastDaysOff != 0 && !/\d{1,2}/.test(String(pastDaysOff))) {
         if (willShowErrorMessage) {
             data = {
                 message: "The past days off must be a positive whole number.",
@@ -785,9 +786,15 @@ function source() {
 }
 
 function addFieldListeners() {
-    $("#plan").change(function() { getFieldsAndCheck(false) });
-    $("input[type='number']").change(function() { getFieldsAndCheck(false) });
-    $("input[type='text']").change(function() { getFieldsAndCheck(false) });
+    $("#plan").change(function () {
+        getFieldsAndCheck(false)
+    });
+    $("input[type='number']").change(function () {
+        getFieldsAndCheck(false)
+    });
+    $("input[type='text']").change(function () {
+        getFieldsAndCheck(false)
+    });
 }
 
 //hide things that shouldn't show all the time
@@ -797,13 +804,13 @@ hideResults(); //hide results
 setVarDefaults(); //sets variable defaults
 
 //when page loaded
-$(document).ready(function() {
+$(document).ready(function () {
     //assign datepickers and setup dialog
     $("#start-date").datepicker();
     $("#end-date").datepicker();
 
     dialog = $("#dialog");
-    dialog.dialog({ modal: true});
+    dialog.dialog({modal: true});
     dialog.dialog("close");
 
     addFieldListeners();
