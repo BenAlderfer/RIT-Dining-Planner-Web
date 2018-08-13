@@ -1,23 +1,23 @@
 "use strict";
 
 //global variables
-var planName;
-var initial;
-var rollover;
-var remaining;
-var dayDiff;
-var totalDaysOff;
-var pastDaysOff;
-var startDate;
-var endDate;
-var start, end, today;
-var dialog;
+let planName;
+let initial;
+let rollover;
+let remaining;
+let dayDiff;
+let totalDaysOff;
+let pastDaysOff;
+let startDate;
+let endDate;
+let start, end, today;
+let dialog;
 
-var ENTER_KEY = 13;
+const ENTER_KEY = 13;
 
 //snackbar variables
-var notification;
-var data;
+let notification;
+let data;
 
 //runs startup commands after page loads
 function startUp() {
@@ -56,19 +56,19 @@ function setVarDefaults() {
     dayDiff = 0;
     totalDaysOff = 9;
     pastDaysOff = 0;
-    startDate = "01/16/2018";
-    endDate = "05/08/2018";
+    startDate = "08/27/2018";
+    endDate = "12/19/2018";
 }
 
 //clears out fields
 function blankFields() {
-    var customDining = $("#custom-dining");
-    var rollOver = $("#rollover");
-    var remaining = $("#remaining");
-    var startDate = $("#start-date");
-    var endDate = $("#end-date");
-    var totalDaysOff = $("#total-days-off");
-    var pastDaysOff = $("#past-days-off");
+    const customDining = $("#custom-dining");
+    const rollOver = $("#rollover");
+    const remaining = $("#remaining");
+    const startDate = $("#start-date");
+    const endDate = $("#end-date");
+    const totalDaysOff = $("#total-days-off");
+    const pastDaysOff = $("#past-days-off");
 
     //blank fields
     customDining.val("");
@@ -233,15 +233,15 @@ function getInitial() {
         case "20":
             return 325.0;
         case "orange":
-            return 2762.0;
+            return 2900.0;
         case "brown":
-            return 2000.0;
+            return 2100.0;
         case "gold":
-            return 1400.0;
+            return 1500.0;
         case "silver":
             return 1000.0;
         case "bronze":
-            return 550.0;
+            return 500.0;
         default: //custom
             return Number($("#custom-dining").val());
     }
@@ -650,11 +650,11 @@ function calculateAndSet() {
     //remove total days off from dayDiff
     dayDiff -= Number(totalDaysOff);
 
-    var avgDaily = getDaily(initial, dayDiff);
-    var avgWeekly = getWeekly(initial, dayDiff);
+    const avgDaily = getDaily(initial, dayDiff);
+    const avgWeekly = getWeekly(initial, dayDiff);
 
     today = new Date();
-    var currentDayDiff = getDateDiff(today, end);
+    let currentDayDiff = getDateDiff(today, end);
     //warn if today not in date range
     checkIfTodayInRange();
 
@@ -664,8 +664,8 @@ function calculateAndSet() {
     //add back past days off
     currentDayDiff += Number(pastDaysOff);
 
-    var curDaily = getDaily(remaining, currentDayDiff);
-    var curWeekly = getWeekly(remaining, currentDayDiff);
+    const curDaily = getDaily(remaining, currentDayDiff);
+    const curWeekly = getWeekly(remaining, currentDayDiff);
 
     //set table fields with leading sign and $
     if (avgDaily >= 0) {
@@ -719,7 +719,7 @@ function calculateAndSet() {
     //set summary
     //excess from what you should have spent and the remaining
     //only uses the daily since currentDayDiff is the total number of days here
-    var diff = remaining - (avgDaily * currentDayDiff);
+    const diff = remaining - (avgDaily * currentDayDiff);
     if (diff >= 0) {
         $("#summary").html("+$" + diff.toFixed(2));
     } else {
