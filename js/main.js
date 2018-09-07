@@ -301,7 +301,7 @@ function initialIsValid(willShowErrorMessage) {
 //checks if the rollover value is valid
 //only show error message if true passed
 function rolloverIsValid(willShowErrorMessage) {
-    if (rollover != "" && ( rollover < 0 || !/^\d{1,4}(?:[.]\d{1,2}|$)$/.test(String(rollover)))) {
+    if (rollover != "" && (rollover < 0 || !/^\d{1,4}(?:[.]\d{1,2}|$)$/.test(String(rollover)))) {
         if (willShowErrorMessage) {
             data = {
                 message: "The rollover must be a positive number.",
