@@ -1,326 +1,358 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
-		<title>RIT Dining Planner</title>
-		
-		<!-- Google verification -->
-		<meta name="google-site-verification" content="bAmrN9RxZ4cVn24T78wZ9LiThtV0ms1aCMKbWltPM24" />
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <title>RIT Dining Planner</title>
 
-		<!-- Android Chrome Header Color -->
-		<meta name="theme-color" content="#FF5722">
+    <!-- Google verification -->
+    <meta name="google-site-verification" content="bAmrN9RxZ4cVn24T78wZ9LiThtV0ms1aCMKbWltPM24"/>
 
-		<!-- Windows 8/10 resources -->
-		<meta name="msapplication-TileImage" content="images/favicon.png">
-		<meta name="msapplication-TileColor" content="#FF5722">
+    <!-- Android Chrome Header Color -->
+    <meta name="theme-color" content="#FF5722">
 
-		<!-- favicon -->
-		<link rel="shortcut icon" href="images/favicon.ico" />
+    <!-- Windows 8/10 resources -->
+    <meta name="msapplication-TileImage" content="images/favicon.png">
+    <meta name="msapplication-TileColor" content="#FF5722">
 
-		<!-- style sheets -->
-		<link rel="stylesheet" href="css/material.deep_orange-orange.min.css" />
-        <link rel="stylesheet" href="css/jquery-ui.css">
-        <link rel="stylesheet" href="css/style.css" media="screen">
-		<link rel="stylesheet" href="css/print.css" media="print">
-	</head>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="images/favicon.ico"/>
 
-    <body>
-        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-            <header class="mdl-layout__header">
-                <div class="mdl-layout__header-row">
-                    <span class="mdl-layout-title">RIT Dining Planner</span>
-                    <!-- spacer to align rest to the right -->
-                    <div class="mdl-layout-spacer"></div>
+    <!-- style sheets -->
+    <link rel="stylesheet" href="css/material.deep_orange-orange.min.css"/>
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/style.css" media="screen">
+    <link rel="stylesheet" href="css/print.css" media="print">
+</head>
 
-                    <!-- nav links hidden on small screens -->
-                    <nav class="mdl-navigation">
-                        <a class="mdl-navigation__link" id="tigerbucks" target="_blank" href="https://tigerbucks.rit.edu">Tigerbucks</a>
-                        <a class="mdl-navigation__link" id="eservices" target="_blank" href="https://eservices.rit.edu">eServices</a>
-                    </nav>
+<body>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <span class="mdl-layout-title">RIT Dining Planner</span>
+            <!-- spacer to align rest to the right -->
+            <div class="mdl-layout-spacer"></div>
 
-                    <button id="menu" class="mdl-button mdl-js-button mdl-button--icon">
-                        <strong id="overflow">&#8942;</strong>
-                    </button>
+            <!-- nav links hidden on small screens -->
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" id="tigerbucks" target="_blank" href="https://tigerbucks.rit.edu">Tigerbucks</a>
+                <a class="mdl-navigation__link" id="eservices" target="_blank" href="https://eservices.rit.edu">eServices</a>
+            </nav>
 
-                    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu">
-                        <li class="mdl-menu__item" id="tigerbucks-overflow"><a target="_blank" href="https://tigerbucks.rit.edu">Tigerbucks</a></li>
-                        <li class="mdl-menu__item" id="eservices-overflow"><a target="_blank" href="https://eservices.rit.edu">eServices</a></li>
-                        <li class="mdl-menu__item" id="dining-plans"><a target="_blank" href="https://www.rit.edu/fa/diningservices">Dining Services</a></li>
-                        <li class="mdl-menu__item" onclick="help()">Help</li>
-                        <li class="mdl-menu__item" onclick="about()">About</li>
-                        <li class="mdl-menu__item" onclick="source()">Source</li>
-                        <li class="mdl-menu__item" onclick="clearLocalStorage()">Reset defaults</li>
-                    </ul>
-                </div>
-            </header>
+            <button id="menu" class="mdl-button mdl-js-button mdl-button--icon">
+                <strong id="overflow">&#8942;</strong>
+            </button>
 
-            <!--<div class="alert">-->
-                <!--<div class="container">-->
-                    <!--Default dates, days off, and plans have been updated for spring. Go to the 3 dot menu and click "Reset defaults" to apply them.-->
-                <!--</div>-->
-            <!--</div>-->
+            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu">
+                <li class="mdl-menu__item" id="tigerbucks-overflow"><a target="_blank"
+                                                                       href="https://tigerbucks.rit.edu">Tigerbucks</a>
+                </li>
+                <li class="mdl-menu__item" id="eservices-overflow"><a target="_blank" href="https://eservices.rit.edu">eServices</a>
+                </li>
+                <li class="mdl-menu__item" id="dining-plans"><a target="_blank"
+                                                                href="https://www.rit.edu/fa/diningservices">Dining
+                    Services</a></li>
+                <li class="mdl-menu__item" onclick="help()">Help</li>
+                <li class="mdl-menu__item" onclick="about()">About</li>
+                <li class="mdl-menu__item" onclick="source()">Source</li>
+                <li class="mdl-menu__item" onclick="clearLocalStorage()">Reset defaults</li>
+            </ul>
+        </div>
+    </header>
 
-            <section class="container" id="content">
+    <!--<div class="alert">-->
+    <!--<div class="container">-->
+    <!--Default dates, days off, and plans have been updated for spring. Go to the 3 dot menu and click "Reset defaults" to apply them.-->
+    <!--</div>-->
+    <!--</div>-->
 
-                <div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar" id="snackbar">
-                    <div class="mdl-snackbar__text"></div>
-                    <button type="button" class="mdl-snackbar__action"></button>
-                </div>
+    <section class="container" id="content">
 
-                <div class="mdl-grid">
+        <div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar"
+             id="snackbar">
+            <div class="mdl-snackbar__text"></div>
+            <button type="button" class="mdl-snackbar__action"></button>
+        </div>
 
-                    <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+        <div class="mdl-grid">
 
-                        <div class="card-wide mdl-card mdl-shadow--2dp" id="balance-card">
-                            <div class="card-contents">
-                                <!-- meal plan selector -->
-                                <h4 id="dining-header">Dining Dollars</h4>
+            <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
 
-                                <div class="mdl-grid inside-grid" id="plan-section">
-                                    <div class="mdl-cell mdl-cell--6-col full-width-when-tablet half-width-when-phablet select-section">
-                                        <br /> <!-- drop down a line to line up with custom dining input -->
-                                        <form action="javascript:getFieldsAndCheckManual();" id="form1">
-                                            <select id="plan" onclick="planSelected()">
-                                                <option value="" disabled selected>Select plan</option>
-                                                <option value="5">Tiger 5 ($1325)</option>
-                                                <option value="10">Tiger 10 ($725)</option>
-                                                <option value="14">Tiger 14 ($525)</option>
-                                                <option value="20">Tiger 20 ($325)</option>
-                                                <option value="orange">Orange ($2900)</option>
-                                                <option value="brown">Brown ($2100)</option>
-                                                <option value="gold">Gold ($1500)</option>
-                                                <option value="silver">Silver ($1000)</option>
-                                                <option value="bronze">Bronze ($500)</option>
-                                                <option value="custom">Custom</option>
-                                            </select>
-                                            <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="plan">
-                                                Your meal plan
-                                            </div>
-                                        </form>
+                <div class="card-wide mdl-card mdl-shadow--2dp" id="balance-card">
+                    <div class="card-contents">
+                        <!-- meal plan selector -->
+                        <h4 id="dining-header">Dining Dollars</h4>
+
+                        <div class="mdl-grid inside-grid" id="plan-section">
+                            <div class="mdl-cell mdl-cell--6-col full-width-when-tablet half-width-when-phablet select-section">
+                                <br/> <!-- drop down a line to line up with custom dining input -->
+                                <form action="javascript:getFieldsAndCheckManual();" id="form1">
+                                    <select id="plan" onclick="planSelected()">
+                                        <option value="" disabled selected>Select plan</option>
+                                        <option value="5">Tiger 5 ($1325)</option>
+                                        <option value="10">Tiger 10 ($725)</option>
+                                        <option value="14">Tiger 14 ($525)</option>
+                                        <option value="20">Tiger 20 ($325)</option>
+                                        <option value="orange">Orange ($2900)</option>
+                                        <option value="brown">Brown ($2100)</option>
+                                        <option value="gold">Gold ($1500)</option>
+                                        <option value="silver">Silver ($1000)</option>
+                                        <option value="bronze">Bronze ($500)</option>
+                                        <option value="custom">Custom</option>
+                                    </select>
+                                    <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="plan">
+                                        Your meal plan
                                     </div>
-                                    <div class="mdl-cell mdl-cell--6-col full-width-when-tablet half-width-when-phablet">
-                                        <!-- custom dining input-->
-                                        <div id="custom-dining-section">
-                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end" id="custom-dining-form" tabindex="99">
-                                                <input class="mdl-textfield__input" type="number" min="0" max="9999.99"
-                                                   pattern="^\d{1,4}(?:[.]\d{1,2}|$)$" step="0.01" id="custom-dining" onkeypress="calculateIfEnter()" form="form1">
-                                                <label class="mdl-textfield__label" for="custom-dining">Custom dining</label>
-                                                <span class="mdl-textfield__error">Format should look like "1234.56"</span>
-                                            </div>
-                                        </div>
-                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" for="custom-dining-form">
-                                            Your custom amount of dining dollars
-                                        </div>
-                                        <!-- second tooltip for mobile -->
-                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right mobile-only" for="custom-dining-form">
-                                            Your custom amount of dining dollars
-                                        </div>
+                                </form>
+                            </div>
+                            <div class="mdl-cell mdl-cell--6-col full-width-when-tablet half-width-when-phablet">
+                                <!-- custom dining input-->
+                                <div id="custom-dining-section">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end"
+                                         id="custom-dining-form" tabindex="99">
+                                        <input class="mdl-textfield__input" type="number" min="0" max="9999.99"
+                                               pattern="^\d{1,4}(?:[.]\d{1,2}|$)$" step="0.01" id="custom-dining"
+                                               onkeypress="calculateIfEnter()" form="form1">
+                                        <label class="mdl-textfield__label" for="custom-dining">Custom dining</label>
+                                        <span class="mdl-textfield__error">Format should look like "1234.56"</span>
                                     </div>
                                 </div>
-
-                                <div class="mdl-grid" id="rollover-remaining-section">
-                                    <div class="mdl-cell mdl-cell--6-col full-width-when-tablet half-width-when-phablet two-part-section-start">
-                                        <!-- rollover input-->
-                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="rollover-form" tabindex="99">
-                                            <input class="mdl-textfield__input" type="number" min="0" max="9999.99"
-                                               pattern="^\d{1,4}(?:[.]\d{1,2}|$)$" step="0.01" id="rollover" form="form1">
-                                            <label class="mdl-textfield__label" for="rollover">Rollover</label>
-                                            <span class="mdl-textfield__error">Format should look like "1234.56"</span>
-                                        </div>
-                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="rollover-form">
-                                            How much you are rolling over from last semester
-                                        </div>
-                                    </div>
-                                    <div class="mdl-cell mdl-cell--6-col full-width-when-tablet half-width-when-phablet">
-                                        <!-- current dining input -->
-                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end last-item" id="remaining-form" tabindex="99">
-                                            <input class="mdl-textfield__input" type="number" min="0" max="9999.99"
-                                               pattern="^\d{1,4}(?:[.]\d{1,2}|$)$" step="0.01" id="remaining" onkeypress="calculateIfEnter()" form="form1" autofocus>
-                                            <label class="mdl-textfield__label" for="remaining">Remaining</label>
-                                            <span class="mdl-textfield__error">Format should look like "1234.56"</span>
-                                        </div>
-                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" for="remaining-form">
-                                            How many dollars you have remaining
-                                        </div>
-                                        <!-- second tooltip for mobile -->
-                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right mobile-only" for="remaining-form">
-                                            How many dollars you have remaining
-                                        </div>
-                                    </div>
+                                <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" for="custom-dining-form">
+                                    Your custom amount of dining dollars
+                                </div>
+                                <!-- second tooltip for mobile -->
+                                <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right mobile-only"
+                                     for="custom-dining-form">
+                                    Your custom amount of dining dollars
                                 </div>
                             </div>
                         </div>
 
-                        <div class="card-wide mdl-card mdl-shadow--2dp" id="date-card">
-                            <div class="card-contents">
-                                <h4>Date Range</h4>
-
-                                <div class="mdl-grid inside-grid" id="date-section">
-                                    <div class="mdl-cell mdl-cell--6-col full-width-when-tablet half-width-when-phablet two-part-section-start">
-                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="start-form" tabindex="99">
-                                            <input class="mdl-textfield__input" type="text" maxlength="10"
-                                                   pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](20)\d\d" id="start-date" onkeypress="calculateIfEnter()" form="form1">
-                                            <label class="mdl-textfield__label" for="start-date">Start date</label>
-                                            <span class="mdl-textfield__error">Format should look like "08/27/2018"</span>
-                                        </div>
-                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="start-form">
-                                            The start date for the semester
-                                        </div>
-                                    </div>
-                                    <div class="mdl-cell mdl-cell--6-col full-width-when-tablet half-width-when-phablet two-part-section-end">
-                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="end-form" tabindex="99">
-                                            <input class="mdl-textfield__input" type="text" maxlength="10"
-                                                   pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](20)\d\d" id="end-date" onkeypress="calculateIfEnter()" form="form1">
-                                            <label class="mdl-textfield__label" for="end-date">End date</label>
-                                            <span class="mdl-textfield__error">Format should look like "12/19/2018"</span>
-                                        </div>
-                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" for="end-form">
-                                            The end date for the semester
-                                        </div>
-                                        <!-- second tooltip for mobile -->
-                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right mobile-only" for="end-form">
-                                            The end date for the semester
-                                        </div>
-                                    </div>
+                        <div class="mdl-grid" id="rollover-remaining-section">
+                            <div class="mdl-cell mdl-cell--6-col full-width-when-tablet half-width-when-phablet two-part-section-start">
+                                <!-- rollover input-->
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                                     id="rollover-form" tabindex="99">
+                                    <input class="mdl-textfield__input" type="number" min="0" max="9999.99"
+                                           pattern="^\d{1,4}(?:[.]\d{1,2}|$)$" step="0.01" id="rollover" form="form1">
+                                    <label class="mdl-textfield__label" for="rollover">Rollover</label>
+                                    <span class="mdl-textfield__error">Format should look like "1234.56"</span>
                                 </div>
-
-                                <div class="mdl-grid">
-                                    <div class="mdl-cell mdl-cell--6-col full-width-when-tablet half-width-when-phablet two-part-section-start">
-                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="total-days-off-form" tabindex="99">
-                                            <input class="mdl-textfield__input" type="number" min="0" max="99" pattern="\d{1,2}" id="total-days-off" onkeypress="calculateIfEnter()" form="form1">
-                                            <label class="mdl-textfield__label" for="total-days-off">Total days off</label>
-                                            <span class="mdl-textfield__error">Format should look like "9"</span>
-                                        </div>
-                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="total-days-off-form">
-                                            How many days off in total
-                                        </div>
-                                    </div>
-                                    <div class="mdl-cell mdl-cell--6-col full-width-when-tablet half-width-when-phablet">
-                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end last-item" id="past-days-off-form" tabindex="99">
-                                            <input class="mdl-textfield__input" type="number" min="0" max="99" pattern="\d{1,2}" id="past-days-off" onkeypress="calculateIfEnter()" form="form1">
-                                            <label class="mdl-textfield__label" for="past-days-off">Past days off</label>
-                                            <span class="mdl-textfield__error">Format should look like "12"</span>
-                                        </div>
-                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" for="past-days-off-form">
-                                            How many days off have passed
-                                        </div>
-                                        <!-- second tooltip for mobile -->
-                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right mobile-only" for="past-days-off-form">
-                                            How many days off have passed
-                                        </div>
-                                    </div>
+                                <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="rollover-form">
+                                    How much you are rolling over from last semester
                                 </div>
-
                             </div>
-                          </div>
-
+                            <div class="mdl-cell mdl-cell--6-col full-width-when-tablet half-width-when-phablet">
+                                <!-- current dining input -->
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end last-item"
+                                     id="remaining-form" tabindex="99">
+                                    <input class="mdl-textfield__input" type="number" min="0" max="9999.99"
+                                           pattern="^\d{1,4}(?:[.]\d{1,2}|$)$" step="0.01" id="remaining"
+                                           onkeypress="calculateIfEnter()" form="form1" autofocus>
+                                    <label class="mdl-textfield__label" for="remaining">Remaining</label>
+                                    <span class="mdl-textfield__error">Format should look like "1234.56"</span>
+                                </div>
+                                <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" for="remaining-form">
+                                    How many dollars you have remaining
+                                </div>
+                                <!-- second tooltip for mobile -->
+                                <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right mobile-only"
+                                     for="remaining-form">
+                                    How many dollars you have remaining
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                </div>
 
-                    <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                <div class="card-wide mdl-card mdl-shadow--2dp" id="date-card">
+                    <div class="card-contents">
+                        <h4>Date Range</h4>
 
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="calculate-button"
-                                onclick="getFieldsAndCheckManual()" form="form1" type="submit">
-                            Calculate
-                        </button>
-
-                        <div class="card-wide mdl-card mdl-shadow--2dp" id="summary-card">
-                            <div class="card-contents" id="summary-contents">
-                                <h4>You can spend</h4>
-                                <h3 id="summary"></h3>
-                                <h4>today and still be on schedule.</h4>
+                        <div class="mdl-grid inside-grid" id="date-section">
+                            <div class="mdl-cell mdl-cell--6-col full-width-when-tablet half-width-when-phablet two-part-section-start">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                                     id="start-form" tabindex="99">
+                                    <input class="mdl-textfield__input" type="text" maxlength="10"
+                                           pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](20)\d\d"
+                                           id="start-date" onkeypress="calculateIfEnter()" form="form1">
+                                    <label class="mdl-textfield__label" for="start-date">Start date</label>
+                                    <span class="mdl-textfield__error">Format should look like "08/27/2018"</span>
+                                </div>
+                                <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="start-form">
+                                    The start date for the semester
+                                </div>
+                            </div>
+                            <div class="mdl-cell mdl-cell--6-col full-width-when-tablet half-width-when-phablet two-part-section-end">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="end-form"
+                                     tabindex="99">
+                                    <input class="mdl-textfield__input" type="text" maxlength="10"
+                                           pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](20)\d\d"
+                                           id="end-date" onkeypress="calculateIfEnter()" form="form1">
+                                    <label class="mdl-textfield__label" for="end-date">End date</label>
+                                    <span class="mdl-textfield__error">Format should look like "12/19/2018"</span>
+                                </div>
+                                <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" for="end-form">
+                                    The end date for the semester
+                                </div>
+                                <!-- second tooltip for mobile -->
+                                <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right mobile-only"
+                                     for="end-form">
+                                    The end date for the semester
+                                </div>
                             </div>
                         </div>
 
-                        <div class="card-wide mdl-card mdl-shadow--2dp" id="table-card">
-                            <div class="card-contents">
-                                <table id="results-table">
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td>Daily</td>
-                                        <td>Weekly</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="head-item" id="average-label">Average</td>
-                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right table-tip" for="average-label" data-position="right">
-                                            Average amount you can spend with your dollars
-                                        </div>
-                                        <td></td>
-                                        <td id="avg-daily"></td>
-                                        <td id="avg-weekly"></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="head-item" id="current-label">Currently</td>
-                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right table-tip" for="current-label" data-position="right">
-                                            How much you can spend with your current dollars
-                                        </div>
-                                        <td></td>
-                                        <td id="cur-daily"></td>
-                                        <td id="cur-weekly"></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="head-item" id="diff-label">Difference</td>
-                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right table-tip" for="diff-label" data-position="right">
-                                            Difference in the current and average amounts
-                                        </div>
-                                        <td></td>
-                                        <td id="diff-daily"></td>
-                                        <td id="diff-weekly"></td>
-                                    </tr>
-                                </table>
+                        <div class="mdl-grid">
+                            <div class="mdl-cell mdl-cell--6-col full-width-when-tablet half-width-when-phablet two-part-section-start">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                                     id="total-days-off-form" tabindex="99">
+                                    <input class="mdl-textfield__input" type="number" min="0" max="99" pattern="\d{1,2}"
+                                           id="total-days-off" onkeypress="calculateIfEnter()" form="form1">
+                                    <label class="mdl-textfield__label" for="total-days-off">Total days off</label>
+                                    <span class="mdl-textfield__error">Format should look like "9"</span>
+                                </div>
+                                <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right"
+                                     for="total-days-off-form">
+                                    How many days off in total
+                                </div>
+                            </div>
+                            <div class="mdl-cell mdl-cell--6-col full-width-when-tablet half-width-when-phablet">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label two-part-section-end last-item"
+                                     id="past-days-off-form" tabindex="99">
+                                    <input class="mdl-textfield__input" type="number" min="0" max="99" pattern="\d{1,2}"
+                                           id="past-days-off" onkeypress="calculateIfEnter()" form="form1">
+                                    <label class="mdl-textfield__label" for="past-days-off">Past days off</label>
+                                    <span class="mdl-textfield__error">Format should look like "12"</span>
+                                </div>
+                                <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" for="past-days-off-form">
+                                    How many days off have passed
+                                </div>
+                                <!-- second tooltip for mobile -->
+                                <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right mobile-only"
+                                     for="past-days-off-form">
+                                    How many days off have passed
+                                </div>
                             </div>
                         </div>
 
                     </div>
-
                 </div>
 
-                <div id="dialog" title="Information Dialog">
-                    <p id="dialog-text1"></p>
-                    <a id="dialog-link-text"></a>
-                    <p id="dialog-text2"></p>
+            </div>
+
+            <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
+                        id="calculate-button"
+                        onclick="getFieldsAndCheckManual()" form="form1" type="submit">
+                    Calculate
+                </button>
+
+                <div class="card-wide mdl-card mdl-shadow--2dp" id="summary-card">
+                    <div class="card-contents" id="summary-contents">
+                        <h4>You can spend</h4>
+                        <h3 id="summary"></h3>
+                        <h4>today and still be on schedule.</h4>
+                    </div>
                 </div>
 
-                <!--<p id="initial-text"><p>-->
-                <!--<p id="rollover-text"><p>-->
-                <!--<p id="total-text"><p>-->
-                <!--<p id="current-text"><p>-->
-                <!--<p id="start-text"><p>-->
-                <!--<p id="end-text"><p>-->
-                <!--<p id="dayDiff-text"><p>-->
-                <!--<p id="currentDayDiff-text"><p>-->
-                <!--<p id="total-days-off-text"><p>-->
-                <!--<p id="past-days-off-text"><p>-->
+                <div class="card-wide mdl-card mdl-shadow--2dp" id="table-card">
+                    <div class="card-contents">
+                        <table id="results-table">
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Daily</td>
+                                <td>Weekly</td>
+                            </tr>
+                            <tr>
+                                <td class="head-item" id="average-label">Average</td>
+                                <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right table-tip"
+                                     for="average-label" data-position="right">
+                                    Average amount you can spend with your dollars
+                                </div>
+                                <td></td>
+                                <td id="avg-daily"></td>
+                                <td id="avg-weekly"></td>
+                            </tr>
+                            <tr>
+                                <td class="head-item" id="current-label">Currently</td>
+                                <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right table-tip"
+                                     for="current-label" data-position="right">
+                                    How much you can spend with your current dollars
+                                </div>
+                                <td></td>
+                                <td id="cur-daily"></td>
+                                <td id="cur-weekly"></td>
+                            </tr>
+                            <tr>
+                                <td class="head-item" id="diff-label">Difference</td>
+                                <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right table-tip"
+                                     for="diff-label" data-position="right">
+                                    Difference in the current and average amounts
+                                </div>
+                                <td></td>
+                                <td id="diff-daily"></td>
+                                <td id="diff-weekly"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
 
-                <footer class="mobile-only" id="mobile-footer">
-                    <p>
-                        &copy; Ben Alderfer
-                        <span class="separator"> | </span>
-                        <a href="mailto:benalderfer974@gmail.com?subject=RIT%20Dining%20Planner%20Web%20Comment" class="contact-link">Comment</a>
-                        <span class="separator"> | </span>
-                        <a href="mailto:benalderfer974@gmail.com?subject=RIT%20Dining%20Planner%20Web%20Bug" class="contact-link">Report bug</a>
-                    </p>
-                </footer>
-            </section>
-
-            <div class="mdl-layout-spacer desktop-only"></div>
-
-            <footer class="desktop-only" id="desktop-footer">
-                <p>
-                    &copy; Ben Alderfer
-                    <span class="separator"> | </span>
-                    <a href="mailto:benalderfer974@gmail.com?subject=RIT%20Dining%20Planner%20Web%20Comment" class="contact-link">Comment</a>
-                    <span class="separator"> | </span>
-                    <a href="mailto:benalderfer974@gmail.com?subject=RIT%20Dining%20Planner%20Web%20Bug" class="contact-link">Report bug</a>
-                </p>
-            </footer>
+            </div>
 
         </div>
 
-        <script src="js/material.min.js" defer></script>
-        <script src="js/jquery-1.12.3.min.js" defer></script>
-        <script src="js/jquery-ui.min.js" defer></script>
-        <script src="js/main.js" defer></script>
-    </body>
+        <div id="dialog" title="Information Dialog">
+            <p id="dialog-text1"></p>
+            <a id="dialog-link-text"></a>
+            <p id="dialog-text2"></p>
+        </div>
+
+        <!--<p id="initial-text"><p>-->
+        <!--<p id="rollover-text"><p>-->
+        <!--<p id="total-text"><p>-->
+        <!--<p id="current-text"><p>-->
+        <!--<p id="start-text"><p>-->
+        <!--<p id="end-text"><p>-->
+        <!--<p id="dayDiff-text"><p>-->
+        <!--<p id="currentDayDiff-text"><p>-->
+        <!--<p id="total-days-off-text"><p>-->
+        <!--<p id="past-days-off-text"><p>-->
+
+        <footer class="mobile-only" id="mobile-footer">
+            <p>
+                &copy; Ben Alderfer
+                <span class="separator"> | </span>
+                <a href="mailto:benalderfer974@gmail.com?subject=RIT%20Dining%20Planner%20Web%20Comment"
+                   class="contact-link">Comment</a>
+                <span class="separator"> | </span>
+                <a href="mailto:benalderfer974@gmail.com?subject=RIT%20Dining%20Planner%20Web%20Bug"
+                   class="contact-link">Report bug</a>
+            </p>
+        </footer>
+    </section>
+
+    <div class="mdl-layout-spacer desktop-only"></div>
+
+    <footer class="desktop-only" id="desktop-footer">
+        <p>
+            &copy; Ben Alderfer
+            <span class="separator"> | </span>
+            <a href="mailto:benalderfer974@gmail.com?subject=RIT%20Dining%20Planner%20Web%20Comment"
+               class="contact-link">Comment</a>
+            <span class="separator"> | </span>
+            <a href="mailto:benalderfer974@gmail.com?subject=RIT%20Dining%20Planner%20Web%20Bug" class="contact-link">Report
+                bug</a>
+        </p>
+    </footer>
+
+</div>
+
+<script src="js/material.min.js" defer></script>
+<script src="js/jquery-1.12.3.min.js" defer></script>
+<script src="js/jquery-ui.min.js" defer></script>
+<script src="js/main.js" defer></script>
+</body>
 </html>
