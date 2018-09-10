@@ -1,0 +1,5 @@
+name: RIT Dining Planner
+description: Campus dining expense planner
+author: Ben Alderfer
+author_email: benalderfer974@gmail.com
+include: [.well-known]
