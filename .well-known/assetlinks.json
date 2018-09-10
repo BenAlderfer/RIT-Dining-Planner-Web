@@ -2,7 +2,7 @@
   "relation": ["delegate_permission/common.handle_all_urls"],
   "target": {
     "namespace": "android_app",
-    "package_name": "com.alderferstudios.ritdebitsplitter.base",
+    "package_name": "com.alderferstudios.ritdebitsplitter",
     "sha256_cert_fingerprints":
     ["B9:CD:02:7B:04:C6:A0:A8:CF:42:C5:DC:C5:CA:30:AB:50:7A:D9:76:F8:0C:8A:45:D1:EA:0D:BA:D6:62:EE:99"]
   }
