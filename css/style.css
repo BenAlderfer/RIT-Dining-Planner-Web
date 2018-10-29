@@ -1,8 +1,8 @@
 /* reset margins and padding */
 * {
-	margin: 0;
-	padding: 0;
-	font-family: Roboto, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, Arial, sans-serif;
 }
 
 /* disable horizontal scrolling */
@@ -13,12 +13,12 @@ html, body {
 }
 
 html {
-	position: relative;
-	min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 p {
-	margin: 10px;
+    margin: 10px;
 }
 
 /* alert styling from Bootstrap, warning style */
@@ -51,6 +51,7 @@ p {
 ::selection {
     background: #FFCC80;
 }
+
 ::-moz-selection {
     background: #FFCC80;
 }
@@ -180,7 +181,7 @@ option:hover {
     background-color: #FF5722;
     color: white;
     font-size: 1.5em;
-	text-transform: none;
+    text-transform: none;
 }
 
 #summary-contents {
@@ -197,14 +198,14 @@ option:hover {
 }
 
 #results-table {
-	margin-left: auto;
-	margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
     font-size: 1.5em;
     margin-top: 20px;
 }
 
 td:not(.head-item) {
-	padding: 10px;
+    padding: 10px;
     text-align: center;
 }
 
@@ -242,7 +243,7 @@ footer * {
 }
 
 /* media queries */
-@media only screen and (max-width : 1279px) {
+@media only screen and (max-width: 1279px) {
     select {
         font-size: 1.25em;
     }
@@ -253,7 +254,7 @@ footer * {
     }
 }
 
-@media only screen and (max-width : 1124px) {
+@media only screen and (max-width: 1124px) {
     .mdl-textfield {
         margin-bottom: 0;
     }
@@ -263,9 +264,9 @@ footer * {
         margin-bottom: 10px;
     }
 
-	.full-width-when-tablet {
+    .full-width-when-tablet {
         width: 100%;
-	}
+    }
 
     .mdl-tooltip--left {
         display: none;
@@ -322,7 +323,7 @@ footer * {
 }
 
 /* when it becomes one column */
-@media only screen and (max-width : 839px) {
+@media only screen and (max-width: 839px) {
     .desktop-only {
         display: none;
     }
@@ -362,27 +363,27 @@ footer * {
     }
 }
 
-@media only screen and (max-width : 649px) {
+@media only screen and (max-width: 649px) {
     #content {
         width: 100%;
         margin-left: 0;
     }
 }
 
-@media only screen and (max-width : 629px) {
+@media only screen and (max-width: 629px) {
     #show-hints {
         display: none;
     }
 }
 
-@media only screen and (max-width : 549px) {
+@media only screen and (max-width: 549px) {
     .mdl-tooltip:not(.table-tip) {
         display: none;
     }
 }
 
-@media only screen and (max-width : 499px) {
-    body{
+@media only screen and (max-width: 499px) {
+    body {
         -webkit-text-size-adjust: none;
     }
 
@@ -406,15 +407,15 @@ footer * {
     }
 }
 
-@media only screen and (max-width : 429px) {
+@media only screen and (max-width: 429px) {
     #results-table {
         font-size: 1.2em;
     }
 }
 
-@media only screen and (max-width : 399px) {
+@media only screen and (max-width: 399px) {
     .ui-datepicker {
-       margin-left: -5%;
+        margin-left: -5%;
     }
 
     .ui-datepicker table td {
@@ -423,7 +424,7 @@ footer * {
     }
 }
 
-@media only screen and (max-width : 349px) {
+@media only screen and (max-width: 349px) {
     #results-table {
         font-size: 1em;
     }
@@ -438,7 +439,7 @@ footer * {
     }
 }
 
-@media only screen and (max-width : 299px) {
+@media only screen and (max-width: 299px) {
     .mdl-layout-title {
         margin-left: -25%;
     }
