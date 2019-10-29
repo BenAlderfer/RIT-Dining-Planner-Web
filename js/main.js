@@ -56,8 +56,8 @@ function setVarDefaults() {
     dayDiff = 0;
     totalDaysOff = 9;
     pastDaysOff = 0;
-    startDate = "08/27/2018";
-    endDate = "12/19/2018";
+    startDate = "08/26/2019";
+    endDate = "12/18/2019";
 }
 
 //clears out fields
@@ -225,21 +225,21 @@ function getInitial() {
     planName = $("#plan").val();
     switch (planName) {
         case "5":
-            return 1325.0;
+            return 1350.0;
         case "10":
-            return 725.0;
+            return 750.0;
         case "14":
-            return 525.0;
+            return 550.0;
         case "20":
-            return 325.0;
+            return 350.0;
         case "orange":
-            return 2900.0;
+            return 2950.0;
         case "brown":
-            return 2100.0;
+            return 2200.0;
         case "gold":
-            return 1500.0;
+            return 1600.0;
         case "silver":
-            return 1000.0;
+            return 1100.0;
         case "bronze":
             return 500.0;
         default: //custom
